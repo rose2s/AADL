@@ -1,0 +1,62 @@
+package data_types
+public 
+	with data_model, base_types;
+	
+	data speed
+	end speed;
+	
+	data location
+	end location;
+	
+	data distance extends base_types::unsigned_32
+	end distance;
+	
+	data gps
+	end gps;
+	
+	data implementation gps.impl
+		subcomponents
+			speed:     data speed;
+			distance:  data distance;
+			location:  data location;
+		end gps.impl;
+	
+	data level_type
+		properties
+			data_model::data_representation => enum;
+			data_model::enumerators => ("cc", "acc", "cacc");
+			Data_Size => 3 bits;
+	end level_type;
+
+	data radar_info
+	end radar_info;
+	
+	data alert
+	end alert;
+	
+	data picture 
+		properties
+			data_size => 600 KByte;
+			data_model::data_representation => array;
+	end picture;
+	
+	data cmd
+	end cmd;
+	
+	data implementation cmd.impl
+		subcomponents
+			--var_type: data types;
+			value:    data distance;
+			
+		end cmd.impl;
+
+	
+	data logger
+	end logger;
+	
+	data boolean
+		properties
+			data_size => 1 bits;
+	end boolean;
+	
+end data_types;

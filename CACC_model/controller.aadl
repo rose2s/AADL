@@ -1,0 +1,137 @@
+package controller
+public
+	with data_types;
+with abstracts;
+	
+	abstract generic_controller
+		features
+			sensor1_data_in:    in data port;
+			sensor2_data_in:    in data port;
+			sensor3_data_in:    in data port;
+			sensor4_data_in:    in data port;
+			cmd_con_out: 		out event data port data_types::cmd;
+			UI_inverse_ports:	feature group inverse of abstracts::UI_ports;
+			current_speed:	    out data port;	
+
+		flows
+			UI_sink    		 : flow sink UI_inverse_ports;
+			controller_path0 : flow path sensor1_data_in -> cmd_con_out;		
+			controller_path1 : flow path sensor2_data_in -> cmd_con_out;
+			controller_path2 : flow path sensor3_data_in -> cmd_con_out;
+			controller_path3 : flow path sensor4_data_in -> cmd_con_out;
+		properties
+			latency => 3 ms .. 4 ms applies to controller_path0, controller_path1, controller_path2;
+				
+	end generic_controller;		
+	
+	abstract implementation generic_controller.threads
+		subcomponents
+			thread_radar: 			abstract read_sensor.impl;
+			thread_camera: 		    abstract read_sensor.impl;
+			thread_gps: 			abstract read_sensor.impl;
+			thread_speedometer:		abstract read_sensor.impl;
+			thread_controller:      abstract thread_controller.impl;
+			control_modal:			abstract control_modal.impl;
+			preferences:			abstract preferences.impl;
+		annex EMV2 {**
+			use types     error_library;
+			use behavior  error_library::stateMachine;
+			
+			error propagations
+				sensor1_data_in : in propagation {NoValue, InvalidValue};
+				sensor2_data_in	: in propagation{NoValue};
+				sensor3_data_in	: in propagation{NoValue, InvalidValue};
+				sensor4_data_in	: in propagation{NoValue, InvalidValue};
+			flows
+				nosensor1	: error sink sensor1_data_in{NoValue};
+				nosensor2	: error sink sensor2_data_in{NoValue};
+				nosensor3	: error sink sensor3_data_in{NoValue};
+				nosensor4	: error sink sensor4_data_in{NoValue};
+			end propagations;
+			
+--			component error behavior
+--			transitions
+--				terrfrompedal 		: Operational -[pedalvalue{NoService}]-> Failed;
+--				terrfromplatformsoft : Operational -[processor{SoftwareFailure}]-> Failed;
+--				terrfromplatformhard : Operational -[processor{HardwareFailure}]-> Failed;
+--			propagations
+--			    --  Here, we can imply that the NoService error from pedalvalue
+--			    --  is transformed into a NoValue on brake and skid features.
+--			    --  So, basically, this should be shown in the FMEA/FaultImpact
+--			    --  report. So, the report should show the error flows
+--			    --  pedals/NoService -> commands/brake/skid/NoValue -> monitor/NoValue -> selector/NoValue 
+--				p1 : Failed -[]-> brake{NoValue};
+--				p2 : Failed -[]-> skid{NoValue};
+--			end component;	
+		**};
+	end generic_controller.threads;
+	
+	-- threads declaration
+	abstract read_sensor
+		features
+			sensor_in:   in data port;
+			sensor_out:  out data port data_types::cmd;
+		flows
+			thread_path0 : flow path sensor_in -> sensor_out;		
+		properties
+			latency => 3 ms .. 4 ms applies to thread_path0;
+			Dispatch_Protocol => Periodic;
+			Period => 20ms;			
+	end read_sensor;
+	 
+	abstract implementation read_sensor.impl
+	end read_sensor.impl;
+	
+	abstract thread_controller
+		features
+			data_in:    in data port        data_types::cmd;
+			data_out: 	out event data port data_types::cmd;
+		flows
+			controller_thread_path0 : flow path data_in -> data_out;		
+		properties
+			latency => 3 ms .. 4 ms applies to controller_thread_path0;
+			Dispatch_Protocol => Periodic;
+			Period => 20ms;
+				
+	end thread_controller;
+	
+	abstract implementation thread_controller.impl
+	end thread_controller.impl;
+	
+	abstract control_modal
+		features
+			speed_limit: in data port;
+			sensor_data: in event port;
+			data_out: 	out event data port data_types::cmd;
+			UI_ports: 	feature group inverse of abstracts::UI_ports;
+			cmd: out data port;
+	flows
+			control_modal_path0 :   flow path sensor_data -> data_out;
+			UI_sink:			flow sink UI_ports;
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 20ms;
+	end control_modal;
+	
+	abstract implementation control_modal.impl
+	end control_modal.impl;
+	
+	abstract preferences
+		features
+			speed_limit: out data port;
+	end preferences;
+	
+	abstract implementation preferences.impl
+	end preferences.impl;
+	
+	abstract speed_controller
+		features
+			current_speed: in data port;
+			cmd: out data port;
+	
+	end speed_controller;
+	
+	abstract implementation speed_controller.impl
+	end speed_controller.impl;
+	
+end controller;

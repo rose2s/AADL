@@ -1,0 +1,37 @@
+package sensor
+public
+	with data_types;
+	with EMV2;
+	
+	abstract generic_sensor
+		features
+			sensor_data_out: 	out data port;
+			logger_out: 		out data port data_types::logger;
+		flows
+			sensor_source : flow source sensor_data_out;
+			logger_source : flow source logger_out;   
+		properties
+			latency => 1 ms .. 3 ms applies to sensor_source, logger_out;
+		
+		annex EMV2 {**
+			use types error_library; 
+		
+			error propagations
+				sensor_data_out : out propagation {NoValue};
+			flows
+				ef0 : error source sensor_data_out{NoValue};
+			end propagations;
+			properties
+				emv2::hazards => 
+					([	failure => "Novalue";	
+						description => "No data from the sensor";
+					])
+			applies to sensor_data_out.novalue;
+		**};
+		
+	end generic_sensor;
+		
+	abstract implementation generic_sensor.impl
+	end generic_sensor.impl;
+
+end sensor;

@@ -1,0 +1,13 @@
+Weight totals Report
+
+Warning! interface_controller: [L] no net weight plus subcomponent weight or no grossweight
+Warning! vehicle_controller: [L] no net weight plus subcomponent weight or no grossweight
+Warning! this_bus: [L] no net weight plus subcomponent weight or no grossweight
+Warning! radar_sensor: [L] no net weight plus subcomponent weight or no grossweight
+Warning! camera_sensor: [L] no net weight plus subcomponent weight or no grossweight
+Warning! gps: [L] no net weight plus subcomponent weight or no grossweight
+Warning! user_interface: [L] no net weight plus subcomponent weight or no grossweight
+Warning! logger: [L] no net weight plus subcomponent weight or no grossweight
+Warning! this_memory: [L] no net weight plus subcomponent weight or no grossweight
+Warning! this_processor: [L] no net weight plus subcomponent weight or no grossweight
+Warning! cacc_rt_devices_Instance: [L] no net weight plus subcomponent weight or no grossweight

@@ -1,0 +1,26 @@
+package platform
+public
+		
+	processor generic_cpu
+		features
+			net : requires bus access generic_bus;
+		end generic_cpu;
+	
+	bus generic_bus                   
+	end generic_bus;
+	
+	--virtual bus generic_protocol
+	--	properties
+	--		latency => 1 ms .. 2 ms;
+	--end generic_protocol;
+	
+	-- memory declaration
+	memory Ram
+		features
+			BA: requires bus access generic_bus;
+	end Ram;
+	
+	memory implementation Ram.impl
+	end Ram.impl;
+	
+end platform;
