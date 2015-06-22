@@ -6,12 +6,10 @@ public
 	abstract generic_sensor
 		features
 			sensor_data_out: 	out data port;
-			logger_out: 		out data port data_types::logger;
 		flows
-			sensor_source : flow source sensor_data_out;
-			logger_source : flow source logger_out;   
+			sensor_source : flow source sensor_data_out;  
 		properties
-			latency => 1 ms .. 3 ms applies to sensor_source, logger_out;
+			latency => 1 ms .. 3 ms applies to sensor_source;
 		
 		annex EMV2 {**
 			use types error_library; 
@@ -27,11 +25,52 @@ public
 						description => "No data from the sensor";
 					])
 			applies to sensor_data_out.novalue;
-		**};
-		
+		**};	
 	end generic_sensor;
 		
 	abstract implementation generic_sensor.impl
 	end generic_sensor.impl;
+	
+	abstract generic_sensor_handler
+		features
+			sensor_data_in: 	in data port;
+			sensor_data_out: 	out data port;
+			logger_out: 		out data port data_types::logger;
+			
+		flows
+			sensor_path :   flow path sensor_data_in->sensor_data_out;
+			logger_source : flow source logger_out;   
+		properties
+			latency => 1 ms .. 3 ms applies to sensor_path, logger_out;
+		
+		annex EMV2 {**
+			use types error_library; 
+			use behavior error_library::stateMachine;
+		
+			error propagations
+				logger_out		: out propagation {BadValue, LateValue};
+				sensor_data_in  : in propagation  {NoValue, BadValue};
+				sensor_data_out : out propagation {NoValue, BadValue,LateValue};
+			flows
+				ef0 : error source logger_out{BadValue, LateValue};
+				ef1 : error source sensor_data_out{LateValue};
+				ef2 : error path sensor_data_in{NoValue, BadValue}->sensor_data_out{LateValue};
+			end propagations;
+			
+			component error behavior
+			events
+				BadRead    	: error event;
+				RecoverEvent: recover event;
+				
+			transitions
+				t0 : Operational -[sensor_data_in{NoValue, BadValue}]->   Failed;
+				t1 : Operational -[BadRead]-> Failed;
+				t2 : Failed      -[RecoverEvent]-> Operational;	
+			end component;
+		**};
+	end generic_sensor_handler;
+		
+	abstract implementation generic_sensor_handler.impl
+	end generic_sensor_handler.impl;
 
 end sensor;

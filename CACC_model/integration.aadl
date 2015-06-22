@@ -17,11 +17,15 @@ public
 			vehicle_controller: 	refined to process control_rt.impl   	  {Classifier_Substitution_Rule => Type_Extension;};
 			interface_controller:	refined to process interface_controller_rt.impl;
 			radar_sensor:		 	refined to device  radarSensor_rt.impl    {Classifier_Substitution_Rule => Type_Extension;};
+			radar_handler:			refined to system  radar_handler.impl;
 			camera_sensor:			refined to device  cameraSensor_rt.impl   {Classifier_Substitution_Rule => Type_Extension;};
+			camera_handler:			refined to system  camera_handler.impl;
 			speedometer:		 	refined to device  speedometer_rt.impl 	  {Classifier_Substitution_Rule => Type_Extension;};
+			speedometer_handler:	refined to system  speedometer_handler.impl;
 			gps:		 		 	refined to device  gps_rt.impl 		   	  {Classifier_Substitution_Rule => Type_Extension;};
+			gps_handler:			refined to system  gps_handler.impl;
 			user_interface:	 		refined to device  user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
-			logger: 		 		refined to device  logger_rt.impl;
+			logger: 		 		refined to system  logger_rt.impl;
 			this_bus:				bus 	  			platform::generic_bus;
 			this_processor:			processor 			platform::generic_cpu;
 			this_memory: 			memory 	  			platform::Ram.impl;
@@ -33,12 +37,13 @@ public
 			bus_radar: 					bus access this_bus<->radar_sensor.BA;
 			bus_camera: 				bus access this_bus<->camera_sensor.BA;
 			bus_gps: 					bus access this_bus<->gps.BA;
+			bus_speedometer: 			bus access this_bus<->speedometer.BA;
 			bus_UI: 					bus access this_bus<->user_interface.BA;
 			bus_processor:				bus access this_bus<->this_processor.net;
 			bus_memory:					bus access this_bus<->this_memory.BA;
 			
 			brake_cont_conn:			port brake_actuator.brake_failed->vehicle_controller.brake_failed;
-	
+			
 		properties
 			-- bound thread to the processor
 			Allowed_Processor_Binding => (reference(this_processor)) applies to vehicle_controller.thread_radar;
@@ -47,109 +52,149 @@ public
 			-- bound code/data within the controller to memory
 			Actual_Memory_Binding => (reference(this_memory)) applies to vehicle_controller;
 			
+		annex EMV2 {**
+			use types error_library; 
+			use behavior error_library::stateMachine;
+			
+			composite error behavior
+				states
+					[radar_handler.Failed and camera_handler.Failed and gps_handler.Failed and speedometer_handler.Failed]-> Failed;
+					[radar_handler.Failed and camera_handler.Failed]-> Failed;
+					[radar_handler.Failed or camera_handler.Failed]->  Operational;
+					[radar_handler.Operational and camera_handler.Operational and gps_handler.Operational and speedometer_handler.Operational]-> Operational;
+			end composite;	
+			**};
+		
 	end cacc_rt.devices;
 	 
-	-- sensors
+	-- radar
 	device radarSensor_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::radar_info;
 			BA: requires bus access platform::generic_bus;
 		
-		annex EMV2 {**
-			use types error_library;	
-				error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-		
-			properties	
-				emv2::hazards => 
-					([	failure => "InvalidValue";
-						description => "Invalid distance sent by the radar";
-					])
-					applies to sensor_data_out.invalidvalue;
-		**};
+--		annex EMV2 {**
+--			use types error_library;	
+--				error propagations
+--				sensor_data_out : out propagation {InvalidValue};
+--			flows
+--				ef0 : error source sensor_data_out{InvalidValue};
+--			end propagations;
+--		
+--			properties	
+--				emv2::hazards => 
+--					([	failure => "InvalidValue";
+--						description => "Invalid distance sent by the radar";
+--					])
+--					applies to sensor_data_out.invalidvalue;
+--		**};
 	end radarSensor_rt;
 	
 	device implementation radarSensor_rt.impl extends sensor::generic_sensor.impl
 	end radarSensor_rt.impl;
 	
+	system radar_handler extends sensor::generic_sensor_handler
+	end radar_handler;
+	
+	system implementation radar_handler.impl extends sensor::generic_sensor_handler.impl
+	end radar_handler.impl;
+	
+	-- camera
 	device cameraSensor_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::picture;
 			BA: requires bus access platform::generic_bus;
 			
-		annex EMV2 {**
-			use types Error_library; 
-		
-			error propagations
-				sensor_data_out : out propagation {NoValue};
-			flows
-				ef0 : error source sensor_data_out{NoValue};
-			end propagations;
-			properties
-				emv2::hazards => 
-					([	failure => "Novalue";	
-						description => "No data from the camera";
-						comment => "Would impact the detection of obstacle if the camera is not working as well";
-					])
-			applies to sensor_data_out.novalue;
-
-		**};
+--		annex EMV2 {**
+--			use types Error_library; 
+--		
+--			error propagations
+--				sensor_data_out : out propagation {NoValue};
+--			flows
+--				ef0 : error source sensor_data_out{NoValue};
+--			end propagations;
+--			properties
+--				emv2::hazards => 
+--					([	failure => "Novalue";	
+--						description => "No data from the camera";
+--						comment => "Would impact the detection of obstacle if the camera is not working as well";
+--					])
+--			applies to sensor_data_out.novalue;
+--
+--		**};
 	end cameraSensor_rt;
 	
 	device implementation cameraSensor_rt.impl extends sensor::generic_sensor.impl
 	end cameraSensor_rt.impl;
 	
+	system camera_handler extends sensor::generic_sensor_handler
+	end camera_handler;
+	
+	system implementation camera_handler.impl extends sensor::generic_sensor_handler.impl
+	end camera_handler.impl;
+	
+	-- gps
 	device gps_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::gps;
 			BA: requires bus access platform::generic_bus;
-		annex EMV2 {**
-			use types error_library;	
-				error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-		
-			properties	
-				emv2::hazards => 
-					([	failure => "InvalidValue";
-						description => "Invalid distance sent by the radar";
-					])
-					applies to sensor_data_out.invalidvalue;
-		**};
+--		annex EMV2 {**
+--			use types error_library;	
+--				error propagations
+--				sensor_data_out : out propagation {InvalidValue};
+--			flows
+--				ef0 : error source sensor_data_out{InvalidValue};
+--			end propagations;
+--		
+--			properties	
+--				emv2::hazards => 
+--					([	failure => "InvalidValue";
+--						description => "Invalid distance sent by the radar";
+--					])
+--					applies to sensor_data_out.invalidvalue;
+--		**};
 	end gps_rt;
 	
 	device implementation gps_rt.impl extends sensor::generic_sensor.impl
 	end gps_rt.impl;
 	
+	system gps_handler extends sensor::generic_sensor_handler
+	end gps_handler;
+	
+	system implementation gps_handler.impl extends sensor::generic_sensor_handler.impl
+	end gps_handler.impl;
+	
+	-- speedometer
 	device speedometer_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::speed;
 			BA: requires bus access platform::generic_bus;
 		
-		annex EMV2 {**
-			use types error_library;	
-				error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-		
-			properties	
-				emv2::hazards => 
-					([	failure => "InvalidValue";
-						description => "Invalid distance sent by the radar";
-					])
-					applies to sensor_data_out.invalidvalue;
-		**};
+--		annex EMV2 {**
+--			use types error_library;	
+--				error propagations
+--				sensor_data_out : out propagation {InvalidValue};
+--			flows
+--				ef0 : error source sensor_data_out{InvalidValue};
+--			end propagations;
+--		
+--			properties	
+--				emv2::hazards => 
+--					([	failure => "InvalidValue";
+--						description => "Invalid distance sent by the radar";
+--					])
+--					applies to sensor_data_out.invalidvalue;
+--		**};
 	end speedometer_rt;
 	
 	device implementation speedometer_rt.impl extends sensor::generic_sensor.impl
 	end speedometer_rt.impl;
+	
+	system speedometer_handler extends sensor::generic_sensor_handler
+	end speedometer_handler;
+	
+	system implementation speedometer_handler.impl extends sensor::generic_sensor_handler.impl
+	end speedometer_handler.impl;
 	
 	-- user interface
 	device user_interface_rt extends abstracts::user_interface
@@ -209,25 +254,37 @@ public
 			UI_conn:					feature group UI_inverse_ports -> control_modal.UI_ports;
 			-- connect E w/ process
 			
-			modal_proc_conn:			port control_modal.data_out->cmd_con_out;
+			modal_proc_conn:			port control_modal.feedback->feedback;
 			preferences_conn:			port preferences.speed_limit->control_modal.speed_limit;
 			-- connect modal w/ process
 			modal_coon: 				port control_modal.cmd -> current_speed;
 			brake_conn:					port brake_failed->control_modal.brake_failed;
 			
-			
-		
 		flows	
 			UI_sink    		 : flow sink UI_inverse_ports -> UI_conn -> control_modal.UI_sink;
 			
-			controller_path0 : flow path sensor1_data_in -> radar_thread_conn -> thread_radar.thread_path0 -> radar_controller_conn
-				-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_proc_conn -> cmd_con_out; 
+			controller_path0a : flow path sensor1_data_in -> radar_thread_conn -> thread_radar.thread_path0 -> radar_controller_conn
+				-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed; 
 	
-			controller_path1 : flow path sensor2_data_in -> camera_thread_conn -> thread_camera.thread_path0 -> camera_controller_conn
-							-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_proc_conn -> cmd_con_out; 
+			controller_path1a : flow path sensor2_data_in -> camera_thread_conn -> thread_camera.thread_path0 -> camera_controller_conn
+							-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed; 
+			controller_path2a : flow path sensor3_data_in -> gps_thread_conn -> thread_gps.thread_path0 -> gps_controller_conn
+								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed;  
+			controller_path3a : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
+								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed;  
+			
+			controller_path0b : flow path sensor1_data_in -> radar_thread_conn -> thread_radar.thread_path0 -> radar_controller_conn
+				-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback; 
 	
-			controller_path2 : flow path sensor3_data_in -> gps_thread_conn -> thread_gps.thread_path0 -> gps_controller_conn
-								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_proc_conn -> cmd_con_out;  
+			controller_path1b : flow path sensor2_data_in -> camera_thread_conn -> thread_camera.thread_path0 -> camera_controller_conn
+			    -> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;
+	
+			controller_path2b : flow path sensor3_data_in -> gps_thread_conn -> thread_gps.thread_path0 -> gps_controller_conn
+					-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;  
+			
+			controller_path3b : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
+								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;  
+		
 		modes
 			manual: initial mode;
 			cc: mode;
@@ -313,10 +370,10 @@ public
 	thread implementation control_modal.impl 
 	end control_modal.impl;
 	
-	device logger_rt extends abstracts::logger
+	system logger_rt extends abstracts::logger
 	end logger_rt;
 	
-	device implementation logger_rt.impl extends abstracts::logger.impl
+	system implementation logger_rt.impl extends abstracts::logger.impl
 	end logger_rt.impl;
 	
 	-- device throttle

@@ -4,6 +4,28 @@ public
 	processor generic_cpu
 		features
 			net : requires bus access generic_bus;
+		annex EMV2 {**
+			use types error_library; 
+			use behavior error_library::stateMachine;
+		
+			error propagations
+				bindings :  out propagation {HardwareFailure};
+			
+			flows
+				f0 : error source bindings{HardwareFailure};
+				
+			end propagations;
+		
+			component error behavior
+			events
+				InternalFailure : error event;
+			transitions
+				Operational -[InternalFailure]-> Failed;
+			propagations
+				normal : Operational -[]-> bindings {NoError};
+				fail   : Failed -[]-> bindings{HardwareFailure};
+			end component;	
+		**};
 		end generic_cpu;
 	
 	bus generic_bus                   

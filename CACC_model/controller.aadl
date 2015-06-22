@@ -9,18 +9,22 @@ with abstracts;
 			sensor2_data_in:    in data port;
 			sensor3_data_in:    in data port;
 			sensor4_data_in:    in data port;
-			cmd_con_out: 		out event data port data_types::cmd;
+			feedback: 			out event data port;
 			UI_inverse_ports:	feature group inverse of abstracts::UI_ports;
 			current_speed:	    out data port;	
-
 		flows
-			UI_sink    		 : flow sink UI_inverse_ports;
-			controller_path0 : flow path sensor1_data_in -> cmd_con_out;		
-			controller_path1 : flow path sensor2_data_in -> cmd_con_out;
-			controller_path2 : flow path sensor3_data_in -> cmd_con_out;
-			controller_path3 : flow path sensor4_data_in -> cmd_con_out;
+			UI_sink    		  : flow sink UI_inverse_ports;
+			controller_path0a : flow path sensor1_data_in -> current_speed;		-- path to actuators
+			controller_path1a : flow path sensor2_data_in -> current_speed;
+			controller_path2a : flow path sensor3_data_in -> current_speed;
+			controller_path3a : flow path sensor4_data_in -> current_speed;
+			controller_path0b : flow path sensor1_data_in -> feedback;	    -- path to UI	
+			controller_path1b : flow path sensor2_data_in -> feedback;
+			controller_path2b : flow path sensor3_data_in -> feedback;
+			controller_path3b : flow path sensor4_data_in -> feedback;
 		properties
-			latency => 3 ms .. 4 ms applies to controller_path0, controller_path1, controller_path2;
+			latency => 5 ms .. 7 ms applies to controller_path0a, controller_path1a, controller_path2a, controller_path3a ;
+			latency => 3 ms .. 4 ms applies to controller_path0b, controller_path1b, controller_path2b, controller_path3b ;
 				
 	end generic_controller;		
 	
@@ -38,15 +42,15 @@ with abstracts;
 			use behavior  error_library::stateMachine;
 			
 			error propagations
-				sensor1_data_in : in propagation {NoValue, InvalidValue};
-				sensor2_data_in	: in propagation{NoValue};
-				sensor3_data_in	: in propagation{NoValue, InvalidValue};
-				sensor4_data_in	: in propagation{NoValue, InvalidValue};
+				sensor1_data_in : in propagation {NoValue, BadValue, LateValue};
+				sensor2_data_in	: in propagation {NoValue, BadValue, LateValue};
+				sensor3_data_in	: in propagation {NoValue, BadValue, LateValue};
+				sensor4_data_in	: in propagation {NoValue, BadValue, LateValue};
 			flows
-				nosensor1	: error sink sensor1_data_in{NoValue};
-				nosensor2	: error sink sensor2_data_in{NoValue};
-				nosensor3	: error sink sensor3_data_in{NoValue};
-				nosensor4	: error sink sensor4_data_in{NoValue};
+				nosensor1	: error sink sensor1_data_in{NoValue, BadValue, LateValue};
+				nosensor2	: error sink sensor2_data_in{NoValue, BadValue, LateValue};
+				nosensor3	: error sink sensor3_data_in{NoValue, BadValue, LateValue};
+				nosensor4	: error sink sensor4_data_in{NoValue, BadValue, LateValue};
 			end propagations;
 			
 --			component error behavior
@@ -102,12 +106,13 @@ with abstracts;
 		features
 			speed_limit: in data port;
 			sensor_data: in event port;
-			data_out: 	out event data port data_types::cmd;
+			feedback: 	out event data port;
 			UI_ports: 	feature group inverse of abstracts::UI_ports;
-			cmd: out data port;
+			cmd: 		out data port;
 	flows
-			control_modal_path0 :   flow path sensor_data -> data_out;
-			UI_sink:			flow sink UI_ports;
+			control_modal_path0 :   flow path sensor_data -> cmd;
+			control_modal_path1 :   flow path sensor_data ->feedback;
+			UI_sink:			    flow sink UI_ports;
 		properties
 			Dispatch_Protocol => Periodic;
 			Period => 20ms;
@@ -128,6 +133,11 @@ with abstracts;
 		features
 			current_speed: in data port;
 			cmd: out data port;
+		flows
+			speed_path: flow path current_speed->cmd;
+	--	properties
+			
+		
 	
 	end speed_controller;
 	
