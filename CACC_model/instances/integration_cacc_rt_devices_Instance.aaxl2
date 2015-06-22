@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="cacc_rt_devices_Instance" category="system">
-  <componentInstance name="this_bus" srcConnectionInstance="//@connectionInstance.0 //@connectionInstance.1 //@connectionInstance.2 //@connectionInstance.3 //@connectionInstance.4 //@connectionInstance.5" category="bus">
+  <componentInstance name="this_bus" srcConnectionInstance="//@connectionInstance.0 //@connectionInstance.1 //@connectionInstance.2 //@connectionInstance.3 //@connectionInstance.4 //@connectionInstance.5 //@connectionInstance.6" category="bus">
     <subcomponent xsi:type="aadl2:BusSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedBusSubcomponent.0"/>
     <index>0</index>
   </componentInstance>
   <componentInstance name="radar_sensor" category="device">
-    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.6" dstFlowSpec="//@componentInstance.1/@flowSpecification.1" direction="out">
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:RangeValue">
-            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </minimum>
-            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </maximum>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
-    </featureInstance>
     <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.7" dstFlowSpec="//@componentInstance.1/@flowSpecification.0" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
@@ -51,7 +27,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0"/>
     </featureInstance>
-    <flowSpecification name="sensor_source" destination="//@componentInstance.1/@featureInstance.1">
+    <flowSpecification name="sensor_source" destination="//@componentInstance.1/@featureInstance.0">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
@@ -67,38 +43,11 @@
       </ownedPropertyAssociation>
       <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.0"/>
     </flowSpecification>
-    <flowSpecification name="logger_source" destination="//@componentInstance.1/@featureInstance.0">
-      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.1"/>
-    </flowSpecification>
     <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.0"/>
     <index>0</index>
   </componentInstance>
   <componentInstance name="camera_sensor" category="device">
-    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.8" dstFlowSpec="//@componentInstance.2/@flowSpecification.1" direction="out">
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:RangeValue">
-            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </minimum>
-            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </maximum>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
-    </featureInstance>
-    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.9" dstFlowSpec="//@componentInstance.2/@flowSpecification.0" direction="out">
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.8" dstFlowSpec="//@componentInstance.2/@flowSpecification.0" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -123,7 +72,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.1" category="busAccess" direction="in out">
       <ownedPropertyAssociation>
@@ -134,9 +83,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedBusAccess.0"/>
+      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedBusAccess.0"/>
     </featureInstance>
-    <flowSpecification name="sensor_source" destination="//@componentInstance.2/@featureInstance.1">
+    <flowSpecification name="sensor_source" destination="//@componentInstance.2/@featureInstance.0">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
@@ -151,15 +100,12 @@
         </ownedValue>
       </ownedPropertyAssociation>
       <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.0"/>
-    </flowSpecification>
-    <flowSpecification name="logger_source" destination="//@componentInstance.2/@featureInstance.0">
-      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.1"/>
     </flowSpecification>
     <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.1"/>
     <index>0</index>
   </componentInstance>
   <componentInstance name="speedometer" category="device">
-    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.10" dstFlowSpec="//@componentInstance.3/@flowSpecification.1" direction="out">
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.9" dstFlowSpec="//@componentInstance.3/@flowSpecification.0" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -168,22 +114,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:RangeValue">
-            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </minimum>
-            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </maximum>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.0"/>
     </featureInstance>
-    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.11" dstFlowSpec="//@componentInstance.3/@flowSpecification.0" direction="out">
+    <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.3" category="busAccess" direction="in out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -192,20 +125,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedBusAccess.0"/>
     </featureInstance>
-    <featureInstance name="BA" category="busAccess" direction="in out">
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedBusAccess.0"/>
-    </featureInstance>
-    <flowSpecification name="sensor_source" destination="//@componentInstance.3/@featureInstance.1">
+    <flowSpecification name="sensor_source" destination="//@componentInstance.3/@featureInstance.0">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
@@ -221,14 +143,11 @@
       </ownedPropertyAssociation>
       <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.0"/>
     </flowSpecification>
-    <flowSpecification name="logger_source" destination="//@componentInstance.3/@featureInstance.0">
-      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.1"/>
-    </flowSpecification>
     <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.2"/>
     <index>0</index>
   </componentInstance>
   <componentInstance name="gps" category="device">
-    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.12" dstFlowSpec="//@componentInstance.4/@flowSpecification.1" direction="out">
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.10" dstFlowSpec="//@componentInstance.4/@flowSpecification.0" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -237,31 +156,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:RangeValue">
-            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </minimum>
-            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
-              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
-            </maximum>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
-    </featureInstance>
-    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.13" dstFlowSpec="//@componentInstance.4/@flowSpecification.0" direction="out">
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.2" category="busAccess" direction="in out">
       <ownedPropertyAssociation>
@@ -272,9 +167,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedBusAccess.0"/>
+      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedBusAccess.0"/>
     </featureInstance>
-    <flowSpecification name="sensor_source" destination="//@componentInstance.4/@featureInstance.1">
+    <flowSpecification name="sensor_source" destination="//@componentInstance.4/@featureInstance.0">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
@@ -289,9 +184,6 @@
         </ownedValue>
       </ownedPropertyAssociation>
       <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.0"/>
-    </flowSpecification>
-    <flowSpecification name="logger_source" destination="//@componentInstance.4/@featureInstance.0">
-      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.1"/>
     </flowSpecification>
     <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.3"/>
     <index>0</index>
@@ -306,7 +198,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.14" category="eventPort" direction="out">
+      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.11" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -317,7 +209,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.15" category="eventPort" direction="out">
+      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.12" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -328,7 +220,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.16" category="eventPort" direction="out">
+      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.13" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -339,7 +231,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.17" category="eventPort" direction="out">
+      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.14" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -350,7 +242,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.18" category="eventPort" direction="out">
+      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.15" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -361,7 +253,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" srcConnectionInstance="//@connectionInstance.19" category="eventPort" direction="out">
+      <featureInstance name="resume_pause" srcConnectionInstance="//@connectionInstance.16" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -372,7 +264,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.20" category="eventPort" direction="out">
+      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.17" category="eventPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -385,7 +277,7 @@
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.0"/>
     </featureInstance>
-    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.21" dstFlowSpec="//@componentInstance.5/@flowSpecification.0" direction="out">
+    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.18" dstFlowSpec="//@componentInstance.5/@flowSpecification.0" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -396,7 +288,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
     </featureInstance>
-    <featureInstance name="cmd_con_in" dstConnectionInstance="//@connectionInstance.32" srcFlowSpec="//@componentInstance.5/@flowSpecification.2" category="eventDataPort">
+    <featureInstance name="cmd_con_in" dstConnectionInstance="//@connectionInstance.29" srcFlowSpec="//@componentInstance.5/@flowSpecification.2" category="eventDataPort">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -407,7 +299,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedEventDataPort.0"/>
     </featureInstance>
-    <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.3" category="busAccess" direction="in out">
+    <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.4" category="busAccess" direction="in out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -416,7 +308,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedBusAccess.0"/>
+      <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.18/@ownedBusAccess.0"/>
     </featureInstance>
     <flowSpecification name="logger_source" destination="//@componentInstance.5/@featureInstance.1">
       <ownedPropertyAssociation>
@@ -457,7 +349,7 @@
     <index>0</index>
   </componentInstance>
   <componentInstance name="logger" category="device">
-    <featureInstance name="file" dstConnectionInstance="//@connectionInstance.6 //@connectionInstance.8 //@connectionInstance.10 //@connectionInstance.12 //@connectionInstance.21" srcFlowSpec="//@componentInstance.6/@flowSpecification.0">
+    <featureInstance name="file" dstConnectionInstance="//@connectionInstance.18 //@connectionInstance.33 //@connectionInstance.35 //@connectionInstance.37 //@connectionInstance.39" srcFlowSpec="//@componentInstance.6/@flowSpecification.0">
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.0"/>
     </featureInstance>
     <flowSpecification name="logger_sink" source="//@componentInstance.6/@featureInstance.0">
@@ -488,7 +380,7 @@
         </ownedValue>
       </ownedValue>
     </ownedPropertyAssociation>
-    <featureInstance name="cmd" dstConnectionInstance="//@connectionInstance.34">
+    <featureInstance name="cmd" dstConnectionInstance="//@connectionInstance.31" srcFlowSpec="//@componentInstance.7/@flowSpecification.0">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -499,6 +391,20 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.0"/>
     </featureInstance>
+    <featureInstance name="failed" category="eventPort" direction="out">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedEventPort.0"/>
+    </featureInstance>
+    <flowSpecification name="throttle_sink" source="//@componentInstance.7/@featureInstance.0">
+      <flowSpecification href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedFlowSpecification.0"/>
+    </flowSpecification>
     <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.6"/>
     <index>0</index>
   </componentInstance>
@@ -511,7 +417,7 @@
         </ownedValue>
       </ownedValue>
     </ownedPropertyAssociation>
-    <featureInstance name="cmd" dstConnectionInstance="//@connectionInstance.33">
+    <featureInstance name="cmd" dstConnectionInstance="//@connectionInstance.30" srcFlowSpec="//@componentInstance.8/@flowSpecification.0">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -533,7 +439,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedEventPort.0"/>
     </featureInstance>
-    <featureInstance name="brake_failed" srcConnectionInstance="//@connectionInstance.22" category="eventPort" direction="out">
+    <featureInstance name="brake_failed" srcConnectionInstance="//@connectionInstance.19" category="eventPort" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -544,11 +450,14 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedEventPort.1"/>
     </featureInstance>
+    <flowSpecification name="brake_sink" source="//@componentInstance.8/@featureInstance.0">
+      <flowSpecification href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedFlowSpecification.0"/>
+    </flowSpecification>
     <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.7"/>
     <index>0</index>
   </componentInstance>
   <componentInstance name="this_memory" category="memory">
-    <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.5" category="busAccess" direction="in out">
+    <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.6" category="busAccess" direction="in out">
       <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0"/>
     </featureInstance>
     <subcomponent xsi:type="aadl2:MemorySubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedMemorySubcomponent.0"/>
@@ -651,7 +560,7 @@
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.0"/>
     </featureInstance>
-    <featureInstance name="current_speed" direction="out">
+    <featureInstance name="current_speed" dstFlowSpec="//@componentInstance.10/@flowSpecification.1 //@componentInstance.10/@flowSpecification.2 //@componentInstance.10/@flowSpecification.3 //@componentInstance.10/@flowSpecification.4" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -670,7 +579,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
     </featureInstance>
-    <featureInstance name="cmd_con_out" dstFlowSpec="//@componentInstance.10/@flowSpecification.1 //@componentInstance.10/@flowSpecification.2 //@componentInstance.10/@flowSpecification.3 //@componentInstance.10/@flowSpecification.4" category="eventDataPort" direction="out">
+    <featureInstance name="feedback" dstFlowSpec="//@componentInstance.10/@flowSpecification.5 //@componentInstance.10/@flowSpecification.6 //@componentInstance.10/@flowSpecification.7 //@componentInstance.10/@flowSpecification.8" category="eventDataPort" direction="out">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -689,7 +598,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventDataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedEventDataPort.0"/>
     </featureInstance>
-    <featureInstance name="sensor1_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.1">
+    <featureInstance name="sensor1_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.1 //@componentInstance.10/@flowSpecification.5">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -706,9 +615,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.0"/>
     </featureInstance>
-    <featureInstance name="sensor2_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.2">
+    <featureInstance name="sensor2_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.2 //@componentInstance.10/@flowSpecification.6">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -741,9 +650,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.1"/>
     </featureInstance>
-    <featureInstance name="sensor3_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.3">
+    <featureInstance name="sensor3_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.3 //@componentInstance.10/@flowSpecification.7">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -760,9 +669,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.2"/>
     </featureInstance>
-    <featureInstance name="sensor4_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.4">
+    <featureInstance name="sensor4_data_in" srcFlowSpec="//@componentInstance.10/@flowSpecification.4 //@componentInstance.10/@flowSpecification.8">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -779,7 +688,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.3"/>
     </featureInstance>
     <featureInstance name="brake_failed" category="eventPort">
       <ownedPropertyAssociation>
@@ -790,7 +699,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:EventPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.12/@ownedEventPort.0"/>
+      <feature xsi:type="aadl2:EventPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedEventPort.0"/>
     </featureInstance>
     <componentInstance name="preferences">
       <ownedPropertyAssociation>
@@ -883,7 +792,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
-      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.7" srcFlowSpec="//@componentInstance.10/@componentInstance.1/@flowSpecification.0">
+      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.32" srcFlowSpec="//@componentInstance.10/@componentInstance.1/@flowSpecification.0">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
           <ownedValue>
@@ -900,7 +809,7 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.24/@ownedDataPort.0"/>
       </featureInstance>
       <flowSpecification name="thread_path0" source="//@componentInstance.10/@componentInstance.1/@featureInstance.1" destination="//@componentInstance.10/@componentInstance.1/@featureInstance.0">
         <ownedPropertyAssociation>
@@ -918,7 +827,7 @@
         </ownedPropertyAssociation>
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
       </flowSpecification>
-      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedThreadSubcomponent.0"/>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.0"/>
       <index>0</index>
     </componentInstance>
     <componentInstance name="thread_camera" category="thread">
@@ -973,7 +882,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
-      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.9" srcFlowSpec="//@componentInstance.10/@componentInstance.2/@flowSpecification.0">
+      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.34" srcFlowSpec="//@componentInstance.10/@componentInstance.2/@flowSpecification.0">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
           <ownedValue>
@@ -1006,7 +915,7 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.18/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.26/@ownedDataPort.0"/>
       </featureInstance>
       <flowSpecification name="thread_path0" source="//@componentInstance.10/@componentInstance.2/@featureInstance.1" destination="//@componentInstance.10/@componentInstance.2/@featureInstance.0">
         <ownedPropertyAssociation>
@@ -1024,7 +933,7 @@
         </ownedPropertyAssociation>
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
       </flowSpecification>
-      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedThreadSubcomponent.1"/>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.1"/>
       <index>0</index>
     </componentInstance>
     <componentInstance name="thread_gps" category="thread">
@@ -1079,7 +988,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
-      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.13" srcFlowSpec="//@componentInstance.10/@componentInstance.3/@flowSpecification.0">
+      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.38" srcFlowSpec="//@componentInstance.10/@componentInstance.3/@flowSpecification.0">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
           <ownedValue>
@@ -1096,7 +1005,7 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.28/@ownedDataPort.0"/>
       </featureInstance>
       <flowSpecification name="thread_path0" source="//@componentInstance.10/@componentInstance.3/@featureInstance.1" destination="//@componentInstance.10/@componentInstance.3/@featureInstance.0">
         <ownedPropertyAssociation>
@@ -1114,7 +1023,7 @@
         </ownedPropertyAssociation>
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
       </flowSpecification>
-      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedThreadSubcomponent.2"/>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.2"/>
       <index>0</index>
     </componentInstance>
     <componentInstance name="thread_speedometer" category="thread">
@@ -1161,7 +1070,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
-      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.11" srcFlowSpec="//@componentInstance.10/@componentInstance.4/@flowSpecification.0">
+      <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.36" srcFlowSpec="//@componentInstance.10/@componentInstance.4/@flowSpecification.0">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
           <ownedValue>
@@ -1178,7 +1087,7 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.22/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.30/@ownedDataPort.0"/>
       </featureInstance>
       <flowSpecification name="thread_path0" source="//@componentInstance.10/@componentInstance.4/@featureInstance.1" destination="//@componentInstance.10/@componentInstance.4/@featureInstance.0">
         <ownedPropertyAssociation>
@@ -1196,7 +1105,7 @@
         </ownedPropertyAssociation>
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
       </flowSpecification>
-      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedThreadSubcomponent.3"/>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.3"/>
       <index>0</index>
     </componentInstance>
     <componentInstance name="thread_controller" category="thread">
@@ -1278,7 +1187,7 @@
         </ownedPropertyAssociation>
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedFlowSpecification.0"/>
       </flowSpecification>
-      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedThreadSubcomponent.4"/>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.4"/>
       <index>0</index>
     </componentInstance>
     <componentInstance name="control_modal" category="thread">
@@ -1306,7 +1215,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <featureInstance name="UI_ports" srcFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.1" category="featureGroup" direction="in out">
+      <featureInstance name="UI_ports" srcFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.2" category="featureGroup" direction="in out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -1315,7 +1224,7 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.25" category="eventPort">
+        <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.22" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1326,7 +1235,7 @@
           </ownedPropertyAssociation>
           <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
         </featureInstance>
-        <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.26" category="eventPort">
+        <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.23" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1337,7 +1246,7 @@
           </ownedPropertyAssociation>
           <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
         </featureInstance>
-        <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.27" category="eventPort">
+        <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.24" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1348,7 +1257,7 @@
           </ownedPropertyAssociation>
           <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
         </featureInstance>
-        <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.28" category="eventPort">
+        <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.25" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1359,7 +1268,7 @@
           </ownedPropertyAssociation>
           <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
         </featureInstance>
-        <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.29" category="eventPort">
+        <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.26" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1370,7 +1279,7 @@
           </ownedPropertyAssociation>
           <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
         </featureInstance>
-        <featureInstance name="resume_pause" dstConnectionInstance="//@connectionInstance.30" category="eventPort">
+        <featureInstance name="resume_pause" dstConnectionInstance="//@connectionInstance.27" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1381,7 +1290,7 @@
           </ownedPropertyAssociation>
           <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
         </featureInstance>
-        <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.31" category="eventPort">
+        <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.28" category="eventPort">
           <ownedPropertyAssociation>
             <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1413,7 +1322,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
       </featureInstance>
-      <featureInstance name="cmd" srcConnectionInstance="//@connectionInstance.23" direction="out">
+      <featureInstance name="cmd" srcConnectionInstance="//@connectionInstance.20" dstFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.0" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
           <ownedValue>
@@ -1432,7 +1341,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
       </featureInstance>
-      <featureInstance name="sensor_data" dstConnectionInstance="//@componentInstance.10/@connectionInstance.5" srcFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.0" category="eventPort">
+      <featureInstance name="sensor_data" dstConnectionInstance="//@componentInstance.10/@connectionInstance.5" srcFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@componentInstance.10/@componentInstance.6/@flowSpecification.1" category="eventPort">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -1443,7 +1352,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.0"/>
       </featureInstance>
-      <featureInstance name="data_out" srcConnectionInstance="//@connectionInstance.24" dstFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.0" category="eventDataPort" direction="out">
+      <featureInstance name="feedback" srcConnectionInstance="//@connectionInstance.21" dstFlowSpec="//@componentInstance.10/@componentInstance.6/@flowSpecification.1" category="eventDataPort" direction="out">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
           <ownedValue>
@@ -1462,7 +1371,7 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="brake_failed" dstConnectionInstance="//@connectionInstance.22" category="eventPort">
+      <featureInstance name="brake_failed" dstConnectionInstance="//@connectionInstance.19" category="eventPort">
         <ownedPropertyAssociation>
           <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -1471,31 +1380,34 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.26/@ownedEventPort.0"/>
+        <feature xsi:type="aadl2:EventPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.34/@ownedEventPort.0"/>
       </featureInstance>
-      <flowSpecification name="control_modal_path0" source="//@componentInstance.10/@componentInstance.6/@featureInstance.3" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.4">
+      <flowSpecification name="control_modal_path0" source="//@componentInstance.10/@componentInstance.6/@featureInstance.3" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.2">
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedFlowSpecification.0"/>
       </flowSpecification>
-      <flowSpecification name="UI_sink" source="//@componentInstance.10/@componentInstance.6/@featureInstance.0">
+      <flowSpecification name="control_modal_path1" source="//@componentInstance.10/@componentInstance.6/@featureInstance.3" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.4">
         <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedFlowSpecification.1"/>
       </flowSpecification>
-      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedThreadSubcomponent.5"/>
+      <flowSpecification name="UI_sink" source="//@componentInstance.10/@componentInstance.6/@featureInstance.0">
+        <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedFlowSpecification.2"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5"/>
       <index>0</index>
     </componentInstance>
-    <modeInstance name="manual" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.0" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.2 //@componentInstance.10/@modeTransitionInstance.3 //@componentInstance.10/@modeTransitionInstance.8 //@componentInstance.10/@modeTransitionInstance.9" initial="true">
-      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedMode.0"/>
+    <modeInstance name="manual" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.0" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.2 //@componentInstance.10/@modeTransitionInstance.4 //@componentInstance.10/@modeTransitionInstance.8 //@componentInstance.10/@modeTransitionInstance.12" initial="true">
+      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedMode.0"/>
     </modeInstance>
-    <modeInstance name="cc" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.1 //@componentInstance.10/@modeTransitionInstance.2 //@componentInstance.10/@modeTransitionInstance.3 //@componentInstance.10/@modeTransitionInstance.4" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.0 //@componentInstance.10/@modeTransitionInstance.1 //@componentInstance.10/@modeTransitionInstance.6">
-      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedMode.1"/>
+    <modeInstance name="cc" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.1 //@componentInstance.10/@modeTransitionInstance.2 //@componentInstance.10/@modeTransitionInstance.3 //@componentInstance.10/@modeTransitionInstance.4 //@componentInstance.10/@modeTransitionInstance.5" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.0 //@componentInstance.10/@modeTransitionInstance.1 //@componentInstance.10/@modeTransitionInstance.3 //@componentInstance.10/@modeTransitionInstance.7">
+      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedMode.1"/>
     </modeInstance>
-    <modeInstance name="acc" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.5 //@componentInstance.10/@modeTransitionInstance.6 //@componentInstance.10/@modeTransitionInstance.8 //@componentInstance.10/@modeTransitionInstance.10" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.7">
-      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedMode.2"/>
+    <modeInstance name="acc" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.6 //@componentInstance.10/@modeTransitionInstance.7 //@componentInstance.10/@modeTransitionInstance.8 //@componentInstance.10/@modeTransitionInstance.9 //@componentInstance.10/@modeTransitionInstance.10" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.9 //@componentInstance.10/@modeTransitionInstance.11">
+      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedMode.2"/>
     </modeInstance>
-    <modeInstance name="cacc" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.7 //@componentInstance.10/@modeTransitionInstance.9 //@componentInstance.10/@modeTransitionInstance.11" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.5">
-      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedMode.3"/>
+    <modeInstance name="cacc" srcModeTransition="//@componentInstance.10/@modeTransitionInstance.11 //@componentInstance.10/@modeTransitionInstance.12 //@componentInstance.10/@modeTransitionInstance.13" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.6">
+      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedMode.3"/>
     </modeInstance>
-    <modeInstance name="failure" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.4 //@componentInstance.10/@modeTransitionInstance.10 //@componentInstance.10/@modeTransitionInstance.11">
-      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedMode.4"/>
+    <modeInstance name="failure" dstModeTransition="//@componentInstance.10/@modeTransitionInstance.5 //@componentInstance.10/@modeTransitionInstance.10 //@componentInstance.10/@modeTransitionInstance.13">
+      <mode href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedMode.4"/>
     </modeInstance>
     <modeTransitionInstance name="manual.turn_on_off.cc" destination="//@componentInstance.10/@modeInstance.1" source="//@componentInstance.10/@modeInstance.0">
       <ownedPropertyAssociation>
@@ -1514,7 +1426,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.0"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.0"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="cc.set_speed_down.cc" destination="//@componentInstance.10/@modeInstance.1" source="//@componentInstance.10/@modeInstance.1">
       <ownedPropertyAssociation>
@@ -1533,7 +1445,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.1"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.1"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="cc.turn_on_off.manual" destination="//@componentInstance.10/@modeInstance.0" source="//@componentInstance.10/@modeInstance.1">
       <ownedPropertyAssociation>
@@ -1552,7 +1464,26 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.2"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.2"/>
+    </modeTransitionInstance>
+    <modeTransitionInstance name="cc.set_speed_up.cc" destination="//@componentInstance.10/@modeInstance.1" source="//@componentInstance.10/@modeInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.9"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.3"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="cc.set_speed_down.manual" destination="//@componentInstance.10/@modeInstance.0" source="//@componentInstance.10/@modeInstance.1">
       <ownedPropertyAssociation>
@@ -1571,7 +1502,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.3"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.4"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="cc.brake_failed.failure" destination="//@componentInstance.10/@modeInstance.4" source="//@componentInstance.10/@modeInstance.1">
       <ownedPropertyAssociation>
@@ -1590,7 +1521,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.4"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.5"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="acc.set_level_up.cacc" destination="//@componentInstance.10/@modeInstance.3" source="//@componentInstance.10/@modeInstance.2">
       <ownedPropertyAssociation>
@@ -1609,7 +1540,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.5"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.6"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="acc.set_level_down.cc" destination="//@componentInstance.10/@modeInstance.1" source="//@componentInstance.10/@modeInstance.2">
       <ownedPropertyAssociation>
@@ -1628,26 +1559,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.6"/>
-    </modeTransitionInstance>
-    <modeTransitionInstance name="cacc.set_level_down.acc" destination="//@componentInstance.10/@modeInstance.2" source="//@componentInstance.10/@modeInstance.3">
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:ListValue">
-            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.9"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <ownedPropertyAssociation>
-        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.7"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.7"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="acc.turn_on_off.manual" destination="//@componentInstance.10/@modeInstance.0" source="//@componentInstance.10/@modeInstance.2">
       <ownedPropertyAssociation>
@@ -1666,9 +1578,9 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.8"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.8"/>
     </modeTransitionInstance>
-    <modeTransitionInstance name="cacc.turn_on_off.manual" destination="//@componentInstance.10/@modeInstance.0" source="//@componentInstance.10/@modeInstance.3">
+    <modeTransitionInstance name="acc.set_gap.acc" destination="//@componentInstance.10/@modeInstance.2" source="//@componentInstance.10/@modeInstance.2">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
         <ownedValue>
@@ -1685,7 +1597,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.9"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.9"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="acc.brake_failed.failure" destination="//@componentInstance.10/@modeInstance.4" source="//@componentInstance.10/@modeInstance.2">
       <ownedPropertyAssociation>
@@ -1704,7 +1616,45 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.10"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.10"/>
+    </modeTransitionInstance>
+    <modeTransitionInstance name="cacc.set_level_down.acc" destination="//@componentInstance.10/@modeInstance.2" source="//@componentInstance.10/@modeInstance.3">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.9"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.11"/>
+    </modeTransitionInstance>
+    <modeTransitionInstance name="cacc.turn_on_off.manual" destination="//@componentInstance.10/@modeInstance.0" source="//@componentInstance.10/@modeInstance.3">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.9"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.12"/>
     </modeTransitionInstance>
     <modeTransitionInstance name="cacc.brake_failed.failure" destination="//@componentInstance.10/@modeInstance.4" source="//@componentInstance.10/@modeInstance.3">
       <ownedPropertyAssociation>
@@ -1723,20 +1673,20 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedModeTransition.11"/>
+      <modeTransition href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedModeTransition.13"/>
     </modeTransitionInstance>
     <flowSpecification name="UI_sink" source="//@componentInstance.10/@featureInstance.0">
       <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.0"/>
     </flowSpecification>
-    <flowSpecification name="controller_path0" source="//@componentInstance.10/@featureInstance.3" destination="//@componentInstance.10/@featureInstance.2">
+    <flowSpecification name="controller_path0a" source="//@componentInstance.10/@featureInstance.3" destination="//@componentInstance.10/@featureInstance.1">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:RangeValue">
-            <minimum xsi:type="aadl2:IntegerLiteral" value="3">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="5">
               <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
             </minimum>
-            <maximum xsi:type="aadl2:IntegerLiteral" value="4">
+            <maximum xsi:type="aadl2:IntegerLiteral" value="7">
               <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
             </maximum>
           </ownedValue>
@@ -1744,15 +1694,15 @@
       </ownedPropertyAssociation>
       <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.1"/>
     </flowSpecification>
-    <flowSpecification name="controller_path1" source="//@componentInstance.10/@featureInstance.4" destination="//@componentInstance.10/@featureInstance.2">
+    <flowSpecification name="controller_path1a" source="//@componentInstance.10/@featureInstance.4" destination="//@componentInstance.10/@featureInstance.1">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:RangeValue">
-            <minimum xsi:type="aadl2:IntegerLiteral" value="3">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="5">
               <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
             </minimum>
-            <maximum xsi:type="aadl2:IntegerLiteral" value="4">
+            <maximum xsi:type="aadl2:IntegerLiteral" value="7">
               <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
             </maximum>
           </ownedValue>
@@ -1760,7 +1710,39 @@
       </ownedPropertyAssociation>
       <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.2"/>
     </flowSpecification>
-    <flowSpecification name="controller_path2" source="//@componentInstance.10/@featureInstance.5" destination="//@componentInstance.10/@featureInstance.2">
+    <flowSpecification name="controller_path2a" source="//@componentInstance.10/@featureInstance.5" destination="//@componentInstance.10/@featureInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="5">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="7">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.3"/>
+    </flowSpecification>
+    <flowSpecification name="controller_path3a" source="//@componentInstance.10/@featureInstance.6" destination="//@componentInstance.10/@featureInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="5">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="7">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.4"/>
+    </flowSpecification>
+    <flowSpecification name="controller_path0b" source="//@componentInstance.10/@featureInstance.3" destination="//@componentInstance.10/@featureInstance.2">
       <ownedPropertyAssociation>
         <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
         <ownedValue>
@@ -1774,39 +1756,84 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.3"/>
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.5"/>
     </flowSpecification>
-    <flowSpecification name="controller_path3" source="//@componentInstance.10/@featureInstance.6" destination="//@componentInstance.10/@featureInstance.2">
-      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.4"/>
+    <flowSpecification name="controller_path1b" source="//@componentInstance.10/@featureInstance.4" destination="//@componentInstance.10/@featureInstance.2">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.6"/>
+    </flowSpecification>
+    <flowSpecification name="controller_path2b" source="//@componentInstance.10/@featureInstance.5" destination="//@componentInstance.10/@featureInstance.2">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.7"/>
+    </flowSpecification>
+    <flowSpecification name="controller_path3b" source="//@componentInstance.10/@featureInstance.6" destination="//@componentInstance.10/@featureInstance.2">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.8"/>
     </flowSpecification>
     <connectionInstance name="preferences.speed_limit -> control_modal.speed_limit" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.1" source="//@componentInstance.10/@componentInstance.0/@featureInstance.0">
       <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.1">
-        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.10"/>
+        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.10"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="thread_radar.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0" source="//@componentInstance.10/@componentInstance.1/@featureInstance.0">
       <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.1/@featureInstance.0" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0">
-        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.4"/>
+        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.4"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="thread_camera.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0" source="//@componentInstance.10/@componentInstance.2/@featureInstance.0">
       <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.2/@featureInstance.0" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0">
-        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.5"/>
+        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.5"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="thread_gps.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0" source="//@componentInstance.10/@componentInstance.3/@featureInstance.0">
       <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.3/@featureInstance.0" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0">
-        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.6"/>
+        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.6"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="thread_speedometer.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0" source="//@componentInstance.10/@componentInstance.4/@featureInstance.0">
       <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.4/@featureInstance.0" destination="//@componentInstance.10/@componentInstance.5/@featureInstance.0">
-        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.7"/>
+        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.7"/>
       </connectionReference>
     </connectionInstance>
     <connectionInstance name="thread_controller.data_out -> control_modal.sensor_data" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.3" source="//@componentInstance.10/@componentInstance.5/@featureInstance.1">
       <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.5/@featureInstance.1" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.3">
-        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.8"/>
+        <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.8"/>
       </connectionReference>
     </connectionInstance>
     <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0"/>
@@ -1814,57 +1841,57 @@
   </componentInstance>
   <componentInstance name="interface_controller" category="process">
     <featureInstance name="UI_ports" dstFlowSpec="//@componentInstance.11/@flowSpecification.0" category="featureGroup" direction="in out">
-      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.25" category="eventPort" direction="out">
+      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.22" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.26" category="eventPort" direction="out">
+      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.23" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.27" category="eventPort" direction="out">
+      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.24" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.28" category="eventPort" direction="out">
+      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.25" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.29" category="eventPort" direction="out">
+      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.26" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" srcConnectionInstance="//@connectionInstance.30" category="eventPort" direction="out">
+      <featureInstance name="resume_pause" srcConnectionInstance="//@connectionInstance.27" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.31" category="eventPort" direction="out">
+      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.28" category="eventPort" direction="out">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroup.0"/>
     </featureInstance>
     <featureInstance name="UI_inverse_ports" srcFlowSpec="//@componentInstance.11/@flowSpecification.0" category="featureGroup" direction="in out">
-      <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.14" category="eventPort">
+      <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.11" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.15" category="eventPort">
+      <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.12" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.16" category="eventPort">
+      <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.13" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.17" category="eventPort">
+      <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.14" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.18" category="eventPort">
+      <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.15" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" dstConnectionInstance="//@connectionInstance.19" category="eventPort">
+      <featureInstance name="resume_pause" dstConnectionInstance="//@connectionInstance.16" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.20" category="eventPort">
+      <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.17" category="eventPort">
         <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroup.1"/>
     </featureInstance>
-    <featureInstance name="cmd_con_in" dstConnectionInstance="//@connectionInstance.24" srcFlowSpec="//@componentInstance.11/@flowSpecification.1" category="eventDataPort">
+    <featureInstance name="cmd_con_in" dstConnectionInstance="//@connectionInstance.21" srcFlowSpec="//@componentInstance.11/@flowSpecification.1" category="eventDataPort">
       <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedEventDataPort.0"/>
     </featureInstance>
-    <featureInstance name="cmd_con_out" srcConnectionInstance="//@connectionInstance.32" dstFlowSpec="//@componentInstance.11/@flowSpecification.1" category="eventDataPort" direction="out">
+    <featureInstance name="cmd_con_out" srcConnectionInstance="//@connectionInstance.29" dstFlowSpec="//@componentInstance.11/@flowSpecification.1" category="eventDataPort" direction="out">
       <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedEventDataPort.1"/>
     </featureInstance>
     <flowSpecification name="cmd_path0" source="//@componentInstance.11/@featureInstance.1" destination="//@componentInstance.11/@featureInstance.0">
@@ -1903,23 +1930,206 @@
     <index>0</index>
   </componentInstance>
   <componentInstance name="speed_controller" category="process">
-    <featureInstance name="current_speed" dstConnectionInstance="//@connectionInstance.23">
+    <featureInstance name="current_speed" dstConnectionInstance="//@connectionInstance.20" srcFlowSpec="//@componentInstance.12/@flowSpecification.0">
       <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.0"/>
     </featureInstance>
-    <featureInstance name="cmd" srcConnectionInstance="//@connectionInstance.33 //@connectionInstance.34" direction="out">
+    <featureInstance name="cmd" srcConnectionInstance="//@connectionInstance.30 //@connectionInstance.31" dstFlowSpec="//@componentInstance.12/@flowSpecification.0" direction="out">
       <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.1"/>
     </featureInstance>
+    <flowSpecification name="speed_path" source="//@componentInstance.12/@featureInstance.0" destination="//@componentInstance.12/@featureInstance.1">
+      <flowSpecification href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedFlowSpecification.0"/>
+    </flowSpecification>
     <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.2"/>
     <index>0</index>
   </componentInstance>
   <componentInstance name="this_processor" category="processor">
-    <featureInstance name="net" dstConnectionInstance="//@connectionInstance.4" category="busAccess" direction="in out">
+    <featureInstance name="net" dstConnectionInstance="//@connectionInstance.5" category="busAccess" direction="in out">
       <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedBusAccess.0"/>
     </featureInstance>
     <subcomponent xsi:type="aadl2:ProcessorSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessorSubcomponent.0"/>
     <index>0</index>
   </componentInstance>
-  <endToEndFlow name="etef0" flowElement="//@componentInstance.1/@flowSpecification.1 //@connectionInstance.6 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <componentInstance name="radar_handler" category="system">
+    <featureInstance name="sensor_data_in" dstConnectionInstance="//@connectionInstance.7" srcFlowSpec="//@componentInstance.14/@flowSpecification.0">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.32" dstFlowSpec="//@componentInstance.14/@flowSpecification.0" direction="out">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.33" dstFlowSpec="//@componentInstance.14/@flowSpecification.1" direction="out">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+    </featureInstance>
+    <flowSpecification name="sensor_path" source="//@componentInstance.14/@featureInstance.0" destination="//@componentInstance.14/@featureInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <flowSpecification name="logger_source" destination="//@componentInstance.14/@featureInstance.2">
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.1"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.0"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance name="camera_handler" category="system">
+    <featureInstance name="sensor_data_in" dstConnectionInstance="//@connectionInstance.8" srcFlowSpec="//@componentInstance.15/@flowSpecification.0">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.34" dstFlowSpec="//@componentInstance.15/@flowSpecification.0" direction="out">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.35" dstFlowSpec="//@componentInstance.15/@flowSpecification.1" direction="out">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+    </featureInstance>
+    <flowSpecification name="sensor_path" source="//@componentInstance.15/@featureInstance.0" destination="//@componentInstance.15/@featureInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <flowSpecification name="logger_source" destination="//@componentInstance.15/@featureInstance.2">
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.1"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.1"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance name="speedometer_handler" category="system">
+    <featureInstance name="sensor_data_in" dstConnectionInstance="//@connectionInstance.9" srcFlowSpec="//@componentInstance.16/@flowSpecification.0">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.36" dstFlowSpec="//@componentInstance.16/@flowSpecification.0" direction="out">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.37" dstFlowSpec="//@componentInstance.16/@flowSpecification.1" direction="out">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+    </featureInstance>
+    <flowSpecification name="sensor_path" source="//@componentInstance.16/@featureInstance.0" destination="//@componentInstance.16/@featureInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <flowSpecification name="logger_source" destination="//@componentInstance.16/@featureInstance.2">
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.1"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.2"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance name="gps_handler" category="system">
+    <featureInstance name="sensor_data_in" dstConnectionInstance="//@connectionInstance.10" srcFlowSpec="//@componentInstance.17/@flowSpecification.0">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="sensor_data_out" srcConnectionInstance="//@connectionInstance.38" dstFlowSpec="//@componentInstance.17/@flowSpecification.0" direction="out">
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="logger_out" srcConnectionInstance="//@connectionInstance.39" dstFlowSpec="//@componentInstance.17/@flowSpecification.1" direction="out">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+    </featureInstance>
+    <flowSpecification name="sensor_path" source="//@componentInstance.17/@featureInstance.0" destination="//@componentInstance.17/@featureInstance.1">
+      <ownedPropertyAssociation>
+        <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+              <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <flowSpecification name="logger_source" destination="//@componentInstance.17/@featureInstance.2">
+      <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.1"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.3"/>
+    <index>0</index>
+  </componentInstance>
+  <endToEndFlow name="etef0" flowElement="//@componentInstance.14/@flowSpecification.1 //@connectionInstance.33 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
@@ -1935,7 +2145,7 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.0"/>
   </endToEndFlow>
-  <endToEndFlow name="etef1" flowElement="//@componentInstance.2/@flowSpecification.1 //@connectionInstance.8 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <endToEndFlow name="etef1" flowElement="//@componentInstance.15/@flowSpecification.1 //@connectionInstance.35 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
@@ -1951,7 +2161,7 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.1"/>
   </endToEndFlow>
-  <endToEndFlow name="etef2" flowElement="//@componentInstance.4/@flowSpecification.1 //@connectionInstance.12 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <endToEndFlow name="etef2" flowElement="//@componentInstance.17/@flowSpecification.1 //@connectionInstance.39 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
@@ -1967,7 +2177,7 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.2"/>
   </endToEndFlow>
-  <endToEndFlow name="etef3" flowElement="//@componentInstance.5/@flowSpecification.0 //@connectionInstance.21 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <endToEndFlow name="etef3" flowElement="//@componentInstance.16/@flowSpecification.1 //@connectionInstance.37 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
@@ -1983,15 +2193,15 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.3"/>
   </endToEndFlow>
-  <endToEndFlow name="etef4" flowElement="//@componentInstance.1/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.10/@componentInstance.1/@flowSpecification.0 //@componentInstance.10/@connectionInstance.1 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.24 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.32 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <endToEndFlow name="etef4" flowElement="//@componentInstance.5/@flowSpecification.0 //@connectionInstance.18 //@componentInstance.6/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
         <ownedValue xsi:type="aadl2:RangeValue">
-          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="5">
             <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
           </minimum>
-          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+          <maximum xsi:type="aadl2:IntegerLiteral" value="10">
             <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
           </maximum>
         </ownedValue>
@@ -1999,7 +2209,7 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.4"/>
   </endToEndFlow>
-  <endToEndFlow name="etef5" flowElement="//@componentInstance.2/@flowSpecification.0 //@connectionInstance.9 //@componentInstance.10/@componentInstance.2/@flowSpecification.0 //@componentInstance.10/@connectionInstance.2 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.24 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.32 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <endToEndFlow name="etef5" flowElement="//@componentInstance.1/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.14/@flowSpecification.0 //@connectionInstance.32 //@componentInstance.10/@componentInstance.1/@flowSpecification.0 //@componentInstance.10/@connectionInstance.1 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.30 //@componentInstance.8/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
@@ -2015,7 +2225,7 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.5"/>
   </endToEndFlow>
-  <endToEndFlow name="etef6" flowElement="//@componentInstance.4/@flowSpecification.0 //@connectionInstance.13 //@componentInstance.10/@componentInstance.3/@flowSpecification.0 //@componentInstance.10/@connectionInstance.3 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.24 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.32 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+  <endToEndFlow name="etef6" flowElement="//@componentInstance.2/@flowSpecification.0 //@connectionInstance.8 //@componentInstance.15/@flowSpecification.0 //@connectionInstance.34 //@componentInstance.10/@componentInstance.2/@flowSpecification.0 //@componentInstance.10/@connectionInstance.2 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.30 //@componentInstance.8/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
     <ownedPropertyAssociation>
       <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
       <ownedValue>
@@ -2031,86 +2241,219 @@
     </ownedPropertyAssociation>
     <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.6"/>
   </endToEndFlow>
-  <connectionInstance name="this_bus -> radar_sensor.BA" complete="true" kind="accessConnection" destination="//@componentInstance.1/@featureInstance.2" bidirectional="true" source="//@componentInstance.0">
-    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.1/@featureInstance.2">
+  <endToEndFlow name="etef7" flowElement="//@componentInstance.4/@flowSpecification.0 //@connectionInstance.10 //@componentInstance.17/@flowSpecification.0 //@connectionInstance.38 //@componentInstance.10/@componentInstance.3/@flowSpecification.0 //@componentInstance.10/@connectionInstance.3 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.30 //@componentInstance.8/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.7"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef8" flowElement="//@componentInstance.3/@flowSpecification.0 //@connectionInstance.9 //@componentInstance.16/@flowSpecification.0 //@connectionInstance.36 //@componentInstance.10/@componentInstance.4/@flowSpecification.0 //@componentInstance.10/@connectionInstance.4 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.30 //@componentInstance.8/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.8"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef9" flowElement="//@componentInstance.1/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.14/@flowSpecification.0 //@connectionInstance.32 //@componentInstance.10/@componentInstance.1/@flowSpecification.0 //@componentInstance.10/@connectionInstance.1 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.31 //@componentInstance.7/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.9"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef10" flowElement="//@componentInstance.2/@flowSpecification.0 //@connectionInstance.8 //@componentInstance.15/@flowSpecification.0 //@connectionInstance.34 //@componentInstance.10/@componentInstance.2/@flowSpecification.0 //@componentInstance.10/@connectionInstance.2 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.31 //@componentInstance.7/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.10"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef11" flowElement="//@componentInstance.4/@flowSpecification.0 //@connectionInstance.10 //@componentInstance.17/@flowSpecification.0 //@connectionInstance.38 //@componentInstance.10/@componentInstance.3/@flowSpecification.0 //@componentInstance.10/@connectionInstance.3 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.31 //@componentInstance.7/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.11"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef12" flowElement="//@componentInstance.3/@flowSpecification.0 //@connectionInstance.9 //@componentInstance.16/@flowSpecification.0 //@connectionInstance.36 //@componentInstance.10/@componentInstance.4/@flowSpecification.0 //@componentInstance.10/@connectionInstance.4 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.0 //@connectionInstance.20 //@componentInstance.12/@flowSpecification.0 //@connectionInstance.31 //@componentInstance.7/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.12"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef13" flowElement="//@componentInstance.1/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.14/@flowSpecification.0 //@connectionInstance.32 //@componentInstance.10/@componentInstance.1/@flowSpecification.0 //@componentInstance.10/@connectionInstance.1 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.1 //@connectionInstance.21 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.29 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.13"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef14" flowElement="//@componentInstance.2/@flowSpecification.0 //@connectionInstance.8 //@componentInstance.15/@flowSpecification.0 //@connectionInstance.34 //@componentInstance.10/@componentInstance.2/@flowSpecification.0 //@componentInstance.10/@connectionInstance.2 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.1 //@connectionInstance.21 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.29 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.14"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef15" flowElement="//@componentInstance.4/@flowSpecification.0 //@connectionInstance.10 //@componentInstance.17/@flowSpecification.0 //@connectionInstance.38 //@componentInstance.10/@componentInstance.3/@flowSpecification.0 //@componentInstance.10/@connectionInstance.3 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.1 //@connectionInstance.21 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.29 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.15"/>
+  </endToEndFlow>
+  <endToEndFlow name="etef16" flowElement="//@componentInstance.3/@flowSpecification.0 //@connectionInstance.9 //@componentInstance.16/@flowSpecification.0 //@connectionInstance.36 //@componentInstance.10/@componentInstance.4/@flowSpecification.0 //@componentInstance.10/@connectionInstance.4 //@componentInstance.10/@componentInstance.5/@flowSpecification.0 //@componentInstance.10/@connectionInstance.5 //@componentInstance.10/@componentInstance.6/@flowSpecification.1 //@connectionInstance.21 //@componentInstance.11/@flowSpecification.1 //@connectionInstance.29 //@componentInstance.5/@flowSpecification.2" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">
+    <ownedPropertyAssociation>
+      <property href="../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="20">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="30">
+            <unit href="../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedEndToEndFlow.16"/>
+  </endToEndFlow>
+  <connectionInstance name="this_bus -> radar_sensor.BA" complete="true" kind="accessConnection" destination="//@componentInstance.1/@featureInstance.1" bidirectional="true" source="//@componentInstance.0">
+    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.1/@featureInstance.1">
       <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.0"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="this_bus -> camera_sensor.BA" complete="true" kind="accessConnection" destination="//@componentInstance.2/@featureInstance.2" bidirectional="true" source="//@componentInstance.0">
-    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.2/@featureInstance.2">
+  <connectionInstance name="this_bus -> camera_sensor.BA" complete="true" kind="accessConnection" destination="//@componentInstance.2/@featureInstance.1" bidirectional="true" source="//@componentInstance.0">
+    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.2/@featureInstance.1">
       <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.1"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="this_bus -> gps.BA" complete="true" kind="accessConnection" destination="//@componentInstance.4/@featureInstance.2" bidirectional="true" source="//@componentInstance.0">
-    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.4/@featureInstance.2">
+  <connectionInstance name="this_bus -> gps.BA" complete="true" kind="accessConnection" destination="//@componentInstance.4/@featureInstance.1" bidirectional="true" source="//@componentInstance.0">
+    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.4/@featureInstance.1">
       <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.2"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="this_bus -> speedometer.BA" complete="true" kind="accessConnection" destination="//@componentInstance.3/@featureInstance.1" bidirectional="true" source="//@componentInstance.0">
+    <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.3/@featureInstance.1">
+      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.3"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="this_bus -> user_interface.BA" complete="true" kind="accessConnection" destination="//@componentInstance.5/@featureInstance.3" bidirectional="true" source="//@componentInstance.0">
     <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.5/@featureInstance.3">
-      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.3"/>
+      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.4"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="this_bus -> this_processor.net" complete="true" kind="accessConnection" destination="//@componentInstance.13/@featureInstance.0" bidirectional="true" source="//@componentInstance.0">
     <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.13/@featureInstance.0">
-      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.4"/>
+      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.5"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="this_bus -> this_memory.BA" complete="true" kind="accessConnection" destination="//@componentInstance.9/@featureInstance.0" bidirectional="true" source="//@componentInstance.0">
     <connectionReference context="/" source="//@componentInstance.0" destination="//@componentInstance.9/@featureInstance.0">
-      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.5"/>
+      <connection xsi:type="aadl2:AccessConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAccessConnection.6"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="radar_sensor.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.1/@featureInstance.0">
-    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.0" destination="//@componentInstance.6/@featureInstance.0">
+  <connectionInstance name="radar_sensor.sensor_data_out -> radar_handler.sensor_data_in" complete="true" kind="portConnection" destination="//@componentInstance.14/@featureInstance.0" source="//@componentInstance.1/@featureInstance.0">
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.0" destination="//@componentInstance.14/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="camera_sensor.sensor_data_out -> camera_handler.sensor_data_in" complete="true" kind="portConnection" destination="//@componentInstance.15/@featureInstance.0" source="//@componentInstance.2/@featureInstance.0">
+    <connectionReference context="/" source="//@componentInstance.2/@featureInstance.0" destination="//@componentInstance.15/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="speedometer.sensor_data_out -> speedometer_handler.sensor_data_in" complete="true" kind="portConnection" destination="//@componentInstance.16/@featureInstance.0" source="//@componentInstance.3/@featureInstance.0">
+    <connectionReference context="/" source="//@componentInstance.3/@featureInstance.0" destination="//@componentInstance.16/@featureInstance.0">
       <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.6"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="radar_sensor.sensor_data_out -> vehicle_controller.thread_radar.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.1/@featureInstance.1" source="//@componentInstance.1/@featureInstance.1">
-    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.3">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
-    </connectionReference>
-    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.3" destination="//@componentInstance.10/@componentInstance.1/@featureInstance.1">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.0"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="camera_sensor.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.2/@featureInstance.0">
-    <connectionReference context="/" source="//@componentInstance.2/@featureInstance.0" destination="//@componentInstance.6/@featureInstance.0">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.7"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="camera_sensor.sensor_data_out -> vehicle_controller.thread_camera.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.2/@featureInstance.1" source="//@componentInstance.2/@featureInstance.1">
-    <connectionReference context="/" source="//@componentInstance.2/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.4">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
-    </connectionReference>
-    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.4" destination="//@componentInstance.10/@componentInstance.2/@featureInstance.1">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.1"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="speedometer.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.3/@featureInstance.0">
-    <connectionReference context="/" source="//@componentInstance.3/@featureInstance.0" destination="//@componentInstance.6/@featureInstance.0">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.9"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="speedometer.sensor_data_out -> vehicle_controller.thread_speedometer.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.4/@featureInstance.1" source="//@componentInstance.3/@featureInstance.1">
-    <connectionReference context="/" source="//@componentInstance.3/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.6">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.3"/>
-    </connectionReference>
-    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.6" destination="//@componentInstance.10/@componentInstance.4/@featureInstance.1">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.3"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="gps.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.4/@featureInstance.0">
-    <connectionReference context="/" source="//@componentInstance.4/@featureInstance.0" destination="//@componentInstance.6/@featureInstance.0">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.8"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="gps.sensor_data_out -> vehicle_controller.thread_gps.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.3/@featureInstance.1" source="//@componentInstance.4/@featureInstance.1">
-    <connectionReference context="/" source="//@componentInstance.4/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.5">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
-    </connectionReference>
-    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.5" destination="//@componentInstance.10/@componentInstance.3/@featureInstance.1">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.2"/>
+  <connectionInstance name="gps.sensor_data_out -> gps_handler.sensor_data_in" complete="true" kind="portConnection" destination="//@componentInstance.17/@featureInstance.0" source="//@componentInstance.4/@featureInstance.0">
+    <connectionReference context="/" source="//@componentInstance.4/@featureInstance.0" destination="//@componentInstance.17/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.4"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="user_interface.UI_ports.turn_on_off -> interface_controller.UI_inverse_ports.turn_on_off" complete="true" kind="portConnection" destination="//@componentInstance.11/@featureInstance.1/@featureInstance.0" source="//@componentInstance.5/@featureInstance.0/@featureInstance.0">
@@ -2150,7 +2493,7 @@
   </connectionInstance>
   <connectionInstance name="user_interface.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.5/@featureInstance.1">
     <connectionReference context="/" source="//@componentInstance.5/@featureInstance.1" destination="//@componentInstance.6/@featureInstance.0">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.10"/>
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.14"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="brake_actuator.brake_failed -> vehicle_controller.control_modal.brake_failed" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.5" source="//@componentInstance.8/@featureInstance.2">
@@ -2158,23 +2501,23 @@
       <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.7" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.5">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.12"/>
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.12"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="vehicle_controller.control_modal.cmd -> speed_controller.current_speed" complete="true" kind="portConnection" destination="//@componentInstance.12/@featureInstance.0" source="//@componentInstance.10/@componentInstance.6/@featureInstance.2">
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.6/@featureInstance.2" destination="//@componentInstance.10/@featureInstance.1">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.11"/>
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.11"/>
     </connectionReference>
     <connectionReference context="/" source="//@componentInstance.10/@featureInstance.1" destination="//@componentInstance.12/@featureInstance.0">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.11"/>
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.15"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="vehicle_controller.control_modal.data_out -> interface_controller.cmd_con_in" complete="true" kind="portConnection" destination="//@componentInstance.11/@featureInstance.2" source="//@componentInstance.10/@componentInstance.6/@featureInstance.4">
+  <connectionInstance name="vehicle_controller.control_modal.feedback -> interface_controller.cmd_con_in" complete="true" kind="portConnection" destination="//@componentInstance.11/@featureInstance.2" source="//@componentInstance.10/@componentInstance.6/@featureInstance.4">
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@componentInstance.6/@featureInstance.4" destination="//@componentInstance.10/@featureInstance.2">
-      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedPortConnection.9"/>
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.9"/>
     </connectionReference>
     <connectionReference context="/" source="//@componentInstance.10/@featureInstance.2" destination="//@componentInstance.11/@featureInstance.2">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.4"/>
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.8"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.turn_on_off -> vehicle_controller.control_modal.UI_ports.turn_on_off" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.0" source="//@componentInstance.11/@featureInstance.0/@featureInstance.0">
@@ -2182,7 +2525,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.0" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.set_speed_up -> vehicle_controller.control_modal.UI_ports.set_speed_up" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.1" source="//@componentInstance.11/@featureInstance.0/@featureInstance.1">
@@ -2190,7 +2533,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.1" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.set_speed_down -> vehicle_controller.control_modal.UI_ports.set_speed_down" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.2" source="//@componentInstance.11/@featureInstance.0/@featureInstance.2">
@@ -2198,7 +2541,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.2" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.2">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.set_level_up -> vehicle_controller.control_modal.UI_ports.set_level_up" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.3" source="//@componentInstance.11/@featureInstance.0/@featureInstance.3">
@@ -2206,7 +2549,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.3" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.3">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.set_level_down -> vehicle_controller.control_modal.UI_ports.set_level_down" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.4" source="//@componentInstance.11/@featureInstance.0/@featureInstance.4">
@@ -2214,7 +2557,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.4" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.4">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.resume_pause -> vehicle_controller.control_modal.UI_ports.resume_pause" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.5" source="//@componentInstance.11/@featureInstance.0/@featureInstance.5">
@@ -2222,7 +2565,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.5" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.5">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.UI_ports.set_gap -> vehicle_controller.control_modal.UI_ports.set_gap" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.6" source="//@componentInstance.11/@featureInstance.0/@featureInstance.6">
@@ -2230,22 +2573,74 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
     <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.0/@featureInstance.6" destination="//@componentInstance.10/@componentInstance.6/@featureInstance.0/@featureInstance.6">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.13/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="interface_controller.cmd_con_out -> user_interface.cmd_con_in" complete="true" kind="portConnection" destination="//@componentInstance.5/@featureInstance.2" source="//@componentInstance.11/@featureInstance.3">
     <connectionReference context="/" source="//@componentInstance.11/@featureInstance.3" destination="//@componentInstance.5/@featureInstance.2">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.5"/>
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.9"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="speed_controller.cmd -> brake_actuator.cmd" complete="true" kind="portConnection" destination="//@componentInstance.8/@featureInstance.0" source="//@componentInstance.12/@featureInstance.1">
     <connectionReference context="/" source="//@componentInstance.12/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.0">
-      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.12"/>
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.16"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="speed_controller.cmd -> throttle_actuator.cmd" complete="true" kind="portConnection" destination="//@componentInstance.7/@featureInstance.0" source="//@componentInstance.12/@featureInstance.1">
     <connectionReference context="/" source="//@componentInstance.12/@featureInstance.1" destination="//@componentInstance.7/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.17"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="radar_handler.sensor_data_out -> vehicle_controller.thread_radar.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.1/@featureInstance.1" source="//@componentInstance.14/@featureInstance.1">
+    <connectionReference context="/" source="//@componentInstance.14/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.3" destination="//@componentInstance.10/@componentInstance.1/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="radar_handler.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.14/@featureInstance.2">
+    <connectionReference context="/" source="//@componentInstance.14/@featureInstance.2" destination="//@componentInstance.6/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.10"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="camera_handler.sensor_data_out -> vehicle_controller.thread_camera.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.2/@featureInstance.1" source="//@componentInstance.15/@featureInstance.1">
+    <connectionReference context="/" source="//@componentInstance.15/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.4">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.4" destination="//@componentInstance.10/@componentInstance.2/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="camera_handler.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.15/@featureInstance.2">
+    <connectionReference context="/" source="//@componentInstance.15/@featureInstance.2" destination="//@componentInstance.6/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.11"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="speedometer_handler.sensor_data_out -> vehicle_controller.thread_speedometer.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.4/@featureInstance.1" source="//@componentInstance.16/@featureInstance.1">
+    <connectionReference context="/" source="//@componentInstance.16/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.6">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.7"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.6" destination="//@componentInstance.10/@componentInstance.4/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.3"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="speedometer_handler.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.16/@featureInstance.2">
+    <connectionReference context="/" source="//@componentInstance.16/@featureInstance.2" destination="//@componentInstance.6/@featureInstance.0">
       <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.13"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="gps_handler.sensor_data_out -> vehicle_controller.thread_gps.sensor_in" complete="true" kind="portConnection" destination="//@componentInstance.10/@componentInstance.3/@featureInstance.1" source="//@componentInstance.17/@featureInstance.1">
+    <connectionReference context="/" source="//@componentInstance.17/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.5">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.5"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.10" source="//@componentInstance.10/@featureInstance.5" destination="//@componentInstance.10/@componentInstance.3/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.2"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="gps_handler.logger_out -> logger.file" complete="true" kind="portConnection" destination="//@componentInstance.6/@featureInstance.0" source="//@componentInstance.17/@featureInstance.2">
+    <connectionReference context="/" source="//@componentInstance.17/@featureInstance.2" destination="//@componentInstance.6/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.12"/>
     </connectionReference>
   </connectionInstance>
   <systemOperationMode name="vehicle_controller.manual" currentMode="//@componentInstance.10/@modeInstance.0"/>
