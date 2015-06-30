@@ -1,6 +1,5 @@
 package error_library
 public
-
 annex EMV2 {**
 	error types
 		NoPower   				: type;
