@@ -11,14 +11,15 @@ with abstracts;
 			sensor4_data_in:    in data port;
 			feedback: 			out event data port;
 			UI_inverse_ports:	feature group inverse of abstracts::UI_ports;
-			current_speed:	    out data port;	
+			current_speed:	    out data port;
+			brake_failed:       in event port;	
 		flows
 			UI_sink    		  : flow sink UI_inverse_ports;
 			controller_path0a : flow path sensor1_data_in -> current_speed;		-- path to actuators
 			controller_path1a : flow path sensor2_data_in -> current_speed;
 			controller_path2a : flow path sensor3_data_in -> current_speed;
 			controller_path3a : flow path sensor4_data_in -> current_speed;
-			controller_path0b : flow path sensor1_data_in -> feedback;	    -- path to UI	
+			controller_path0b : flow path sensor1_data_in -> feedback;	        -- path to UI	
 			controller_path1b : flow path sensor2_data_in -> feedback;
 			controller_path2b : flow path sensor3_data_in -> feedback;
 			controller_path3b : flow path sensor4_data_in -> feedback;
@@ -37,36 +38,35 @@ with abstracts;
 			thread_controller:      abstract thread_controller.impl;
 			control_modal:			abstract control_modal.impl;
 			preferences:			abstract preferences.impl;
+		
 		annex EMV2 {**
 			use types     error_library;
 			use behavior  error_library::stateMachine;
-			
+
 			error propagations
 				sensor1_data_in : in propagation {NoValue, BadValue, LateValue};
 				sensor2_data_in	: in propagation {NoValue, BadValue, LateValue};
 				sensor3_data_in	: in propagation {NoValue, BadValue, LateValue};
 				sensor4_data_in	: in propagation {NoValue, BadValue, LateValue};
+				brake_failed	:  in propagation {InvalidValue}; 
 			flows
 				nosensor1	: error sink sensor1_data_in{NoValue, BadValue, LateValue};
 				nosensor2	: error sink sensor2_data_in{NoValue, BadValue, LateValue};
 				nosensor3	: error sink sensor3_data_in{NoValue, BadValue, LateValue};
 				nosensor4	: error sink sensor4_data_in{NoValue, BadValue, LateValue};
+				ef5 		: error sink brake_failed {InvalidValue};
 			end propagations;
 			
---			component error behavior
---			transitions
---				terrfrompedal 		: Operational -[pedalvalue{NoService}]-> Failed;
---				terrfromplatformsoft : Operational -[processor{SoftwareFailure}]-> Failed;
---				terrfromplatformhard : Operational -[processor{HardwareFailure}]-> Failed;
---			propagations
---			    --  Here, we can imply that the NoService error from pedalvalue
---			    --  is transformed into a NoValue on brake and skid features.
---			    --  So, basically, this should be shown in the FMEA/FaultImpact
---			    --  report. So, the report should show the error flows
---			    --  pedals/NoService -> commands/brake/skid/NoValue -> monitor/NoValue -> selector/NoValue 
---				p1 : Failed -[]-> brake{NoValue};
---				p2 : Failed -[]-> skid{NoValue};
---			end component;	
+			component error behavior
+			events
+				sensor_doesnt_work   :   error event;
+				RecoverEvent 		 : recover event;
+				
+			transitions
+				t0 : Operational -[brake_failed{InvalidValue}]->   Failed;
+				t1 : Operational -[sensor_doesnt_work]-> 		   Failed;
+				t2 : Failed 	 -[RecoverEvent]-> 				   Operational;
+			end component;	
 		**};
 	end generic_controller.threads;
 	
@@ -135,10 +135,6 @@ with abstracts;
 			cmd: out data port;
 		flows
 			speed_path: flow path current_speed->cmd;
-	--	properties
-			
-		
-	
 	end speed_controller;
 	
 	abstract implementation speed_controller.impl

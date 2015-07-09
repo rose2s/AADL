@@ -249,10 +249,10 @@ public
 			error propagations
 				cmd : 			in propagation {NoValue,InvalidValue};
 				brake_hardware:	in propagation {NoValue,InvalidValue};
-				brake_failed:  out propagation {NoValue,InvalidValue}; -- send to controller
+				brake_failed:  out propagation {InvalidValue}; -- send to controller
 			flows
 				ef0 : error sink brake_hardware {NoValue,InvalidValue};
-				ef1 : error source brake_failed {NoValue,InvalidValue};
+				ef1 : error source brake_failed {InvalidValue};
 			end propagations;
 				
 			component error behavior

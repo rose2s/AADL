@@ -212,17 +212,12 @@ public
 			sensor2_data_in: refined to in data port data_types::picture;
 			sensor3_data_in: refined to in data port data_types::gps;
 			sensor4_data_in: refined to in data port data_types::speed;
-			brake_failed:  in event port;
+			brake_failed:  refined to in event port;
 			
 			annex EMV2 {**
 			use types     error_library;
 			use behavior  error_library::stateMachine;
 			
-			error propagations
-				brake_failed : in propagation {NoValue, InvalidValue};	
-			flows
-				brake_sink	: error sink brake_failed{NoValue};
-			end propagations;
 		**};
 			
 	end control_rt;
