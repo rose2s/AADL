@@ -73,21 +73,21 @@ public
 			sensor_data_out: refined to out data port data_types::radar_info;
 			BA: requires bus access platform::generic_bus;
 		
---		annex EMV2 {**
---			use types error_library;	
---				error propagations
---				sensor_data_out : out propagation {InvalidValue};
---			flows
---				ef0 : error source sensor_data_out{InvalidValue};
---			end propagations;
---		
---			properties	
---				emv2::hazards => 
---					([	failure => "InvalidValue";
---						description => "Invalid distance sent by the radar";
---					])
---					applies to sensor_data_out.invalidvalue;
---		**};
+		annex EMV2 {**
+			use types error_library;	
+				error propagations
+				sensor_data_out : out propagation {InvalidValue};
+			flows
+				ef0 : error source sensor_data_out{InvalidValue};
+			end propagations;
+		
+			properties	
+				emv2::hazards => 
+					([	failure => "InvalidValue";
+						description => "Invalid distance sent by the radar";
+					])
+					applies to sensor_data_out.invalidvalue;
+		**};
 	end radarSensor_rt;
 	
 	device implementation radarSensor_rt.impl extends sensor::generic_sensor.impl
@@ -105,23 +105,23 @@ public
 			sensor_data_out: refined to out data port data_types::picture;
 			BA: requires bus access platform::generic_bus;
 			
---		annex EMV2 {**
---			use types Error_library; 
---		
---			error propagations
---				sensor_data_out : out propagation {NoValue};
---			flows
---				ef0 : error source sensor_data_out{NoValue};
---			end propagations;
---			properties
---				emv2::hazards => 
---					([	failure => "Novalue";	
---						description => "No data from the camera";
---						comment => "Would impact the detection of obstacle if the camera is not working as well";
---					])
---			applies to sensor_data_out.novalue;
---
---		**};
+		annex EMV2 {**
+			use types Error_library; 
+		
+			error propagations
+				sensor_data_out : out propagation {InvalidValue};
+			flows
+				ef0 : error source sensor_data_out{InvalidValue};
+			end propagations;
+			properties
+				emv2::hazards => 
+					([	failure => "InvalidValue";	
+						description => "Invalid data from the camera";
+						comment => "Would impact the detection of obstacle if the camera is not working as well";
+					])
+			applies to sensor_data_out.novalue;
+
+		**};
 	end cameraSensor_rt;
 	
 	device implementation cameraSensor_rt.impl extends sensor::generic_sensor.impl
@@ -138,21 +138,21 @@ public
 		features
 			sensor_data_out: refined to out data port data_types::gps;
 			BA: requires bus access platform::generic_bus;
---		annex EMV2 {**
---			use types error_library;	
---				error propagations
---				sensor_data_out : out propagation {InvalidValue};
---			flows
---				ef0 : error source sensor_data_out{InvalidValue};
---			end propagations;
---		
---			properties	
---				emv2::hazards => 
---					([	failure => "InvalidValue";
---						description => "Invalid distance sent by the radar";
---					])
---					applies to sensor_data_out.invalidvalue;
---		**};
+		annex EMV2 {**
+			use types error_library;	
+				error propagations
+				sensor_data_out : out propagation {InvalidValue};
+			flows
+				ef0 : error source sensor_data_out{InvalidValue};
+			end propagations;
+		
+			properties	
+				emv2::hazards => 
+					([	failure => "InvalidValue";
+						description => "Invalid data sent by the gps";
+					])
+					applies to sensor_data_out.invalidvalue;
+		**};
 	end gps_rt;
 	
 	device implementation gps_rt.impl extends sensor::generic_sensor.impl
@@ -170,21 +170,21 @@ public
 			sensor_data_out: refined to out data port data_types::speed;
 			BA: requires bus access platform::generic_bus;
 		
---		annex EMV2 {**
---			use types error_library;	
---				error propagations
---				sensor_data_out : out propagation {InvalidValue};
---			flows
---				ef0 : error source sensor_data_out{InvalidValue};
---			end propagations;
---		
---			properties	
---				emv2::hazards => 
---					([	failure => "InvalidValue";
---						description => "Invalid distance sent by the radar";
---					])
---					applies to sensor_data_out.invalidvalue;
---		**};
+		annex EMV2 {**
+			use types error_library;	
+				error propagations
+				sensor_data_out : out propagation {InvalidValue};
+			flows
+				ef0 : error source sensor_data_out{InvalidValue};
+			end propagations;
+		
+			properties	
+				emv2::hazards => 
+					([	failure => "InvalidValue";
+						description => "Invalid data sent by the speedometer";
+					])
+					applies to sensor_data_out.invalidvalue;
+		**};
 	end speedometer_rt;
 	
 	device implementation speedometer_rt.impl extends sensor::generic_sensor.impl
