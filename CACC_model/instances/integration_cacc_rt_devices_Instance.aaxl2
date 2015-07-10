@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="ASCII"?>
 <instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="cacc_rt_devices_Instance" category="system">
   <componentInstance name="this_bus" srcConnectionInstance="//@connectionInstance.0 //@connectionInstance.1 //@connectionInstance.2 //@connectionInstance.3 //@connectionInstance.4 //@connectionInstance.5 //@connectionInstance.6" category="bus">
+    <ownedPropertyAssociation>
+      <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
     <subcomponent xsi:type="aadl2:BusSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedBusSubcomponent.0"/>
     <index>0</index>
   </componentInstance>
@@ -22,6 +35,19 @@
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
             <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
@@ -83,6 +109,19 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedBusAccess.0"/>
     </featureInstance>
     <flowSpecification name="sensor_source" destination="//@componentInstance.2/@featureInstance.0">
@@ -125,6 +164,19 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedBusAccess.0"/>
     </featureInstance>
     <flowSpecification name="sensor_source" destination="//@componentInstance.3/@featureInstance.0">
@@ -164,6 +216,19 @@
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
             <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
@@ -308,6 +373,19 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.18/@ownedBusAccess.0"/>
     </featureInstance>
     <flowSpecification name="logger_source" destination="//@componentInstance.5/@featureInstance.1">
@@ -416,7 +494,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedEventPort.0"/>
     </featureInstance>
-    <featureInstance name="brake_failed" srcConnectionInstance="//@connectionInstance.19" category="eventPort" direction="out">
+    <featureInstance name="brake_failed" srcConnectionInstance="//@connectionInstance.19" category="eventDataPort" direction="out">
       <ownedPropertyAssociation>
         <property href="../../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -425,7 +503,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedEventPort.1"/>
+      <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedEventDataPort.0"/>
     </featureInstance>
     <flowSpecification name="brake_sink" source="//@componentInstance.7/@featureInstance.0">
       <flowSpecification href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedFlowSpecification.0"/>
@@ -435,6 +513,19 @@
   </componentInstance>
   <componentInstance name="this_memory" category="memory">
     <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.6" category="busAccess" direction="in out">
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0"/>
     </featureInstance>
     <subcomponent xsi:type="aadl2:MemorySubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedMemorySubcomponent.0"/>
@@ -667,7 +758,15 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.3"/>
     </featureInstance>
-    <featureInstance name="brake_failed" category="eventPort">
+    <featureInstance name="brake_failed" category="eventDataPort">
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
       <ownedPropertyAssociation>
         <property href="../../../Plugin_Resources/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
         <ownedValue>
@@ -676,7 +775,7 @@
           </ownedValue>
         </ownedValue>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:EventPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedEventPort.0"/>
+      <feature xsi:type="aadl2:EventDataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedEventDataPort.0"/>
     </featureInstance>
     <componentInstance name="preferences">
       <ownedPropertyAssociation>
@@ -1921,6 +2020,19 @@
   </componentInstance>
   <componentInstance name="this_processor" category="processor">
     <featureInstance name="net" dstConnectionInstance="//@connectionInstance.5" category="busAccess" direction="in out">
+      <ownedPropertyAssociation>
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedBusAccess.0"/>
     </featureInstance>
     <subcomponent xsi:type="aadl2:ProcessorSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessorSubcomponent.0"/>
@@ -2127,6 +2239,10 @@
       <flowSpecification href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedFlowSpecification.0"/>
     </flowSpecification>
     <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.4"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance name="platform" category="system">
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.5"/>
     <index>0</index>
   </componentInstance>
   <endToEndFlow name="etef0" flowElement="//@componentInstance.13/@flowSpecification.1 //@connectionInstance.33 //@componentInstance.17/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4">

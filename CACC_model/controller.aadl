@@ -12,7 +12,7 @@ with abstracts;
 			feedback: 			out event data port;
 			UI_inverse_ports:	feature group inverse of abstracts::UI_ports;
 			current_speed:	    out data port;
-			brake_failed:       in event port;	
+			brake_failed:       in event data port;	
 		flows
 			UI_sink    		  : flow sink UI_inverse_ports;
 			controller_path0a : flow path sensor1_data_in -> current_speed;		-- path to actuators
@@ -48,13 +48,14 @@ with abstracts;
 				sensor2_data_in	: in propagation {NoValue, BadValue, LateValue};
 				sensor3_data_in	: in propagation {NoValue, BadValue, LateValue};
 				sensor4_data_in	: in propagation {NoValue, BadValue, LateValue};
-				brake_failed	:  in propagation {InvalidValue}; 
+				brake_failed	: in propagation {InvalidValue, NoValue, BadValue}; 
 			flows
 				nosensor1	: error sink sensor1_data_in{NoValue, BadValue, LateValue};
 				nosensor2	: error sink sensor2_data_in{NoValue, BadValue, LateValue};
 				nosensor3	: error sink sensor3_data_in{NoValue, BadValue, LateValue};
 				nosensor4	: error sink sensor4_data_in{NoValue, BadValue, LateValue};
-				ef5 		: error sink brake_failed {InvalidValue};
+				ef5 		: error sink brake_failed {InvalidValue, NoValue, BadValue};
+		
 			end propagations;
 			
 			component error behavior
@@ -63,9 +64,9 @@ with abstracts;
 				RecoverEvent 		 : recover event;
 				
 			transitions
-				t0 : Operational -[brake_failed{InvalidValue}]->   Failed;
-				t1 : Operational -[sensor_doesnt_work]-> 		   Failed;
-				t2 : Failed 	 -[RecoverEvent]-> 				   Operational;
+				t0 : Operational -[brake_failed{InvalidValue, NoValue, BadValue}]->   Failed;
+				t1 : Operational -[sensor_doesnt_work]-> Failed;
+				t2 : Failed 	 -[RecoverEvent]-> Operational;
 			end component;	
 		**};
 	end generic_controller.threads;

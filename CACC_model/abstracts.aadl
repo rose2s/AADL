@@ -3,6 +3,7 @@ public
 	with sensor;
 	with controller;
 	with data_types;
+	with platform_implementation;
 	
 	abstract cacc 
 	end cacc;
@@ -23,7 +24,7 @@ public
 			logger: 				abstract logger.impl;
 			throttle_actuator:		abstract throttle_actuator.impl;
 			brake_actuator:			abstract brake.impl;
-			speed_controller:		abstract controller::speed_controller.impl;
+			speed_controller:		abstract controller::speed_controller.impl;				
 			
 		connections
 			radar_handler_conn: 			port radar_sensor.sensor_data_out->radar_handler.sensor_data_in;
@@ -237,7 +238,7 @@ public
 		features
 			cmd:            in data port;
 			brake_hardware: in event port;
-			brake_failed:  out event port;
+			brake_failed:  out event data port;
 		flows
 			brake_sink: flow sink cmd;
 		properties
@@ -249,10 +250,10 @@ public
 			error propagations
 				cmd : 			in propagation {NoValue,InvalidValue};
 				brake_hardware:	in propagation {NoValue,InvalidValue};
-				brake_failed:  out propagation {InvalidValue}; -- send to controller
+				brake_failed:  out propagation {NoValue, BadValue}; -- send to controller
 			flows
 				ef0 : error sink brake_hardware {NoValue,InvalidValue};
-				ef1 : error source brake_failed {InvalidValue};
+				ef1 : error source brake_failed {NoValue, BadValue};
 			end propagations;
 				
 			component error behavior

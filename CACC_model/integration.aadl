@@ -8,6 +8,7 @@ public
 	with platform;
 	with Base_Types;
 	with EMV2;
+	with platform_implementation;
 	
 	system cacc_rt extends abstracts::cacc
 	end cacc_rt;
@@ -31,7 +32,8 @@ public
 			this_memory: 			memory 	  			platform::Ram.impl;
 			throttle_actuator:		refined to device throttle_actuator_rt.impl {Classifier_Substitution_Rule => Type_Extension;};
 			brake_actuator:		    refined to device brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
-			speed_controller:		refined to process speed_controller_rt.impl;			
+			speed_controller:		refined to process speed_controller_rt.impl;
+			platform:				system 			platform_implementation::platform;			
 		
 		connections
 			bus_radar: 					bus access this_bus<->radar_sensor.BA;
@@ -212,7 +214,7 @@ public
 			sensor2_data_in: refined to in data port data_types::picture;
 			sensor3_data_in: refined to in data port data_types::gps;
 			sensor4_data_in: refined to in data port data_types::speed;
-			brake_failed:  refined to in event port;
+			brake_failed:    refined to in event data port;
 			
 			annex EMV2 {**
 			use types     error_library;
@@ -373,18 +375,14 @@ public
 	
 	-- device throttle
 	device throttle_actuator_rt extends abstracts::throttle_actuator
-		--features
-		--	throttle_setting: refined to in data port base_types::float;
-	end throttle_actuator_rt;
+		end throttle_actuator_rt;
 	
 	device implementation throttle_actuator_rt.impl extends abstracts::throttle_actuator.impl
 	end throttle_actuator_rt.impl;
 	
 	-- device brake
 	device brake_rt extends abstracts::brake
-		--features
-			--brake_status: refined to in data port data_types::boolean;
-	end brake_rt;
+		end brake_rt;
 	
 	device implementation brake_rt.impl extends abstracts::brake.impl
 	end brake_rt.impl;

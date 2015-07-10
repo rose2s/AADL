@@ -1,0 +1,24 @@
+package platform_implementation
+public
+	
+system platform
+	
+end platform;
+
+system implementation platform.impl
+	subcomponents
+		bus_handler:		system bus_handler;
+		memory_handler:		system memory_handler;
+		processor_handler:  system processor_handler;
+end platform.impl; 
+
+system bus_handler
+end bus_handler;
+
+system processor_handler
+end processor_handler;
+
+system memory_handler
+end memory_handler;
+
+end platform_implementation;

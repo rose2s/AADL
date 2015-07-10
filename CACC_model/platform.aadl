@@ -9,32 +9,70 @@ public
 			use behavior error_library::stateMachine;
 		
 			error propagations
-				bindings :  out propagation {HardwareFailure};
-			
-			flows
-				f0 : error source bindings{HardwareFailure};
+				bindings : out propagation {SoftwareFailure, HardwareFailure};
+				processor : in  propagation {HardwareFailure};
 				
+			flows
+				fsoft : error source bindings{SoftwareFailure};
+				fhard : error path processor{HardwareFailure} -> bindings;
+	
+				f0 : error source bindings{HardwareFailure};
+				f1 : error source bindings{SoftwareFailure};		
 			end propagations;
-		
+
 			component error behavior
 			events
 				InternalFailure : error event;
+				SoftwareError : error event;
+				HardwareError : error event;
+				Reset         : recover event;
 			transitions
 				Operational -[InternalFailure]-> Failed;
+				Operational -[SoftwareError]-> 	 Failed; 
+				Operational -[HardwareError]->   Failed;
+				Failed      -[Reset]->           Operational;
+		
 			propagations
 				normal : Operational -[]-> bindings {NoError};
-				fail   : Failed -[]-> bindings{HardwareFailure};
+				hardfailed   : Failed -[]-> bindings{HardwareFailure};
+				softfailed   : Failed -[]-> bindings{SoftwareFailure};
+	
 			end component;	
 		**};
 		end generic_cpu;
 	
-	bus generic_bus                   
+	bus generic_bus  
+		properties
+			Latency => 1 Ms .. 1 Ms;               
 	end generic_bus;
 	
 	-- memory declaration
 	memory Ram
 		features
 			BA: requires bus access generic_bus;
+		
+		annex EMV2 {**
+			use types error_library; 
+			use behavior error_library::stateMachine;
+		
+			error propagations
+				bindings  : out propagation {SoftwareFailure, HardwareFailure};
+				memory    : in  propagation {HardwareFailure};
+			flows
+				fsoft : error source bindings{SoftwareFailure};
+				fhard : error path memory{HardwareFailure} -> bindings;
+			end propagations;
+		
+			component error behavior
+			events
+				SoftwareFailure : error event;
+			transitions
+				Operational -[SoftwareFailure]-> Failed;
+			propagations
+				normal : Operational -[]-> bindings {NoError};
+				p2     : Failed      -[]-> bindings{SoftwareFailure};
+			end component;
+		**};  
 	end Ram;
 	
 	memory implementation Ram.impl
