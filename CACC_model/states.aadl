@@ -34,9 +34,9 @@ public
           steady: 		initial state;
           accelerating: state;
    transitions
-          steady-[actualSpeed=targetSpeed]->steady;
-          steady-[actualSpeed<targetSpeed]->accelerating;
-          accelerating-[actualSpeed=targetSpeed]->steady;
+          steady-[actualSpeed = targetSpeed]->steady;
+          steady-[actualSpeed < targetSpeed]->accelerating;
+          accelerating-[actualSpeed = targetSpeed]->steady;
    **};              
    end cc.impl;
   
@@ -50,9 +50,11 @@ public
 	       accelerating: state;
 	       braking: 	 state;
 	    transitions
-	      steady-[actualSpeed=targetSpeed]->steady;
-          steady-[actualSpeed<targetSpeed]->accelerating;
-          accelerating-[actualSpeed=targetSpeed]->steady;
+	      steady-[actualSpeed = targetSpeed]->steady;
+          steady-[actualSpeed < targetSpeed]->accelerating;
+          steady-[actualSpeed > targetSpeed]->braking;
+          accelerating-[actualSpeed = targetSpeed]->steady;
+          braking-[actualSpeed = targetSpeed]->steady;
 	   **};            
    end acc.impl;
   
