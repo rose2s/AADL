@@ -52,11 +52,11 @@ public
 			
 		flows
 --			-- sensor's info to logger
-			etef0 : end to end flow radar_handler.logger_source       -> logger_radar_conn   	 -> logger.logger_sink; 
-			etef1 : end to end flow camera_handler.logger_source 	  -> logger_camera_conn 	 -> logger.logger_sink; 
-			etef2 : end to end flow gps_handler.logger_source    	  -> logger_gps_conn    	 -> logger.logger_sink; 
-			etef3:  end to end flow speedometer_handler.logger_source -> logger_speedometer_conn -> logger.logger_sink;                    
-			etef4 : end to end flow user_interface.logger_source 	  -> logger_UI_conn 		 -> logger.logger_sink; 
+			etef0 : end to end flow radar_sensor.sensor_source -> radar_handler_conn -> radar_handler.sensor_logger_path -> logger_radar_conn-> logger.logger_sink; 
+			etef1 : end to end flow camera_sensor.sensor_source -> camera_handler_conn -> camera_handler.sensor_logger_path-> logger_camera_conn -> logger.logger_sink; 
+			etef2 : end to end flow gps.sensor_source -> gps_handler_conn -> gps_handler.sensor_logger_path -> logger_gps_conn -> logger.logger_sink; 
+			etef3:  end to end flow speedometer.sensor_source -> speedometer_handler_conn -> speedometer_handler.sensor_logger_path -> logger_speedometer_conn -> logger.logger_sink;                    
+			etef4 : end to end flow user_interface.logger_source -> logger_UI_conn -> logger.logger_sink; 
 			
 			-- sensor - controller - brake actuators
 			etef5 : end to end flow radar_sensor.sensor_source -> radar_handler_conn -> radar_handler.sensor_path -> radar_conn ->
@@ -113,7 +113,7 @@ public
 	-- device user_interface declaration
 	abstract user_interface
 		features
-			logger_out: 		out data port data_types::logger;
+			logger_out: 		out data port;
 			cmd_con_in:			in event data port;
 			UI_ports: 			feature group UI_ports;		
 		flows
@@ -164,7 +164,7 @@ public
 		-- device logger declaration
 	abstract logger
 		features
-			file: in data port data_types::logger;		
+			file: in data port;		
 		flows 
 			logger_sink : flow sink file;
 		properties

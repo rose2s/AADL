@@ -31,6 +31,7 @@ with abstracts;
 	
 	abstract implementation generic_controller.threads
 		subcomponents
+			cc: 					abstract cc.impl;
 			thread_radar: 			abstract read_sensor.impl;
 			thread_camera: 		    abstract read_sensor.impl;
 			thread_gps: 			abstract read_sensor.impl;
@@ -70,6 +71,36 @@ with abstracts;
 			end component;	
 		**};
 	end generic_controller.threads;
+	
+	
+	-- process mode cc
+	abstract cc
+		features
+			new_value:   in data port;
+			target:  	 in data port;	
+			
+	annex EMV2 {**
+			use types CACC_model::error_library; 
+			use behavior CACC_model::error_library::levels;
+		
+			error propagations
+				new_value		: in propagation {NoValue, BadValue, LateValue};
+				target  		: in propagation  {NoValue, BadValue, LateValue};
+				
+			end propagations;
+			
+			component error behavior
+				transitions
+					t0 : steady 	  -[new_value]->   accelerating;
+					t1 : accelerating -[new_value]-> steady;
+					t2 : steady 	  -[new_value]-> steady;
+				end component;
+		**};			
+	end cc;
+	 
+	abstract implementation cc.impl
+	end cc.impl;
+	
 	
 	-- threads declaration
 	abstract read_sensor

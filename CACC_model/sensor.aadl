@@ -35,11 +35,12 @@ public
 		features
 			sensor_data_in: 	in data port;
 			sensor_data_out: 	out data port;
-			logger_out: 		out data port data_types::logger;
+			logger_out: 		out data port;
 			
 		flows
-			sensor_path :   flow path sensor_data_in->sensor_data_out;
-			logger_source : flow source logger_out;   
+			sensor_path :   	   flow path sensor_data_in->sensor_data_out;
+			sensor_logger_path :   flow path sensor_data_in->logger_out;
+			logger_source : 	   flow source logger_out;   
 		properties
 			latency => 1 ms .. 3 ms applies to sensor_path, logger_out;
 		

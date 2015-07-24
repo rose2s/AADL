@@ -1,4 +1,4 @@
-package error_library
+package CACC_model::error_library
 public
 annex EMV2 {**
 	error types
@@ -17,12 +17,21 @@ annex EMV2 {**
 		SoftwareFailure			: type;
 		
 	end types; 
- 
+	
 	error behavior stateMachine
 	states
 		Operational : initial state;
 		Failed      : state;
 	end behavior;
+	
+	error behavior levels
+	states
+		steady 			  : initial state;
+		accelerating      : state;
+		braking			  : state;
+	end behavior;
+	
+
 **};
 
-end error_library;
+end CACC_model::error_library;
