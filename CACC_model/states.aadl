@@ -1,0 +1,64 @@
+package states
+public
+   with Base_Types;
+      
+   system controller_interface
+      features
+             driverSelection: in data port Base_Types::Integer;
+             targetSpeed: in data port Base_Types::Integer;
+             actualSpeed:in data port Base_Types::Integer;
+             gap: in data port Base_Types::Integer;
+   end controller_interface;
+  
+   system controller extends controller_interface           
+   end controller;
+  
+   system implementation controller.impl
+   subcomponents
+     cc:   system cc.impl   in modes(ccMode);
+     acc:  system acc.impl  in modes(accMode);
+     cacc: system cacc.impl in modes(caccMode);
+   modes
+     ccMode:   initial mode;
+     accMode:  mode;
+     caccMode: mode;
+                                          
+   end controller.impl;
+  
+   system cc extends controller_interface              
+   end cc;
+  
+   system implementation cc.impl
+   annex behavior_specification{**
+   	states
+          steady: 		initial state;
+          accelerating: state;
+   transitions
+          steady-[actualSpeed=targetSpeed]->steady;
+          steady-[actualSpeed<targetSpeed]->accelerating;
+          accelerating-[actualSpeed=targetSpeed]->steady;
+   **};              
+   end cc.impl;
+  
+   system acc extends controller_interface            
+   end acc;
+  
+   system implementation acc.impl  
+   	 annex behavior_specification{**
+	   	states
+	       steady: 		 initial state;
+	       accelerating: state;
+	       braking: 	 state;
+	    transitions
+	      steady-[actualSpeed=targetSpeed]->steady;
+          steady-[actualSpeed<targetSpeed]->accelerating;
+          accelerating-[actualSpeed=targetSpeed]->steady;
+	   **};            
+   end acc.impl;
+  
+   system cacc extends controller_interface              
+   end cacc;
+  
+   system implementation cacc.impl             
+   end cacc.impl;        
+end states;

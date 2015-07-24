@@ -9,6 +9,7 @@ public
 	with Base_Types;
 	with EMV2;
 	with platform_implementation;
+	with states;
 	
 	system cacc_rt extends abstracts::cacc
 	end cacc_rt;
@@ -226,7 +227,7 @@ public
 	
 	process implementation control_rt.impl extends controller::generic_controller.threads
 		subcomponents
-			--cc: 			   refined to process cc.impl;
+			--states: 		   system states::controller.impl
 			thread_radar:      refined to thread read_radar.impl {Classifier_Substitution_Rule => Type_Extension;}; -- in modes (acc,cacc, cc, failure);
 			thread_camera:     refined to thread read_camera.impl {Classifier_Substitution_Rule => Type_Extension;};
 			thread_gps:    	   refined to thread read_gps.impl    {Classifier_Substitution_Rule => Type_Extension;};
@@ -313,13 +314,6 @@ public
 			cacc -[brake_failed]-> failure;
 										
 	end control_rt.impl;
-	
-	-- process cc mode
-	process cc extends controller::cc
-	end cc;
-	
-	process implementation cc.impl
-	end cc.impl;
 	
 	-- process preferences
 	process preferences extends controller::preferences
