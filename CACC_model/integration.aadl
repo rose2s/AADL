@@ -28,13 +28,14 @@ public
 			gps_handler:			refined to system  gps_handler.impl;
 			user_interface:	 		refined to device  user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
 			logger: 		 		refined to system  logger_rt.impl;
-			this_bus:				bus 	  			platform::generic_bus;
+			this_bus:				bus 	  			platform::generic_bus;  
 			this_processor:			processor 			platform::generic_cpu;
 			this_memory: 			memory 	  			platform::Ram.impl;
 			throttle_actuator:		refined to device throttle_actuator_rt.impl {Classifier_Substitution_Rule => Type_Extension;};
 			brake_actuator:		    refined to device brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
 			speed_controller:		refined to process speed_controller_rt.impl;
-			platform:				system 			platform_implementation::platform;			
+			platform:				system 			platform_implementation::platform;		
+			states:					system states::controller.impl;	
 		
 		connections
 			bus_radar: 					bus access this_bus<->radar_sensor.BA;
@@ -227,7 +228,6 @@ public
 	
 	process implementation control_rt.impl extends controller::generic_controller.threads
 		subcomponents
-			--states: 		   system states::controller.impl
 			thread_radar:      refined to thread read_radar.impl {Classifier_Substitution_Rule => Type_Extension;}; -- in modes (acc,cacc, cc, failure);
 			thread_camera:     refined to thread read_camera.impl {Classifier_Substitution_Rule => Type_Extension;};
 			thread_gps:    	   refined to thread read_gps.impl    {Classifier_Substitution_Rule => Type_Extension;};

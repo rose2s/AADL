@@ -61,6 +61,18 @@ public
    system cacc extends controller_interface              
    end cacc;
   
-   system implementation cacc.impl             
+   system implementation cacc.impl 
+   	annex behavior_specification{**
+	   	states
+	       steady: 		 initial state;
+	       accelerating: state;
+	       braking: 	 state;
+	    transitions
+	      steady-[actualSpeed = targetSpeed]->steady;
+          steady-[actualSpeed < targetSpeed]->accelerating;
+          steady-[actualSpeed > targetSpeed]->braking;
+          accelerating-[actualSpeed = targetSpeed]->steady;
+          braking-[actualSpeed = targetSpeed]->steady;
+	   **};             
    end cacc.impl;        
 end states;
