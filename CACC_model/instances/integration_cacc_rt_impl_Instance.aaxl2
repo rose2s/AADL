@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="cacc_rt_devices_Instance" category="system">
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="cacc_rt_impl_Instance" category="system">
   <componentInstance name="this_bus" srcConnectionInstance="//@connectionInstance.0 //@connectionInstance.1 //@connectionInstance.2 //@connectionInstance.3 //@connectionInstance.4 //@connectionInstance.5 //@connectionInstance.6" category="bus">
     <ownedPropertyAssociation>
       <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties.Latency"/>
@@ -2361,6 +2361,10 @@
     <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.4"/>
     <index>0</index>
   </componentInstance>
+  <componentInstance name="platform" category="system">
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.5"/>
+    <index>0</index>
+  </componentInstance>
   <componentInstance name="states" category="system">
     <featureInstance name="driverSelection" dstConnectionInstance="//@connectionInstance.20">
       <ownedPropertyAssociation>
@@ -2395,7 +2399,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
     </featureInstance>
-    <featureInstance name="gapLimit">
+    <featureInstance name="gap" dstConnectionInstance="//@connectionInstance.23">
       <ownedPropertyAssociation>
         <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
         <ownedValue>
@@ -2406,21 +2410,7 @@
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
     </featureInstance>
-    <featureInstance name="gap" dstConnectionInstance="//@connectionInstance.23">
-      <ownedPropertyAssociation>
-        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.6"/>
-          </ownedValue>
-        </ownedValue>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
-    </featureInstance>
-    <featureInstance name="radio">
-      <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.5"/>
-    </featureInstance>
-    <componentInstance name="cc" category="system" inMode="//@componentInstance.18/@modeInstance.0">
+    <componentInstance name="cc" category="system" inMode="//@componentInstance.19/@modeInstance.0">
       <featureInstance name="driverSelection">
         <ownedPropertyAssociation>
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
@@ -2454,17 +2444,6 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
       </featureInstance>
-      <featureInstance name="gapLimit">
-        <ownedPropertyAssociation>
-          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:NamedValue">
-              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.6"/>
-            </ownedValue>
-          </ownedValue>
-        </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
-      </featureInstance>
       <featureInstance name="gap">
         <ownedPropertyAssociation>
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
@@ -2474,15 +2453,12 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
-      </featureInstance>
-      <featureInstance name="radio">
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.5"/>
+        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
       </featureInstance>
       <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedSystemSubcomponent.0"/>
       <index>0</index>
     </componentInstance>
-    <componentInstance name="acc" category="system" inMode="//@componentInstance.18/@modeInstance.1">
+    <componentInstance name="acc" category="system" inMode="//@componentInstance.19/@modeInstance.1">
       <featureInstance name="driverSelection">
         <ownedPropertyAssociation>
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
@@ -2516,17 +2492,6 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
       </featureInstance>
-      <featureInstance name="gapLimit">
-        <ownedPropertyAssociation>
-          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:NamedValue">
-              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.6"/>
-            </ownedValue>
-          </ownedValue>
-        </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
-      </featureInstance>
       <featureInstance name="gap">
         <ownedPropertyAssociation>
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
@@ -2536,15 +2501,12 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
-      </featureInstance>
-      <featureInstance name="radio">
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.5"/>
+        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
       </featureInstance>
       <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedSystemSubcomponent.1"/>
       <index>0</index>
     </componentInstance>
-    <componentInstance name="cacc" category="system" inMode="//@componentInstance.18/@modeInstance.2">
+    <componentInstance name="cacc" category="system" inMode="//@componentInstance.19/@modeInstance.2">
       <featureInstance name="driverSelection">
         <ownedPropertyAssociation>
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
@@ -2578,17 +2540,6 @@
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
       </featureInstance>
-      <featureInstance name="gapLimit">
-        <ownedPropertyAssociation>
-          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:NamedValue">
-              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.6"/>
-            </ownedValue>
-          </ownedValue>
-        </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
-      </featureInstance>
       <featureInstance name="gap">
         <ownedPropertyAssociation>
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
@@ -2598,10 +2549,7 @@
             </ownedValue>
           </ownedValue>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
-      </featureInstance>
-      <featureInstance name="radio">
-        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.5"/>
+        <feature xsi:type="aadl2:DataPort" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
       </featureInstance>
       <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../states.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedSystemSubcomponent.2"/>
       <index>0</index>
@@ -2615,7 +2563,7 @@
     <modeInstance name="caccMode">
       <mode href="../states.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedMode.2"/>
     </modeInstance>
-    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.5"/>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.6"/>
     <index>0</index>
   </componentInstance>
   <endToEndFlow name="etef0" flowElement="//@componentInstance.1/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.13/@flowSpecification.1 //@connectionInstance.37 //@componentInstance.17/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4 //@systemOperationMode.5 //@systemOperationMode.6 //@systemOperationMode.7 //@systemOperationMode.8 //@systemOperationMode.9 //@systemOperationMode.10 //@systemOperationMode.11 //@systemOperationMode.12 //@systemOperationMode.13 //@systemOperationMode.14">
@@ -2993,23 +2941,23 @@
       <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.12"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="vehicle_controller.driverSelection -> states.driverSelection" complete="true" kind="portConnection" destination="//@componentInstance.18/@featureInstance.0" source="//@componentInstance.9/@featureInstance.2">
-    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.2" destination="//@componentInstance.18/@featureInstance.0">
+  <connectionInstance name="vehicle_controller.driverSelection -> states.driverSelection" complete="true" kind="portConnection" destination="//@componentInstance.19/@featureInstance.0" source="//@componentInstance.9/@featureInstance.2">
+    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.2" destination="//@componentInstance.19/@featureInstance.0">
       <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="vehicle_controller.targetSpeed -> states.targetSpeed" complete="true" kind="portConnection" destination="//@componentInstance.18/@featureInstance.1" source="//@componentInstance.9/@featureInstance.3">
-    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.3" destination="//@componentInstance.18/@featureInstance.1">
+  <connectionInstance name="vehicle_controller.targetSpeed -> states.targetSpeed" complete="true" kind="portConnection" destination="//@componentInstance.19/@featureInstance.1" source="//@componentInstance.9/@featureInstance.3">
+    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.3" destination="//@componentInstance.19/@featureInstance.1">
       <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="vehicle_controller.actualSpeed -> states.actualSpeed" complete="true" kind="portConnection" destination="//@componentInstance.18/@featureInstance.2" source="//@componentInstance.9/@featureInstance.4">
-    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.4" destination="//@componentInstance.18/@featureInstance.2">
+  <connectionInstance name="vehicle_controller.actualSpeed -> states.actualSpeed" complete="true" kind="portConnection" destination="//@componentInstance.19/@featureInstance.2" source="//@componentInstance.9/@featureInstance.4">
+    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.4" destination="//@componentInstance.19/@featureInstance.2">
       <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.3"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="vehicle_controller.gap -> states.gap" complete="true" kind="portConnection" destination="//@componentInstance.18/@featureInstance.4" source="//@componentInstance.9/@featureInstance.5">
-    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.5" destination="//@componentInstance.18/@featureInstance.4">
+  <connectionInstance name="vehicle_controller.gap -> states.gap" complete="true" kind="portConnection" destination="//@componentInstance.19/@featureInstance.3" source="//@componentInstance.9/@featureInstance.5">
+    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.5" destination="//@componentInstance.19/@featureInstance.3">
       <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.4"/>
     </connectionReference>
   </connectionInstance>
@@ -3152,20 +3100,20 @@
       <connection xsi:type="aadl2:PortConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.12"/>
     </connectionReference>
   </connectionInstance>
-  <systemOperationMode name="vehicle_controller.manual # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.0 //@componentInstance.18/@modeInstance.0"/>
-  <systemOperationMode name="vehicle_controller.manual # states.accMode" currentMode="//@componentInstance.9/@modeInstance.0 //@componentInstance.18/@modeInstance.1"/>
-  <systemOperationMode name="vehicle_controller.manual # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.0 //@componentInstance.18/@modeInstance.2"/>
-  <systemOperationMode name="vehicle_controller.cc # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.1 //@componentInstance.18/@modeInstance.0"/>
-  <systemOperationMode name="vehicle_controller.cc # states.accMode" currentMode="//@componentInstance.9/@modeInstance.1 //@componentInstance.18/@modeInstance.1"/>
-  <systemOperationMode name="vehicle_controller.cc # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.1 //@componentInstance.18/@modeInstance.2"/>
-  <systemOperationMode name="vehicle_controller.acc # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.2 //@componentInstance.18/@modeInstance.0"/>
-  <systemOperationMode name="vehicle_controller.acc # states.accMode" currentMode="//@componentInstance.9/@modeInstance.2 //@componentInstance.18/@modeInstance.1"/>
-  <systemOperationMode name="vehicle_controller.acc # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.2 //@componentInstance.18/@modeInstance.2"/>
-  <systemOperationMode name="vehicle_controller.cacc # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.3 //@componentInstance.18/@modeInstance.0"/>
-  <systemOperationMode name="vehicle_controller.cacc # states.accMode" currentMode="//@componentInstance.9/@modeInstance.3 //@componentInstance.18/@modeInstance.1"/>
-  <systemOperationMode name="vehicle_controller.cacc # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.3 //@componentInstance.18/@modeInstance.2"/>
-  <systemOperationMode name="vehicle_controller.failure # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.4 //@componentInstance.18/@modeInstance.0"/>
-  <systemOperationMode name="vehicle_controller.failure # states.accMode" currentMode="//@componentInstance.9/@modeInstance.4 //@componentInstance.18/@modeInstance.1"/>
-  <systemOperationMode name="vehicle_controller.failure # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.4 //@componentInstance.18/@modeInstance.2"/>
-  <componentImplementation xsi:type="aadl2:SystemImplementation" href="../integration.aadl#integration.cacc_rt.devices"/>
+  <systemOperationMode name="vehicle_controller.manual # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.0 //@componentInstance.19/@modeInstance.0"/>
+  <systemOperationMode name="vehicle_controller.manual # states.accMode" currentMode="//@componentInstance.9/@modeInstance.0 //@componentInstance.19/@modeInstance.1"/>
+  <systemOperationMode name="vehicle_controller.manual # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.0 //@componentInstance.19/@modeInstance.2"/>
+  <systemOperationMode name="vehicle_controller.cc # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.1 //@componentInstance.19/@modeInstance.0"/>
+  <systemOperationMode name="vehicle_controller.cc # states.accMode" currentMode="//@componentInstance.9/@modeInstance.1 //@componentInstance.19/@modeInstance.1"/>
+  <systemOperationMode name="vehicle_controller.cc # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.1 //@componentInstance.19/@modeInstance.2"/>
+  <systemOperationMode name="vehicle_controller.acc # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.2 //@componentInstance.19/@modeInstance.0"/>
+  <systemOperationMode name="vehicle_controller.acc # states.accMode" currentMode="//@componentInstance.9/@modeInstance.2 //@componentInstance.19/@modeInstance.1"/>
+  <systemOperationMode name="vehicle_controller.acc # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.2 //@componentInstance.19/@modeInstance.2"/>
+  <systemOperationMode name="vehicle_controller.cacc # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.3 //@componentInstance.19/@modeInstance.0"/>
+  <systemOperationMode name="vehicle_controller.cacc # states.accMode" currentMode="//@componentInstance.9/@modeInstance.3 //@componentInstance.19/@modeInstance.1"/>
+  <systemOperationMode name="vehicle_controller.cacc # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.3 //@componentInstance.19/@modeInstance.2"/>
+  <systemOperationMode name="vehicle_controller.failure # states.ccMode" currentMode="//@componentInstance.9/@modeInstance.4 //@componentInstance.19/@modeInstance.0"/>
+  <systemOperationMode name="vehicle_controller.failure # states.accMode" currentMode="//@componentInstance.9/@modeInstance.4 //@componentInstance.19/@modeInstance.1"/>
+  <systemOperationMode name="vehicle_controller.failure # states.caccMode" currentMode="//@componentInstance.9/@modeInstance.4 //@componentInstance.19/@modeInstance.2"/>
+  <componentImplementation xsi:type="aadl2:SystemImplementation" href="../integration.aadl#integration.cacc_rt.impl"/>
 </instance:SystemInstance>

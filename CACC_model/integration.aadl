@@ -33,8 +33,7 @@ public
 			this_memory: 			memory 	  			platform::Ram.impl;
 			throttle_actuator:		refined to device throttle_actuator_rt.impl {Classifier_Substitution_Rule => Type_Extension;};
 			brake_actuator:		    refined to device brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
-			speed_controller:		refined to process speed_controller_rt.impl;
-			platform:				system 			platform_implementation::platform;		
+			speed_controller:		refined to process speed_controller_rt.impl;	
 			states:					system states::controller.impl;	
 		
 		connections
@@ -44,9 +43,13 @@ public
 			bus_speedometer: 			bus access this_bus<->speedometer.BA;
 			bus_UI: 					bus access this_bus<->user_interface.BA;
 			bus_processor:				bus access this_bus<->this_processor.net;
-			bus_memory:					bus access this_bus<->this_memory.BA;
-			
+			bus_memory:					bus access this_bus<->this_memory.BA;	
 			brake_cont_conn:			port brake_actuator.brake_failed->vehicle_controller.brake_failed;
+			
+			controller_driverSelection: port vehicle_controller.driverSelection -> states.driverSelection;
+			controller_targetSpeed:     port vehicle_controller.targetSpeed -> states.targetSpeed;
+			controller_actualSpeed:     port vehicle_controller.actualSpeed -> states.actualSpeed;
+			controller_gap:     		port vehicle_controller.gap -> states.gap;
 			
 		properties
 			-- bound thread to the processor
@@ -307,11 +310,13 @@ public
 			acc -[UI_inverse_ports.turn_on_off]->  manual;
 			acc -[UI_inverse_ports.set_gap]->  acc;
 			acc  -[brake_failed]-> failure;
+			-- acc -[RadioData]-> cacc;
 			
 			-- cacc
 			cacc-[UI_inverse_ports.set_level_down]-> acc;
 			cacc -[UI_inverse_ports.turn_on_off]-> manual;
 			cacc -[brake_failed]-> failure;
+			-- cacc -[NoRadioData]-> acc;
 										
 	end control_rt.impl;
 	

@@ -1,7 +1,8 @@
 package controller
 public
 	with data_types;
-with abstracts;
+	with abstracts;
+	with Base_Types;
 	
 	abstract generic_controller
 		features
@@ -13,6 +14,12 @@ with abstracts;
 			UI_inverse_ports:	feature group inverse of abstracts::UI_ports;
 			current_speed:	    out data port;
 			brake_failed:       in event data port;	
+			
+			driverSelection: out data port Base_Types::Integer;
+            targetSpeed:     out data port Base_Types::Integer;
+            actualSpeed:     out data port Base_Types::Integer;
+            gap:             out data port Base_Types::Integer;
+            
 		flows
 			UI_sink    		  : flow sink UI_inverse_ports;
 			controller_path0a : flow path sensor1_data_in -> current_speed;		-- path to actuators
