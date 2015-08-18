@@ -1,2 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<core:Specification xmlns:core="http:///www.open-people.fr/rdal/core" id="_hcV6wB9zEeWVq7eRYN4RHg" constraintLanguagesSpecification="platform:/config/fr.openpeople.ide.settings/defaultConstraintsLanguages.constraints#20903345"/>
+<core:Specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http:///www.open-people.fr/rdal/core" id="_-rOWoEVNEeWKyZVE6R_y8A" constraintLanguagesSpecification="platform:/config/fr.openpeople.ide.settings/defaultConstraintsLanguages.constraints#20903345">
+  <actors xsi:type="core:StakeHolder" id="_ZPffgEVOEeWKyZVE6R_y8A" name="Driver" contractualElements="#_R6N7EEVOEeWKyZVE6R_y8A"/>
+  <actors xsi:type="core:StakeHolder" id="_cH86YEVOEeWKyZVE6R_y8A" name="Traffic Infrastructure" contractualElements="#_DgsbUEVPEeWKyZVE6R_y8A"/>
+  <actors xsi:type="core:StakeHolder" id="_i7E0AEVOEeWKyZVE6R_y8A" name="Traffic Enforcement" contractualElements="#_WybqYEVSEeWKyZVE6R_y8A"/>
+  <actors xsi:type="core:StakeHolder" id="_lGF6EEVOEeWKyZVE6R_y8A" name="Vehicle" contractualElements="#_bTpy0EVSEeWKyZVE6R_y8A"/>
+  <requirementGroups id="_Ow6AwEVOEeWKyZVE6R_y8A" name="Assumptions">
+    <requirements xsi:type="core:Assumption" id="_B6lZIEVPEeWKyZVE6R_y8A" name="A-1: The User Interface component has not been previously implemented"/>
+    <requirements xsi:type="core:Assumption" id="_qamrMEVPEeWKyZVE6R_y8A" name="A-2: All logic and communications take place through the Vehicle Controller component&#xD;Vehicle Controller component"/>
+    <requirements xsi:type="core:Assumption" id="_tF-FQEVPEeWKyZVE6R_y8A" name="A-3: Sensors Subsystems periodically send data to the Vehicle controller&#xD;Controller"/>
+    <requirements xsi:type="core:Assumption" id="_-BE7gEVPEeWKyZVE6R_y8A" name="A-4: The system can ignore &quot;should&quot; requirements under certain conditions"/>
+  </requirementGroups>
+  <requirementGroups id="_R6N7EEVOEeWKyZVE6R_y8A" name="User Requirements" stakeHolders="#_ZPffgEVOEeWKyZVE6R_y8A">
+    <requirements xsi:type="core:Requirement" id="_D5euwEVPEeWKyZVE6R_y8A" name="REQ-1: Turn On"/>
+    <requirements xsi:type="core:Requirement" id="_fo0uMEVQEeWKyZVE6R_y8A" name="REQ-2: Turn Off"/>
+    <requirements xsi:type="core:Requirement" id="_hbnhgEVQEeWKyZVE6R_y8A" name="REQ-3: Set Level (CC,ACC,CACC)"/>
+    <requirements xsi:type="core:Requirement" id="_uGSdUEVQEeWKyZVE6R_y8A" name="REQ-4: Set Gap"/>
+    <requirements xsi:type="core:Requirement" id="_R6CNgEVREeWKyZVE6R_y8A" name="REQ-5: Set Speed Up"/>
+    <requirements xsi:type="core:Requirement" id="_Tuw6gEVREeWKyZVE6R_y8A" name="REQ-6: Set Speed Down"/>
+    <requirements xsi:type="core:Requirement" id="_Xu02oEVREeWKyZVE6R_y8A" name="REQ-7: Pause "/>
+    <requirements xsi:type="core:Requirement" id="_cjk_EEVREeWKyZVE6R_y8A" name="REQ-8: Resume "/>
+    <requirements xsi:type="core:Requirement" id="_oy0jIEVREeWKyZVE6R_y8A" name="REQ-9: Request Platooning"/>
+    <requirements xsi:type="core:Requirement" id="_vkN-cEVREeWKyZVE6R_y8A" name="REQ-10: Accept Platooning"/>
+    <requirements xsi:type="core:Requirement" id="_ybrTwEVREeWKyZVE6R_y8A" name="REQ-11: Reject Platooning"/>
+  </requirementGroups>
+  <requirementGroups id="_UtWxEEVOEeWKyZVE6R_y8A" name="System Requirements">
+    <requirements xsi:type="core:Requirement" id="_7VbisEVREeWKyZVE6R_y8A" name="SR-1: cruise control functionality can be at one of three modes: CC, ACC, and CACC"/>
+    <requirements xsi:type="core:Requirement" id="_9HxDAEVREeWKyZVE6R_y8A" name="SR-2: Verify vehicle's current speed and desired speed before starting the system"/>
+    <requirements xsi:type="core:Requirement" id="_-sasoEVREeWKyZVE6R_y8A" name="SR-3: System should notify driver in case of critical fail happens"/>
+  </requirementGroups>
+  <requirementGroups id="_XI8CsEVOEeWKyZVE6R_y8A" name="Traffic">
+    <requirements xsi:type="core:Requirement" id="_DgsbUEVPEeWKyZVE6R_y8A" name="T-1: Send weather information to Vehicle controller" stakeHolders="#_cH86YEVOEeWKyZVE6R_y8A"/>
+    <requirements xsi:type="core:Requirement" id="_WybqYEVSEeWKyZVE6R_y8A" name="T-2: System should respect the road speed limite" stakeHolders="#_i7E0AEVOEeWKyZVE6R_y8A"/>
+    <requirements xsi:type="core:Requirement" id="_bTpy0EVSEeWKyZVE6R_y8A" name="T-3: Vehicle may get interception status information from traffic infrastructure" stakeHolders="#_lGF6EEVOEeWKyZVE6R_y8A"/>
+  </requirementGroups>
+  <requirementGroups id="_FWL9UEVPEeWKyZVE6R_y8A" name="Constraints">
+    <requirements xsi:type="core:Requirement" id="_G6XF0EVPEeWKyZVE6R_y8A" name="C-1: The car lenght is known"/>
+    <requirements xsi:type="core:Requirement" id="_MuBtkEVPEeWKyZVE6R_y8A" name="C-2: The distance allowed between two cars is known"/>
+    <requirements xsi:type="core:Requirement" id="_UnPskEVPEeWKyZVE6R_y8A" name="C-3: If a subsystem necessary for the current level fails at any time, the system will shut down"/>
+    <requirements xsi:type="core:Requirement" id="_YfTjQEVPEeWKyZVE6R_y8A" name="C-4: In order to be at CACC level, at least two vehicles must be platooning"/>
+  </requirementGroups>
+</core:Specification>

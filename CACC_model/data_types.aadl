@@ -45,8 +45,7 @@ public
 	
 	data implementation cmd.impl
 		subcomponents
-			value:    data distance;
-			
+			value:    data distance;		
 		end cmd.impl;
 
 	
