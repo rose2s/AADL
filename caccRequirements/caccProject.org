@@ -1,0 +1,12 @@
+organization caccProject
+stakeholder rs [
+	full name "Roselane Santana Silva"
+	title "Researcher"
+	role "System modeler"
+]
+stakeholder jdm [
+	full name "John D. McGregor"
+	title "Visiting Scientist"
+	email "johnmc@cs.clemson.edu"
+	role "System modeler"
+]

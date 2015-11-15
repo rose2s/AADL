@@ -3,8 +3,9 @@ public
 	with sensor;
 	with controller;
 	with data_types;
-	with platform_implementation;
-	
+	with error_library;
+	with Base_Types;
+	--with Timing_Properties;
 	abstract cacc 
 	end cacc;
 	
@@ -114,17 +115,31 @@ public
 	-- device user_interface declaration
 	abstract user_interface
 		features
-			logger_out: 		out data port;
-			cmd_con_in:			in event data port;
-			UI_ports: 			feature group UI_ports;		
+			logger_out: 		out data port data_types::file;
+			cmd_con_in:			in event data port data_types::cmd;
+			UI_ports: 			feature group UI_ports;
 		flows
 			logger_source:  		flow source logger_out; 
 			UI_source:  			flow source UI_ports; 
 			cmd_sink:				flow sink cmd_con_in;
-			 
 		properties
 			latency => 1 ms .. 3 ms applies to logger_source, UI_source;
-		
+	 
+		annex AGREE {**
+			--assume "system is on": cmd_con_in = "on"; 
+			guarantee "speed will only increase/decrease if turned on": 
+			UI_ports.turn_on_off = false or (UI_ports.turn_on_off = true and UI_ports.set_speed_up = true) 
+ 										 or (UI_ports.turn_on_off = true and UI_ports.set_speed_down = true); 
+ 			guarantee "level will only change if turned on": 
+			UI_ports.turn_on_off = false or (UI_ports.turn_on_off = true and UI_ports.set_level_up   = true)
+										 or (UI_ports.turn_on_off = true and UI_ports.set_level_down = true); 
+ 			guarantee "gap will only set if turned on": 
+			UI_ports.turn_on_off = false or (UI_ports.turn_on_off = true and UI_ports.set_gap = true);	
+ 			guarantee "pause will only set if turned on": 
+			UI_ports.turn_on_off = false or (UI_ports.turn_on_off = true and UI_ports.set_pause = true);	
+ 		
+ 		**};
+ 			
 	end user_interface;
 	
 	abstract implementation user_interface.impl
@@ -133,14 +148,13 @@ public
 	-- FEATURE GROUP
 	feature group UI_ports
 		features
-			turn_on_off: 		out event port;
-			set_speed_up: 		out event port;
-			set_speed_down: 	out event port;
-			set_level_up: 		out event port;
-			set_level_down:		out event port;
-			resume_pause: 		out event port;
-			set_gap: 			out event port;
-			
+			turn_on_off: 	out event data port Base_Types::boolean;
+			set_speed_up: 	out event data port Base_Types::boolean;
+			set_speed_down: out event data port Base_Types::boolean;
+			set_level_up: 	out event data port Base_Types::boolean;
+			set_level_down:	out event data port Base_Types::boolean;
+			set_pause: 		out event data port Base_Types::boolean;
+			set_gap: 	    out event data port Base_Types::boolean;		
 	end UI_ports;
 	
 	-- process interface controller declaration
@@ -148,8 +162,8 @@ public
 		features
 			UI_ports: 			feature group UI_ports;
 			UI_inverse_ports:	feature group inverse of UI_ports;
-			cmd_con_in:   		in event data port;
-			cmd_con_out: 		out event data port;
+			cmd_con_in:   		in event data port data_types::cmd;
+			cmd_con_out: 		out event data port data_types::cmd;
 
 		flows
 			cmd_path0:			flow path UI_inverse_ports->UI_ports;
@@ -165,7 +179,7 @@ public
 		-- device logger declaration
 	abstract logger
 		features
-			file: in data port;		
+			file: in data port data_types::file;		
 		flows 
 			logger_sink : flow sink file;
 		properties
@@ -199,7 +213,7 @@ public
 	-- ACTUATOR: throttle
 	abstract  throttle_actuator
 		features
-			cmd: 	   in data port;
+			cmd: 	   in data port data_types::cmd;
 			failed:  out event port;
 		flows
 			throttle_sink: flow sink cmd;
@@ -227,8 +241,7 @@ public
 			end component;
 		**};
 
-		--flows
-		--	throttle_sink: flow sink throttle_setting; 
+		
 	end throttle_actuator;
 	
 	abstract implementation throttle_actuator.impl
@@ -237,7 +250,7 @@ public
 	-- ACTUATOR: break
 	abstract  brake
 		features
-			cmd:            in data port;
+			cmd:            in data port data_types::cmd;
 			brake_hardware: in event port;
 			brake_failed:  out event data port;
 		flows

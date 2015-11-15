@@ -1,7 +1,7 @@
 package sensor
 public
-	with data_types;
 	with EMV2;
+	with data_types;
 	
 	abstract generic_sensor
 		features
@@ -35,7 +35,7 @@ public
 		features
 			sensor_data_in: 	in data port;
 			sensor_data_out: 	out data port;
-			logger_out: 		out data port;
+			logger_out: 		out data port data_types::file;
 			
 		flows
 			sensor_path :   	   flow path sensor_data_in->sensor_data_out;

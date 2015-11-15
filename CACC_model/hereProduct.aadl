@@ -1,0 +1,9 @@
+--adds the HERE sensor interface to a sensor in a product
+package hereProduct
+public
+--	with HereDataModel;
+	
+	system hereSensor --extends HereDataModel::Here_Sensor_Interface
+		
+	end hereSensor;
+end hereProduct;

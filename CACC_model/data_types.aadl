@@ -3,30 +3,44 @@ public
 	with data_model, base_types;
 	
 	data speed
+		--0 to 200 mph
+		properties
+			data_model::Data_Representation=>float;
 	end speed;
 	
-	data location
-	end location;
 	
 	data distance extends base_types::unsigned_32
 	end distance;
 	
-	data gps
-	end gps;
+	data longitude
+		--(-180 to 180 range of longitude values)
+		properties
+			data_model::Data_Representation=>float;
+			Data_Size=>16 bits;
+	end longitude;
 	
-	data implementation gps.impl
+	data latitude
+		--(-90 to 90 range of longitude values)
+		properties
+			data_model::Data_Representation=>float;
+			Data_Size=>16 bits;
+	end latitude;
+	
+	data gpsPosition 
+	end gpsPosition;
+	
+	data implementation gpsPosition.impl
 		subcomponents
-			speed:     data speed;
-			distance:  data distance;
-			location:  data location;
-		end gps.impl;
+			y:  data longitude;
+			x:  data latitude;
+	end gpsPosition.impl;
 	
-	data level_type
+	data autonomy_level_type
 		properties
 			data_model::data_representation => enum;
 			data_model::enumerators => ("cc", "acc", "cacc");
 			Data_Size => 3 bits;
-	end level_type;
+	end autonomy_level_type;
 
 	data radar_info
 	end radar_info;
@@ -41,20 +55,24 @@ public
 	end picture;
 	
 	data cmd
+		properties
+			data_model::data_representation => enum;
+			data_model::enumerators => ("increase", "decrease", "off", "on");
+			Data_Size => 4 bits;
 	end cmd;
 	
-	data implementation cmd.impl
-		subcomponents
-			value:    data distance;		
-		end cmd.impl;
-
 	
-	data logger
-	end logger;
+	data file
+		properties
+			data_model::data_representation => String;
+	end file;
 	
 	data boolean
 		properties
 			data_size => 1 bits;
 	end boolean;
+	
+	
+	
 	
 end data_types;

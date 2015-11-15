@@ -1,0 +1,10 @@
+registry caccmethods [
+	method computeSpeed : "read speed sensors"  [
+		// compute self  
+		// path "org.osate.assure.analysis.PlatformResourceBudgets.sumSubBudgets"
+		 //validation weightCoverage [
+		 	//method hasWeightBudgets
+		 //]
+	]
+
+]

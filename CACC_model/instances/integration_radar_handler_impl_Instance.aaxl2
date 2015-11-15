@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="radar_handler_impl_Instance" category="system">
+  <featureInstance name="sensor_data_in" srcFlowSpec="//@flowSpecification.0 //@flowSpecification.1">
+    <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+  </featureInstance>
+  <featureInstance name="sensor_data_out" dstFlowSpec="//@flowSpecification.0" direction="out">
+    <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+  </featureInstance>
+  <featureInstance name="logger_out" dstFlowSpec="//@flowSpecification.1 //@flowSpecification.2" direction="out">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="3">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+  </featureInstance>
+  <flowSpecification name="sensor_path" source="//@featureInstance.0" destination="//@featureInstance.1">
+    <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
+  </flowSpecification>
+  <flowSpecification name="sensor_logger_path" source="//@featureInstance.0" destination="//@featureInstance.2">
+    <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.1"/>
+  </flowSpecification>
+  <flowSpecification name="logger_source" destination="//@featureInstance.2">
+    <flowSpecification href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.2"/>
+  </flowSpecification>
+  <systemOperationMode name="No Modes"/>
+  <componentImplementation xsi:type="aadl2:SystemImplementation" href="../integration.aadl#integration.radar_handler.impl"/>
+</instance:SystemInstance>

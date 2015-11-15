@@ -1,0 +1,8 @@
+library caccVActivities for integration::cacc_rt.devices[ 
+	activity r1VA1 for caccreqs.speed_R1 
+	[ 
+		description "this is one activity for verifying the speed_R1 requirement"
+		method caccmethods.computeSpeed
+	]
+	
+	]

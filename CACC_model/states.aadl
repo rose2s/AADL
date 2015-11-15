@@ -10,9 +10,16 @@ public
              gapLimit: 		 in data port Base_Types::Integer;
              gap: 			 in data port Base_Types::Integer;
              radio: 		 in data port;
+        	
    end controller_interface;
   
-   system controller extends controller_interface           
+   system controller extends controller_interface 
+            annex agree  {**
+       			guarantee "targetSpeed>=0" : targetSpeed >= 0 ;
+				guarantee "actualSpeed>=0" : actualSpeed >= 0 ;
+				guarantee "gapLimit>0" : gapLimit > 0 ;
+				guarantee "gap>0" : gap > 0 ;
+		**};
    end controller;
   
    system implementation controller.impl
@@ -27,7 +34,13 @@ public
                                           
    end controller.impl;
   
-   system cc extends controller_interface              
+   system cc extends controller_interface
+   	annex agree  {**
+       			guarantee "targetSpeed>=0" : targetSpeed>=0 ;
+				guarantee "actualSpeed>=0" : actualSpeed>=0 ;
+				guarantee "gapLimit>0" : gapLimit>0 ;
+				guarantee "gap>0" : gap>0 ;
+		**};              
    end cc;
   
    system implementation cc.impl
@@ -43,7 +56,13 @@ public
    **};              
    end cc.impl;
   
-   system acc extends controller_interface            
+   system acc extends controller_interface    
+   	annex agree  {**
+       			guarantee "targetSpeed>=0" : targetSpeed>=0 ;
+				guarantee "actualSpeed>=0" : actualSpeed>=0 ;
+				guarantee "gapLimit>0" : gapLimit>0 ;
+				guarantee "gap>0" : gap>0 ;
+		**};        
    end acc;
   
    system implementation acc.impl  
@@ -63,7 +82,13 @@ public
 	   **};            
    end acc.impl;
   
-   system cacc extends controller_interface              
+   system cacc extends controller_interface 
+   	annex agree  {**
+       			guarantee "targetSpeed>=0" : targetSpeed>=0 ;
+				guarantee "actualSpeed>=0" : actualSpeed>=0 ;
+				guarantee "gapLimit>0" : gapLimit>0 ;
+				guarantee "gap>0" : gap>0 ;
+		**};             
    end cacc;
   
    system implementation cacc.impl 

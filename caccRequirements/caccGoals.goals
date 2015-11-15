@@ -1,0 +1,41 @@
+stakeholder goals caccGoals for integration::cacc_rt [
+	
+	description "Stakeholder goals for the family of cruise controls" 
+	
+	goal g1 : "Safety" [
+		description "The system shall only change modes when it is safe to do so."
+		rationale "This is a control system, whose failure affects lives. "
+		stakeholder caccProject.rs
+	]
+	
+	goal g2 : "Security" [
+		description "The system shall change modes only on driver command."
+		rationale "The driver might not anticipate mode changes outside their control. "
+		stakeholder caccProject.jdm
+	]
+	
+	goal g3 : "Complete" [
+		description "The system shall allow cc, acc, and cacc modes"
+		rationale "This system is responsible for providing 3 modes of operation"
+		stakeholder caccProject.jdm
+	]
+	
+	goal g4 : "Correct" [
+		description "The system shall enter a higher mode only if it has the data to do so"
+		rationale "This system cannot violate the state machine"
+		stakeholder caccProject.rs
+	]
+	
+	goal g5 : "Privacy" [
+		description "The system shall prevent access to mode status by anyone other than the driver."
+		rationale "Passengers or bystanders should not be able to access safety-related information."
+		stakeholder caccProject.rs
+	]
+	
+	goal g6 : "Maintainability" [
+		description "The system shall enter a higher mode only if it has the data to do so"
+		rationale "This system cannot violate the state machine"
+		stakeholder caccProject.rs
+	]
+
+]

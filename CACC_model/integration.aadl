@@ -6,12 +6,15 @@ public
 	with controller;
 	with data_types;
 	with platform;
-	with Base_Types;
 	with EMV2;
-	with platform_implementation;
 	with states;
+	with Cheddar_Properties;
 	
 	system cacc_rt extends abstracts::cacc
+		features
+			sensed_speed:in data port data_types::speed;
+			sensed_speed_limit:in data port data_types::speed; 
+			sensed_position:in data port data_types::gpsPosition;
 	end cacc_rt;
 	
 	system implementation cacc_rt.devices extends abstracts::cacc.devices
@@ -28,8 +31,10 @@ public
 			gps_handler:			refined to system  gps_handler.impl;
 			user_interface:	 		refined to device  user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
 			logger: 		 		refined to system  logger_rt.impl;
-			this_bus:				bus 	  			platform::generic_bus;  
-			this_processor:			processor 			platform::generic_cpu;
+			this_bus:				bus 	  			platform::generic_bus;
+			first_virtual_bus:		virtual bus 		platform::sensor_data_bus; 
+			second_virtual_bus:		virtual bus 		platform::sensor_data_bus;  
+			this_processor:			processor 			platform::generic_cpu{Cheddar_Properties::Scheduling_Protocol=>(RMS);};
 			this_memory: 			memory 	  			platform::Ram.impl;
 			throttle_actuator:		refined to device throttle_actuator_rt.impl {Classifier_Substitution_Rule => Type_Extension;};
 			brake_actuator:		    refined to device brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
@@ -59,6 +64,7 @@ public
 			-- bound code/data within the controller to memory
 			Actual_Memory_Binding => (reference(this_memory)) applies to vehicle_controller;
 			
+
 		annex EMV2 {**
 			use types error_library; 
 			use behavior error_library::stateMachine;
@@ -71,7 +77,9 @@ public
 					[radar_handler.Operational and camera_handler.Operational and gps_handler.Operational and speedometer_handler.Operational]-> Operational;
 			end composite;	
 			**};
-		
+		--annex Resolute{** 	
+--prove caccResolutions::reachComponent(integration::logger_rt.impl)
+		--	**};
 	end cacc_rt.devices;
 	 
 	-- radar
@@ -143,7 +151,7 @@ public
 	-- gps
 	device gps_rt extends sensor::generic_sensor
 		features
-			sensor_data_out: refined to out data port data_types::gps;
+			sensor_data_out: refined to out data port data_types::gpsPosition;
 			BA: requires bus access platform::generic_bus;
 		annex EMV2 {**
 			use types error_library;	
@@ -217,7 +225,7 @@ public
 		features
 			sensor1_data_in: refined to in data port data_types::radar_info;
 			sensor2_data_in: refined to in data port data_types::picture;
-			sensor3_data_in: refined to in data port data_types::gps;
+			sensor3_data_in: refined to in data port data_types::gpsPosition;
 			sensor4_data_in: refined to in data port data_types::speed;
 			brake_failed:    refined to in event data port;
 			
@@ -234,9 +242,9 @@ public
 			thread_radar:      refined to thread read_radar.impl {Classifier_Substitution_Rule => Type_Extension;}; -- in modes (acc,cacc, cc, failure);
 			thread_camera:     refined to thread read_camera.impl {Classifier_Substitution_Rule => Type_Extension;};
 			thread_gps:    	   refined to thread read_gps.impl    {Classifier_Substitution_Rule => Type_Extension;};
-			thread_speedometer: refined to thread read_speedometer.impl    {Classifier_Substitution_Rule => Type_Extension;};
-			thread_controller: refined to thread thread_controller.impl;
-			control_modal: 	   refined to thread control_modal.impl  {Classifier_Substitution_Rule => Type_Extension;};
+			thread_speedometer: refined to thread read_speedometer.impl  {Classifier_Substitution_Rule => Type_Extension;};
+			thread_controller: refined to thread thread_controller.impl  {Classifier_Substitution_Rule => Type_Extension;};
+			control_modal: 	   refined to thread control_modal.impl  	 {Classifier_Substitution_Rule => Type_Extension;};
 		connections
 			-- connect process w/ threads A,B,C
 			radar_thread_conn: 			port sensor1_data_in->thread_radar.sensor_in;
@@ -346,7 +354,7 @@ public
 	
 	thread read_gps extends controller::read_sensor
 		features
-			sensor_in:   refined to in data port data_types::gps;
+			sensor_in:   refined to in data port data_types::gpsPosition;
 	end read_gps;
 	
 	thread implementation read_gps.impl
@@ -361,6 +369,8 @@ public
 	end read_speedometer.impl;
 	
 	thread thread_controller extends controller::thread_controller
+	features
+		data_in:   refined to in data port;
 	end thread_controller;
 	
 	thread implementation thread_controller.impl 
@@ -382,7 +392,15 @@ public
 	
 	-- device throttle
 	device throttle_actuator_rt extends abstracts::throttle_actuator
-		end throttle_actuator_rt;
+		features
+			cmdThrottle: 	   in data port data_types::cmd;
+			failed: refined to  out event port;
+	--	annex AGREE{**
+	--		assume "cmdThrottle must be positive":cmdThrottle::value > 0;
+	--		guarantee "":;
+			
+	--		**}
+	end throttle_actuator_rt;
 	
 	device implementation throttle_actuator_rt.impl extends abstracts::throttle_actuator.impl
 	end throttle_actuator_rt.impl;

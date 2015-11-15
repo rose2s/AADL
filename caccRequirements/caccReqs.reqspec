@@ -1,0 +1,61 @@
+system requirements caccreqs:"CACC"
+for integration::cacc_rt  
+[
+	val MaximumSpeed = 120.0 mph
+	val CurrentSpeed = cacc_rt.sensed_speed
+	val SpeedLimit = cacc_rt.sensed_speed_limit
+	
+	requirement speed_R1 : "throttle cannot exceed the maximum setting" 
+	[
+		description this " shall have a maximum reading that is less than or equal to maximum setting"
+		rationale "The system might exceed the maximum safe speed even if the throttle can not physically be moved any further"
+		mitigates "Invalid data sent by the speedometer"
+		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
+		see goal caccGoalsDoc.g1 
+	] 
+	
+	requirement speed_R2
+	[
+		description this "The vehicle speed will be less than or equal to the last sensed speed limit"
+		value predicate CurrentSpeed < SpeedLimit
+		mitigates "an inconsistency between the throttle setting and the last sensed speed limit"
+		see goal caccGoalsDoc.g1
+	]
+	
+	requirement gap_R1 
+	[
+		description this "the gap between cars will be greater than or equal to the gap limit in CACC mode"
+		value predicate  gap > gapLimit	
+		mitigates "getting too close to lead vehicle"
+		see document goal caccGoalsDoc.g1
+	]
+	
+	
+	requirement gap_R2 
+	[
+		description this "the gap between cars will be greater than or equal to the gap limit in ACC mode"
+		
+		value predicate gap => gapLimit
+		see document goal caccGoalsDoc.g1
+	]
+	
+	requirement gap_R3
+	[
+		description this "when the gap between cars is less than the gap limit in ACC mode the brake is activated"
+		see document goal caccGoalsDoc.g1
+	]
+	
+	requirement gps_R1
+	[
+		description this ""
+		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement security_R1
+	[
+		description this "only users who have an account can login to the infotainment system of the vehicle"
+		see document goal caccGoalsDoc.g2
+	]
+		
+	
+]

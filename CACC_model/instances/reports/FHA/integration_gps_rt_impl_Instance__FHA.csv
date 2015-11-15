@@ -1,0 +1,2 @@
+Component, Error, Hazard Description, Crossreference, Functional Failure, Operational Phases, Environment, Severity, Likelihood,Verification, Comment
+Root system, "InvalidValue on sensor_data_out", "Invalid data sent by the gps", , "InvalidValue", , , , , , , 

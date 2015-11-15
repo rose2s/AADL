@@ -1,0 +1,7 @@
+plan CACCPlan for integration::cacc_rt[
+	//description:"This is the verification plan for the Integration classifier"
+		//claim ClaimR1 for caccreqs.speed_R1 [
+		//assert all [caccVActivities.r1VA1]
+		//argument "verified using Resolute"
+	//]
+]

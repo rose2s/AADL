@@ -3,6 +3,10 @@ public
 	with data_types;
 	with abstracts;
 	with Base_Types;
+	--with Time_Units;
+	
+	
+	
 	
 	abstract generic_controller
 		features
@@ -10,16 +14,16 @@ public
 			sensor2_data_in:    in data port;
 			sensor3_data_in:    in data port;
 			sensor4_data_in:    in data port;
-			feedback: 			out event data port;
+			feedback: 			out event data port data_types::cmd;
 			UI_inverse_ports:	feature group inverse of abstracts::UI_ports;
-			current_speed:	    out data port;
+			current_speed:	    out data port data_types::speed;
 			brake_failed:       in event data port;	
 			
 			driverSelection: out data port Base_Types::Integer;
             targetSpeed:     out data port Base_Types::Integer;
             actualSpeed:     out data port Base_Types::Integer;
             gap:             out data port Base_Types::Integer;
-            
+        
 		flows
 			UI_sink    		  : flow sink UI_inverse_ports;
 			controller_path0a : flow path sensor1_data_in -> current_speed;		-- path to actuators
@@ -30,6 +34,7 @@ public
 			controller_path1b : flow path sensor2_data_in -> feedback;
 			controller_path2b : flow path sensor3_data_in -> feedback;
 			controller_path3b : flow path sensor4_data_in -> feedback;
+		
 		properties
 			latency => 5 ms .. 7 ms applies to controller_path0a, controller_path1a, controller_path2a, controller_path3a ;
 			latency => 3 ms .. 4 ms applies to controller_path0b, controller_path1b, controller_path2b, controller_path3b ;
@@ -96,8 +101,8 @@ public
 	
 	abstract thread_controller
 		features
-			data_in:    in data port        data_types::cmd;
-			data_out: 	out event data port data_types::cmd;
+			data_in:    in data port;
+			data_out: 	out event data port;
 		flows
 			controller_thread_path0 : flow path data_in -> data_out;		
 		properties
@@ -112,9 +117,9 @@ public
 	
 	abstract control_modal
 		features
-			speed_limit: in data port;
+			speed_limit: in data port Base_Types::Integer;
 			sensor_data: in event port;
-			feedback: 	out event data port;
+			feedback: 	out event data port data_types::cmd;
 			UI_ports: 	feature group inverse of abstracts::UI_ports;
 			cmd: 		out data port;
 	flows
@@ -131,7 +136,7 @@ public
 	
 	abstract preferences
 		features
-			speed_limit: out data port;
+			speed_limit: out data port Base_Types::Integer;
 	end preferences;
 	
 	abstract implementation preferences.impl
@@ -139,8 +144,8 @@ public
 	
 	abstract speed_controller
 		features
-			current_speed: in data port;
-			cmd: out data port;
+			current_speed: in data port data_types::speed;
+			cmd: out data port data_types::cmd;
 		flows
 			speed_path: flow path current_speed->cmd;
 	end speed_controller;

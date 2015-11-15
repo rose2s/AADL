@@ -1,9 +1,11 @@
 package platform
 public
-		
+		with Cheddar_Properties;
 	processor generic_cpu
 		features
-			net : requires bus access generic_bus;
+			net : requires bus access platform::generic_bus;
+		properties
+			Cheddar_Properties::Scheduling_Protocol=>(RMS);
 		annex EMV2 {**
 			use types error_library; 
 			use behavior error_library::stateMachine;
@@ -39,13 +41,41 @@ public
 	
 			end component;	
 		**};
+		
 		end generic_cpu;
+		
+		processor implementation generic_cpu.impl
+		properties
+			Cheddar_Properties::Scheduling_Protocol=>(RMS);
+		end generic_cpu.impl;
+				
+		processor ecu extends generic_cpu
+				
+		end ecu;
+		
+		processor implementation ecu.impl
+			subcomponents
+				vp1: virtual processor sensor_processor;
+				vp2: virtual processor sensor_processor;
+		end ecu.impl;
+		
+		--jdm added virtual processor
+		virtual processor sensor_processor
+		end sensor_processor;
+		
+		virtual processor implementation sensor_processor.impl
+		end sensor_processor.impl;
 	
 	bus generic_bus  
 		properties
 			Latency => 1 Ms .. 1 Ms;               
 	end generic_bus;
-	
+--jdm added virtual buses
+	virtual bus sensor_data_bus  
+		properties
+			Latency => 1 Ms .. 6 Ms;               
+	end sensor_data_bus;
+
 	-- memory declaration
 	memory Ram
 		features

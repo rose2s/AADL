@@ -1,6 +1,6 @@
-package CACC_model::error_library
+package error_library
 public
-annex EMV2 {**
+annex EMV2 {**                                             
 	error types
 		NoPower   				: type;
 		ValueError				: type;
@@ -29,9 +29,6 @@ annex EMV2 {**
 		steady 			  : initial state;
 		accelerating      : state;
 		braking			  : state;
-	end behavior;
-	
+	end behavior;**};
 
-**};
-
-end CACC_model::error_library;
+end error_library;

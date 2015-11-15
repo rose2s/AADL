@@ -1,0 +1,8 @@
+constants caccConstants[
+	//computed Comp value predicate ActualBudget <= MaxBudget
+	val MaximumSpeed = 120.0 mph
+	val CurrentSpeed = cacc_rt.sensed_speed
+	val SpeedLimit = cacc_rt.sensed_speed_limit
+	//val VehicleLocation =
+	val SensedLocation = cacc_rt.SensedPosition
+]

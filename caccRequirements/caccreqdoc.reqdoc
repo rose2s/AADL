@@ -1,0 +1,65 @@
+document caccReqDoc: "Document containing CACCC requirements"[
+	description ""
+		section first: "Requirements for CACC"[
+		
+		requirement speed_R1 : "throttle cannot exceed the maximum setting" for integration::cacc_rt
+		[
+		description this " shall have a maximum reading that is less than or equal to maximum setting"
+		rationale "The system might exceed the maximum safe speed even if the throttle can not physically be moved any further"
+		mitigates "Invalid data sent by the speedometer"
+		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
+		see document goal caccGoalsDoc.g1 
+		
+		] 
+			
+	requirement speed_R2 for integration::cacc_rt
+	[
+		description this "The vehicle speed will be less than or equal to the last sensed speed limit"
+		rationale "The speed limit is the legal speed"
+		value predicate CurrentSpeed <= SpeedLimit
+		mitigates "an inconsistency between the throttle setting and the last sensed speed limit"
+		see document goal caccGoalsDoc.g1
+	]
+	
+	requirement gap_R1 for integration::cacc_rt 
+	[
+		description this "the gap between cars will be greater than or equal to the gap limit in CACC mode"
+		rationale "This prevents the vehicle from hitting the leading vehicle"
+		value predicate  gap >= gapLimit	
+		mitigates "getting too close to lead vehicle"
+		see document goal caccGoalsDoc.g1
+	]
+	
+	
+	requirement gap_R2 for integration::cacc_rt
+	[
+		description this "the gap between cars will be greater than or equal to the gap limit in ACC mode"
+		rationale "This prevents the vehicle from hitting the leading vehicle"
+		value predicate gap => gapLimit
+		mitigates "getting too close to lead vehicle in ACC  mode"
+		see document goal caccGoalsDoc.g1
+	]
+	
+	requirement gap_R3 for integration::cacc_rt
+	[
+		description this "when the gap between cars is less than the gap limit in ACC mode the brake is activated"
+		rationale "the car must be slowed to prevent a rear end crash"
+		see document goal caccGoalsDoc.g1
+	]
+	
+	requirement gps_R1 for integration::cacc_rt
+	[
+		description this "the location must be within 3ft of the actual location"
+		rationale "parking and other actions require precision"
+		value predicate 
+		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement security_R1 for integration::cacc_rt
+	[
+		description this "only users who have an account can login to the vehicle"
+		rationale "controls are locked until a registered user is logged in"
+		see document goal caccGoalsDoc.g2
+	]
+	]
+]
