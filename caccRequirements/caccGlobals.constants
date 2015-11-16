@@ -3,6 +3,9 @@ constants caccConstants[
 	val MaximumSpeed = 120.0 mph
 	val CurrentSpeed = cacc_rt.sensed_speed
 	val SpeedLimit = cacc_rt.sensed_speed_limit
-	//val VehicleLocation =
+	val VehicleLocation = cacc_rt.CurrentPosition
 	val SensedLocation = cacc_rt.SensedPosition
+	val SensingScope = cacc_rt.SensingScope
+	val SensingFrequency = 10 ms
+	val BroadcastingFrequency = 5.9GHz
 ]

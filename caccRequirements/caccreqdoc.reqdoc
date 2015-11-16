@@ -44,14 +44,52 @@ document caccReqDoc: "Document containing CACCC requirements"[
 	[
 		description this "when the gap between cars is less than the gap limit in ACC mode the brake is activated"
 		rationale "the car must be slowed to prevent a rear end crash"
+		mitigates "the risk of a rear end collision"
 		see document goal caccGoalsDoc.g1
 	]
 	
 	requirement gps_R1 for integration::cacc_rt
 	[
-		description this "the location must be within 3ft of the actual location"
+		description this "the vehicle location must be within 3ft of the actual location"
 		rationale "parking and other actions require precision"
-		value predicate 
+		mitigates "the risk of automated driving"
+		value predicate diff(SensedPosition,CurrentPosition)<=3
+		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement gps_R2 for integration::cacc_rt
+	[
+		description this "the vehicle speed must be within 2 mph of actual"
+		rationale "several calculations depend on the speed"
+		mitigates "the risk of automated driving"
+		//value predicate diff(SensedPosition,CurrentPosition)<=3
+		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement gps_R3 for integration::cacc_rt
+	[
+		description this "the vehicle direction must be within 3 degrees of actual"
+		rationale "several calculations depend on the direction"
+		mitigates "the risk of automated driving"
+		//value predicate diff(SensedPosition,CurrentPosition)<=3
+		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement gps_R4 for integration::cacc_rt
+	[
+		description this "the GPS provides location of curves with lead time"
+		rationale "supplements the radar"
+		mitigates "the risk of automated driving"
+		//value predicate diff(SensedPosition,CurrentPosition)<=3
+		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement gps_R5 for integration::cacc_rt
+	[
+		description this "the GPS handles all separation issues if the radar fails"
+		rationale "redundant backup for the radar"
+		mitigates "the risk of automated driving"
+		//value predicate diff(SensedPosition,CurrentPosition)<=3
 		see document goal caccGoalsDoc.g2
 	]
 	
@@ -59,7 +97,84 @@ document caccReqDoc: "Document containing CACCC requirements"[
 	[
 		description this "only users who have an account can login to the vehicle"
 		rationale "controls are locked until a registered user is logged in"
+		mitigates "the risk of illegal access"
 		see document goal caccGoalsDoc.g2
 	]
 	]
+	section second: "Sensing Requirements for CACC"
+	[
+		requirement sensing_R1 for integration::cacc_rt
+	[
+		description this "the vehicle shall sense obstacles"
+		rationale "the vehicle must be aware of obstacles within a specified scope"
+		mitigates "the risk of hitting obstacles"
+		see document goal caccGoalsDoc.g7
+	]
+		requirement sensing_R2 for integration::cacc_rt
+	[
+		description this "the vehicle shall sense obstacles within " //SensingScope "feet"
+		rationale "the vehicle must be aware of obstacles within the specified scope"
+		mitigates "the risk of hitting obstacles"
+		value predicate SensingScope
+		see document goal caccGoalsDoc.g7
+	]
+	requirement sensing_R3 for integration::cacc_rt
+	[
+		description this "the vehicle shall sense every" //SensingFrequency
+		rationale "the vehicle must periodically send a sensing pulse"
+		mitigates "the risk of getting too close before an obstacle is recognized"
+		value predicate SensingFrequency
+		see document goal caccGoalsDoc.g7
+	]
+	]
+	section third: "General Requirements for CACC"
+	[
+		requirement general_R1 for integration::cacc_rt
+	[
+		description this "the vehicle shall support a heart beat"
+		rationale "the vehicle must periodically check that all subsystems are healthy"
+		mitigates "the risk of being late invoking error handling"
+		value predicate SensingFrequency
+		see document goal caccGoalsDoc.g7
+	]
+	requirement general_R2 for integration::cacc_rt
+	[
+		description this "The system will apply the vehicle’s brakes to a force that does not exceed 2Gs "
+		rationale "the driver must remain healthy"
+		mitigates "the risk of harm to passengers"
+		see document goal caccGoalsDoc.g7
+	]
+	
+	requirement general_R3 for integration::cacc_rt
+	[
+		description this "The system will give its ID to requesting trailing vehicles on demand."
+		rationale "the vehicle must collaborate when platooning"
+		mitigates "the risk of providing information to incorrect recipients"
+		see document goal caccGoalsDoc.g7
+	]
+	]
+	section fourth: "Radio Requirements for CACC"
+	[
+		requirement radio_R1 for integration::cacc_rt
+	[
+		description this "the vehicle shall broadcast periodically"
+		rationale "the vehicle must periodically inform surrounding vehicles of its status"
+		mitigates "the risk of collision"
+		value predicate SensingFrequency
+		see document goal caccGoalsDoc.g7
+	]
+	]
+	section fifth: "Electronic Traction Control Requirements for CACC"
+	[
+		requirement ETC_R1 for integration::cacc_rt
+	[
+		description this "the ETC periodically updates several parameters to maintain stability"
+		rationale "the ETC uses data about vehicle speed, steering direction, and wheel rotation speed"
+		mitigates "the risk of loss of control"
+		//value predicate SensingFrequency
+		see document goal caccGoalsDoc.g7
+	]
+	]
+	
 ]
+
