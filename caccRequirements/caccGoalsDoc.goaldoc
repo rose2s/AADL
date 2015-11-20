@@ -36,6 +36,12 @@ document caccGoalsDoc: "System Requirements for the CACC Family" [
 		stakeholder caccProject.rs
 		]
 		
+		goal g7 : "Sense" [
+		description "The system shall sense speed and distance of external objects"
+		rationale "This system must know about potential obstacles"
+		stakeholder caccProject.rs
+		]
+		
 	]
 	issues "Is it possible to be consistent?"
 ]

@@ -1,14 +1,26 @@
-document caccReqDoc: "Document containing CACCC requirements"[
+document caccReqDoc: "Document containing CACCC requirements"
+[
 	description ""
+	
 		section first: "Requirements for CACC"[
 		
-		requirement speed_R1 : "throttle cannot exceed the maximum setting" for integration::cacc_rt
+		requirement speed_R1 : "throttle cannot exceed the maximum setting" for integration::cacc_rt.devices
 		[
 		description this " shall have a maximum reading that is less than or equal to maximum setting"
 		rationale "The system might exceed the maximum safe speed even if the throttle can not physically be moved any further"
 		mitigates "Invalid data sent by the speedometer"
 		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
 		see document goal caccGoalsDoc.g1 
+		
+		//uncertainty [
+		//	volatility  
+			//costImpact 1.5
+			//scheduleImpact 1.2
+			//familiarity 0.9
+			//timeCriticality 0.95
+			//riskIndex 0.8
+			//maturityIndex 0.9
+			//]
 		
 		] 
 			
@@ -59,7 +71,7 @@ document caccReqDoc: "Document containing CACCC requirements"[
 	
 	requirement gps_R2 for integration::cacc_rt
 	[
-		description this "the vehicle speed must be within 2 mph of actual"
+		description this "the sensed vehicle speed must be within 2 mph of actual"
 		rationale "several calculations depend on the speed"
 		mitigates "the risk of automated driving"
 		//value predicate diff(SensedPosition,CurrentPosition)<=3
@@ -68,7 +80,7 @@ document caccReqDoc: "Document containing CACCC requirements"[
 	
 	requirement gps_R3 for integration::cacc_rt
 	[
-		description this "the vehicle direction must be within 3 degrees of actual"
+		description this "the sensed vehicle direction must be within 3 degrees of actual"
 		rationale "several calculations depend on the direction"
 		mitigates "the risk of automated driving"
 		//value predicate diff(SensedPosition,CurrentPosition)<=3

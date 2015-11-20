@@ -1,9 +1,11 @@
 system requirements caccreqs:"CACC"
-for integration::cacc_rt  
+for integration::cacc_rt.devices
+use constants caccConstants  
 [
 	val MaximumSpeed = 120.0 mph
 	val CurrentSpeed = cacc_rt.sensed_speed
 	val SpeedLimit = cacc_rt.sensed_speed_limit
+	
 	
 	requirement speed_R1 : "throttle cannot exceed the maximum setting" 
 	[
@@ -11,7 +13,8 @@ for integration::cacc_rt
 		rationale "The system might exceed the maximum safe speed even if the throttle can not physically be moved any further"
 		mitigates "Invalid data sent by the speedometer"
 		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
-		see goal caccGoalsDoc.g1 
+		see goal caccGoalsDoc.g1
+		category cacc 
 	] 
 	
 	requirement speed_R2

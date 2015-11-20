@@ -1,4 +1,6 @@
-stakeholder goals caccGoals for integration::cacc_rt [
+stakeholder goals caccGoals for integration::cacc_rt 
+use constants caccConstants
+[
 	
 	description "Stakeholder goals for the family of cruise controls" 
 	
