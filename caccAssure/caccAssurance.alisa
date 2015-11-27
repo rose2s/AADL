@@ -1,8 +1,10 @@
-alisa ccacAssure
+//alisa ccacAssure
 assurance plan caccIntegration for integration::cacc_rt.devices
 [
-	claim ClaimR1 for caccreqs.speed_R1
-	[
+	
+	
+	//claim ClaimR1 for caccreqs.speed_R1
+	//[
 	//tbdcount 1
 	//	verification r1VA1 for caccVActivities.r1VA1
 	//	[
@@ -10,5 +12,5 @@ assurance plan caccIntegration for integration::cacc_rt.devices
 	//		resultstate tbd
 	//		tbdcount 1
 	//	]
-	]
+	//]
 ]
