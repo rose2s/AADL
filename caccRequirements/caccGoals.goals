@@ -39,5 +39,11 @@ use constants caccConstants
 		rationale "This system cannot violate the state machine"
 		stakeholder caccProject.rs
 	]
+	
+	goal g7 : "Sense" [
+		description "The system shall sense speed and distance of external objects"
+		rationale "This system must know about potential obstacles"
+		stakeholder caccProject.rs
+		]
 
 ]

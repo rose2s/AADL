@@ -1,7 +1,33 @@
-plan CACCPlan for integration::cacc_rt[
-	//description:"This is the verification plan for the Integration classifier"
-		//claim ClaimR1 for caccreqs.speed_R1 [
+verification plan CACCPlan for caccreqs[
+	description"This is the verification plan for the requirements in caccReqs"
+		claim speed_R1 [
+			assert all[]
+			activities
+			
+			rationale "This plan achieves a certification level of verification"
+		//	description "This is the claim that the speed cannot exceed max setting"
 		//assert all [caccVActivities.r1VA1]
 		//argument "verified using Resolute"
-	//]
+	]
+	claim speed_R2 [
+			activities
+	]
+	claim gps_R1 [
+			activities
+	]
+	claim security_R1 [
+			activities
+	]
+	claim gap_R1 [
+			activities
+	]
+	claim gap_R2 [
+			activities
+	]
+	claim gap_R3 [
+			activities
+	]
+	claim sense_R1[
+		activities
+	]
 ]

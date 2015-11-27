@@ -3,11 +3,14 @@ for integration::cacc_rt.devices
 use constants caccConstants  
 [
 	val MaximumSpeed = 120.0 mph
-	val CurrentSpeed = cacc_rt.sensed_speed
-	val SpeedLimit = cacc_rt.sensed_speed_limit
+	compute CurrentSpeed
+	compute SpeedLimit
+	compute gapLimit
+	compute gap
 	
 	
-	requirement speed_R1 : "throttle cannot exceed the maximum setting" 
+	
+	requirement speed_R1 : "throttle cannot exceed the maximum setting" for cacc_rt
 	[
 		description this " shall have a maximum reading that is less than or equal to maximum setting"
 		rationale "The system might exceed the maximum safe speed even if the throttle can not physically be moved any further"
@@ -37,7 +40,9 @@ use constants caccConstants
 	requirement gap_R2 
 	[
 		description this "the gap between cars will be greater than or equal to the gap limit in ACC mode"
-		
+		rationale ""
+		mitigates "Invalid data sent by the speedometer"
+		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
 		value predicate gap => gapLimit
 		see document goal caccGoalsDoc.g1
 	]
@@ -57,7 +62,20 @@ use constants caccConstants
 	requirement security_R1
 	[
 		description this "only users who have an account can login to the infotainment system of the vehicle"
+		rationale "this is one way to protect the vehicle from fradulent use"
+		mitigates "risk of fradulent control"
+		issues "how to authenticate a driver who inserts a key"
 		see document goal caccGoalsDoc.g2
+	]
+	
+	requirement sense_R1
+	[
+		description this "the sensors on the vehicle use a variety of modalities to sense a wide range of events"
+		rationale "various conditions such as fog affect the effectiveness of one type of sensor while leaving other types unaffected"
+		mitigates "Invalid data sent by one type of sensor"
+		issues "the power draw of the sensors; the weight of the sensors"
+		see document goal caccGoalsDoc.g7
+		category cc acc cacc 
 	]
 		
 	
