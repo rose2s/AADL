@@ -28,6 +28,8 @@ document caccReqDoc: "Document containing CACCC requirements"
 	[
 		description this "The vehicle speed will be less than or equal to the last sensed speed limit"
 		rationale "The speed limit is the legal speed"
+		compute CurrentSpeed
+		compute SpeedLimit
 		value predicate CurrentSpeed <= SpeedLimit
 		mitigates "an inconsistency between the throttle setting and the last sensed speed limit"
 		see document goal caccGoalsDoc.g1
@@ -37,6 +39,8 @@ document caccReqDoc: "Document containing CACCC requirements"
 	[
 		description this "the gap between cars will be greater than or equal to the gap limit in CACC mode"
 		rationale "This prevents the vehicle from hitting the leading vehicle"
+		compute gap
+		compute gapLimit
 		value predicate  gap >= gapLimit	
 		mitigates "getting too close to lead vehicle"
 		see document goal caccGoalsDoc.g1
@@ -47,6 +51,8 @@ document caccReqDoc: "Document containing CACCC requirements"
 	[
 		description this "the gap between cars will be greater than or equal to the gap limit in ACC mode"
 		rationale "This prevents the vehicle from hitting the leading vehicle"
+		compute gap
+		compute gapLimit
 		value predicate gap => gapLimit
 		mitigates "getting too close to lead vehicle in ACC  mode"
 		see document goal caccGoalsDoc.g1
@@ -65,7 +71,7 @@ document caccReqDoc: "Document containing CACCC requirements"
 		description this "the vehicle location must be within 3ft of the actual location"
 		rationale "parking and other actions require precision"
 		mitigates "the risk of automated driving"
-		value predicate diff(SensedPosition,CurrentPosition)<=3
+		//value predicate diff(SensedPosition,CurrentPosition)<=3
 		see document goal caccGoalsDoc.g2
 	]
 	
@@ -127,7 +133,7 @@ document caccReqDoc: "Document containing CACCC requirements"
 		description this "the vehicle shall sense obstacles within " //SensingScope "feet"
 		rationale "the vehicle must be aware of obstacles within the specified scope"
 		mitigates "the risk of hitting obstacles"
-		value predicate SensingScope
+	//value predicate SensingScope
 		see document goal caccGoalsDoc.g7
 	]
 	requirement sensing_R3 for integration::cacc_rt
@@ -135,7 +141,8 @@ document caccReqDoc: "Document containing CACCC requirements"
 		description this "the vehicle shall sense every" //SensingFrequency
 		rationale "the vehicle must periodically send a sensing pulse"
 		mitigates "the risk of getting too close before an obstacle is recognized"
-		value predicate SensingFrequency
+		compute SensingFrequency
+		//value predicate SensingFrequency
 		see document goal caccGoalsDoc.g7
 	]
 	]
@@ -146,7 +153,7 @@ document caccReqDoc: "Document containing CACCC requirements"
 		description this "the vehicle shall support a heart beat"
 		rationale "the vehicle must periodically check that all subsystems are healthy"
 		mitigates "the risk of being late invoking error handling"
-		value predicate SensingFrequency
+		//value predicate SensingFrequency
 		see document goal caccGoalsDoc.g7
 	]
 	requirement general_R2 for integration::cacc_rt
@@ -172,7 +179,7 @@ document caccReqDoc: "Document containing CACCC requirements"
 		description this "the vehicle shall broadcast periodically"
 		rationale "the vehicle must periodically inform surrounding vehicles of its status"
 		mitigates "the risk of collision"
-		value predicate SensingFrequency
+		//value predicate SensingFrequency
 		see document goal caccGoalsDoc.g7
 	]
 	]

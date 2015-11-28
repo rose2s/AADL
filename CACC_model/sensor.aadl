@@ -1,7 +1,27 @@
+--distance range
+--repetition rate
+--speed range
+--speed accuracy
+--data readout
+--power supply  7.5 - 16v
+--power consumption
+--weight < 100 g
+--bus interface CAN - 1MB/s supports 2.0 A and B
+--field of vision
+--vertical angle
+--horizontal angle
+--cycle time
+--lidar wave length 800 nm
+--radar 76-77 GHz  range 1--200m
+--laser range .3 -- 80 m
+--
+
+
 package sensor
 public
 	with EMV2;
 	with data_types;
+	with SEI;
 	
 	abstract generic_sensor
 		features
@@ -10,6 +30,7 @@ public
 			sensor_source : flow source sensor_data_out;  
 		properties
 			latency => 1 ms .. 3 ms applies to sensor_source;
+			SEI::PowerBudget=> 5.0W;		
 		
 		annex EMV2 {**
 			use types error_library; 

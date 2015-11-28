@@ -3,6 +3,8 @@
 	<name>CACC_model</name>
 	<comment></comment>
 	<projects>
+		<project>caccResolute</project>
+		<project>com.rockwellcollins.atc.resolute</project>
 		<project>Plugin_Resources</project>
 	</projects>
 	<buildSpec>

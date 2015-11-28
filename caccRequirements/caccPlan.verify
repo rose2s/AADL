@@ -1,7 +1,7 @@
 verification plan CACCPlan for caccreqs[
 	description"This is the verification plan for the requirements in caccReqs"
 		claim speed_R1 [
-			assert all[]
+			//assert all[]
 			activities
 			
 			rationale "This plan achieves a certification level of verification"

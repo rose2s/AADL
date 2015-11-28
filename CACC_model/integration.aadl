@@ -9,12 +9,20 @@ public
 	with EMV2;
 	with states;
 	with Cheddar_Properties;
+	with Resolute_Stdlib;
+	with SEI;
+	
+
 	
 	system cacc_rt extends abstracts::cacc
 		features
 			sensed_speed:in data port data_types::speed;
 			sensed_speed_limit:in data port data_types::speed; 
 			sensed_position:in data port data_types::gpsPosition;
+			gap:in data port;
+			gapLimit: in data port;
+			power: in data port;
+				
 	end cacc_rt;
 	
 	system implementation cacc_rt.devices extends abstracts::cacc.devices
@@ -64,7 +72,8 @@ public
 			-- bound code/data within the controller to memory
 			Actual_Memory_Binding => (reference(this_memory)) applies to vehicle_controller;
 			
-
+		
+		
 		annex EMV2 {**
 			use types error_library; 
 			use behavior error_library::stateMachine;
@@ -77,16 +86,17 @@ public
 					[radar_handler.Operational and camera_handler.Operational and gps_handler.Operational and speedometer_handler.Operational]-> Operational;
 			end composite;	
 			**};
-		--annex Resolute{** 	
---prove caccResolutions::reachComponent(integration::logger_rt.impl)
-		--	**};
+		annex Resolute{** 
+				--prove(true)
+				prove(print_aadl(this))
+			**};
 	end cacc_rt.devices;
 	 
 	-- radar
 	device radarSensor_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::radar_info;
-			BA: requires bus access platform::generic_bus;
+			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
 		
 		annex EMV2 {**
 			use types error_library;	
@@ -118,7 +128,7 @@ public
 	device cameraSensor_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::picture;
-			BA: requires bus access platform::generic_bus;
+			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
 			
 		annex EMV2 {**
 			use types Error_library; 
@@ -152,7 +162,7 @@ public
 	device gps_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::gpsPosition;
-			BA: requires bus access platform::generic_bus;
+			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
 		annex EMV2 {**
 			use types error_library;	
 				error propagations
@@ -183,7 +193,7 @@ public
 	device speedometer_rt extends sensor::generic_sensor
 		features
 			sensor_data_out: refined to out data port data_types::speed;
-			BA: requires bus access platform::generic_bus;
+			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
 		
 		annex EMV2 {**
 			use types error_library;	

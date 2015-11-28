@@ -1,9 +1,11 @@
 --adds the HERE sensor interface to a sensor in a product
+--HERE is a new map standard that expands the information provided in the map 
 package hereProduct
 public
 --	with HereDataModel;
+with sensor;
 	
-	system hereSensor --extends HereDataModel::Here_Sensor_Interface
+	system hereSensor extends sensor::generic_sensor
 		
 	end hereSensor;
 end hereProduct;

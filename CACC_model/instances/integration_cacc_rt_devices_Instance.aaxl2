@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="ASCII"?>
 <instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="cacc_rt_devices_Instance" category="system">
+  <featureInstance name="sensed_speed">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:NamedValue">
+          <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.0"/>
+  </featureInstance>
+  <featureInstance name="sensed_speed_limit">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:NamedValue">
+          <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
+  </featureInstance>
+  <featureInstance name="sensed_position">
+    <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
+  </featureInstance>
+  <featureInstance name="gap">
+    <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
+  </featureInstance>
+  <featureInstance name="gapLimit">
+    <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
+  </featureInstance>
+  <featureInstance name="power">
+    <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.5"/>
+  </featureInstance>
   <componentInstance name="this_bus" srcConnectionInstance="//@connectionInstance.0 //@connectionInstance.1 //@connectionInstance.2 //@connectionInstance.3 //@connectionInstance.4 //@connectionInstance.5 //@connectionInstance.6" category="bus">
     <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
       <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
@@ -13,7 +49,16 @@
           </maximum>
         </ownedValue>
       </ownedValue>
-      <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+      <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/SEI.aadl#SEI.PowerCapacity"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RealLiteral" value="10.0">
+          <unit href="../../../Plugin_Resources/SEI.aadl#//@ownedPropertyType.5/@ownedLiteral.1"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.1"/>
     </ownedPropertyAssociation>
     <subcomponent xsi:type="aadl2:BusSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedBusSubcomponent.0"/>
     <index>0</index>
@@ -53,7 +98,7 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0"/>
     </featureInstance>
@@ -89,22 +134,22 @@
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:IntegerLiteral" value="600">
-            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.2"/>
-          </ownedValue>
-        </ownedValue>
-        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
-      </ownedPropertyAssociation>
-      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
         <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
             <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.0"/>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.1"/>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="600">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.2"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
     </featureInstance>
@@ -130,7 +175,7 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedBusAccess.0"/>
     </featureInstance>
@@ -165,6 +210,15 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.2/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="BA" dstConnectionInstance="//@connectionInstance.3" category="busAccess" direction="in out">
@@ -189,7 +243,7 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedBusAccess.0"/>
     </featureInstance>
@@ -248,7 +302,7 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedBusAccess.0"/>
     </featureInstance>
@@ -283,7 +337,7 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.11" category="eventPort" direction="out">
+      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.11" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -293,9 +347,18 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.12" category="eventPort" direction="out">
+      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.12" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -305,9 +368,18 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.13" category="eventPort" direction="out">
+      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.13" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -317,9 +389,18 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.14" category="eventPort" direction="out">
+      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.14" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -329,9 +410,18 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.15" category="eventPort" direction="out">
+      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.15" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -341,9 +431,18 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" srcConnectionInstance="//@connectionInstance.16" category="eventPort" direction="out">
+      <featureInstance name="set_pause" srcConnectionInstance="//@connectionInstance.16" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -353,9 +452,18 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.17" category="eventPort" direction="out">
+      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.17" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -365,7 +473,16 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.6"/>
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.0"/>
     </featureInstance>
@@ -379,6 +496,15 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="cmd_con_in" dstConnectionInstance="//@connectionInstance.33" srcFlowSpec="//@componentInstance.5/@flowSpecification.2" category="eventDataPort">
@@ -390,6 +516,36 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.4/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedEventDataPort.0"/>
     </featureInstance>
@@ -415,7 +571,7 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.18/@ownedBusAccess.0"/>
     </featureInstance>
@@ -479,7 +635,79 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.5/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="cmdThrottle">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.5/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.38/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="failed" category="eventPort" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -491,7 +719,7 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.5/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedEventPort.0"/>
+      <feature xsi:type="aadl2:EventPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.38/@ownedEventPort.0"/>
     </featureInstance>
     <flowSpecification name="throttle_sink" source="//@componentInstance.6/@featureInstance.0">
       <flowSpecification href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedFlowSpecification.0"/>
@@ -518,6 +746,36 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedDeviceSubcomponent.6/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.0"/>
     </featureInstance>
@@ -565,9 +823,9 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0"/>
+      <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedBusAccess.0"/>
     </featureInstance>
     <subcomponent xsi:type="aadl2:MemorySubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedMemorySubcomponent.0"/>
     <index>0</index>
@@ -592,7 +850,16 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <featureInstance name="turn_on_off" category="eventPort">
+      <featureInstance name="turn_on_off" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -602,9 +869,27 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" category="eventPort">
+      <featureInstance name="set_speed_up" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -614,9 +899,27 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" category="eventPort">
+      <featureInstance name="set_speed_down" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -626,9 +929,27 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" category="eventPort">
+      <featureInstance name="set_level_up" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -638,9 +959,27 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" category="eventPort">
+      <featureInstance name="set_level_down" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -650,9 +989,27 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" category="eventPort">
+      <featureInstance name="set_pause" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -662,9 +1019,27 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" category="eventPort">
+      <featureInstance name="set_gap" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
           <ownedValue>
@@ -674,7 +1049,16 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.6"/>
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.0"/>
     </featureInstance>
@@ -696,6 +1080,15 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
     </featureInstance>
@@ -838,6 +1231,36 @@
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventDataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedEventDataPort.0"/>
     </featureInstance>
     <featureInstance name="sensor1_data_in" srcFlowSpec="//@componentInstance.9/@flowSpecification.1 //@componentInstance.9/@flowSpecification.5">
@@ -881,22 +1304,22 @@
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:IntegerLiteral" value="600">
-            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.2"/>
-          </ownedValue>
-        </ownedValue>
-        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
-      </ownedPropertyAssociation>
-      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
         <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
         <ownedValue>
           <ownedValue xsi:type="aadl2:NamedValue">
             <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.0"/>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.1"/>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="600">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.2"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.1"/>
     </featureInstance>
@@ -939,6 +1362,15 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.20/@ownedDataPort.3"/>
     </featureInstance>
@@ -1001,6 +1433,15 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.6"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.0"/>
       </featureInstance>
       <subcomponent xsi:type="aadl2:AbstractSubcomponent" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedAbstractSubcomponent.6"/>
@@ -1061,6 +1502,36 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
@@ -1161,6 +1632,36 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.38" srcFlowSpec="//@componentInstance.9/@componentInstance.2/@flowSpecification.0">
@@ -1183,22 +1684,22 @@
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:IntegerLiteral" value="600">
-              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.2"/>
-            </ownedValue>
-          </ownedValue>
-          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
-        </ownedPropertyAssociation>
-        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
           <ownedValue>
             <ownedValue xsi:type="aadl2:NamedValue">
               <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.0"/>
             </ownedValue>
           </ownedValue>
-          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.1"/>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="600">
+              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.2"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.26/@ownedDataPort.0"/>
       </featureInstance>
@@ -1277,6 +1778,36 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.2/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
@@ -1368,6 +1899,36 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.3/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="sensor_in" dstConnectionInstance="//@connectionInstance.40" srcFlowSpec="//@componentInstance.9/@componentInstance.4/@flowSpecification.0">
@@ -1388,6 +1949,15 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.3/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.30/@ownedDataPort.0"/>
       </featureInstance>
@@ -1439,27 +2009,6 @@
         </ownedValue>
         <propertyAssociation href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.1"/>
       </ownedPropertyAssociation>
-      <featureInstance name="data_in" dstConnectionInstance="//@componentInstance.9/@connectionInstance.1 //@componentInstance.9/@connectionInstance.2 //@componentInstance.9/@connectionInstance.3 //@componentInstance.9/@connectionInstance.4" srcFlowSpec="//@componentInstance.9/@componentInstance.5/@flowSpecification.0">
-        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:ListValue">
-              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
-            </ownedValue>
-          </ownedValue>
-          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
-        </ownedPropertyAssociation>
-        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:NamedValue">
-              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
-            </ownedValue>
-          </ownedValue>
-          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
-        </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.0"/>
-      </featureInstance>
       <featureInstance name="data_out" srcConnectionInstance="//@componentInstance.9/@connectionInstance.5" dstFlowSpec="//@componentInstance.9/@componentInstance.5/@flowSpecification.0" category="eventDataPort" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
@@ -1477,11 +2026,32 @@
               <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
             </ownedValue>
           </ownedValue>
-          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0/@ownedPropertyAssociation.0"/>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.4/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
       </featureInstance>
-      <flowSpecification name="controller_thread_path0" source="//@componentInstance.9/@componentInstance.5/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1">
+      <featureInstance name="data_in" dstConnectionInstance="//@componentInstance.9/@connectionInstance.1 //@componentInstance.9/@connectionInstance.2 //@componentInstance.9/@connectionInstance.3 //@componentInstance.9/@connectionInstance.4" srcFlowSpec="//@componentInstance.9/@componentInstance.5/@flowSpecification.0">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#//@ownedProperty.2/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.4/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.32/@ownedDataPort.0"/>
+      </featureInstance>
+      <flowSpecification name="controller_thread_path0" source="//@componentInstance.9/@componentInstance.5/@featureInstance.1" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
           <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
           <ownedValue>
@@ -1539,7 +2109,16 @@
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.26" category="eventPort">
+        <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.26" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1549,9 +2128,27 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
         </featureInstance>
-        <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.27" category="eventPort">
+        <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.27" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1561,9 +2158,27 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.1"/>
         </featureInstance>
-        <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.28" category="eventPort">
+        <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.28" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1573,9 +2188,27 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.2"/>
         </featureInstance>
-        <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.29" category="eventPort">
+        <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.29" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1585,9 +2218,27 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.3"/>
         </featureInstance>
-        <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.30" category="eventPort">
+        <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.30" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1597,9 +2248,27 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.4"/>
         </featureInstance>
-        <featureInstance name="resume_pause" dstConnectionInstance="//@connectionInstance.31" category="eventPort">
+        <featureInstance name="set_pause" dstConnectionInstance="//@connectionInstance.31" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1609,9 +2278,27 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.5"/>
         </featureInstance>
-        <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.32" category="eventPort">
+        <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.32" category="eventDataPort">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Memory_Binding"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.8"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+          </ownedPropertyAssociation>
           <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
             <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Modeling_Properties.aadl#Modeling_Properties.Classifier_Substitution_Rule"/>
             <ownedValue>
@@ -1621,7 +2308,16 @@
             </ownedValue>
             <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
           </ownedPropertyAssociation>
-          <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.6"/>
         </featureInstance>
         <feature xsi:type="aadl2:FeatureGroup" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.0"/>
       </featureInstance>
@@ -1643,6 +2339,15 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.6"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
       </featureInstance>
@@ -1697,6 +2402,36 @@
             </ownedValue>
           </ownedValue>
           <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedThreadSubcomponent.5/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+              <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:ListValue">
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+              <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
         </ownedPropertyAssociation>
         <feature xsi:type="aadl2:EventDataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedEventDataPort.0"/>
       </featureInstance>
@@ -2177,28 +2912,28 @@
         <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.10"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="thread_radar.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0" source="//@componentInstance.9/@componentInstance.1/@featureInstance.0">
-      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.1/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0">
+    <connectionInstance name="thread_radar.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1" source="//@componentInstance.9/@componentInstance.1/@featureInstance.0">
+      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.1/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.4"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="thread_camera.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0" source="//@componentInstance.9/@componentInstance.2/@featureInstance.0">
-      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.2/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0">
+    <connectionInstance name="thread_camera.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1" source="//@componentInstance.9/@componentInstance.2/@featureInstance.0">
+      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.2/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.5"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="thread_gps.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0" source="//@componentInstance.9/@componentInstance.3/@featureInstance.0">
-      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.3/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0">
+    <connectionInstance name="thread_gps.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1" source="//@componentInstance.9/@componentInstance.3/@featureInstance.0">
+      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.3/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.6"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="thread_speedometer.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0" source="//@componentInstance.9/@componentInstance.4/@featureInstance.0">
-      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.4/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.0">
+    <connectionInstance name="thread_speedometer.sensor_out -> thread_controller.data_in" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1" source="//@componentInstance.9/@componentInstance.4/@featureInstance.0">
+      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.4/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.5/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.7"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="thread_controller.data_out -> control_modal.sensor_data" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.6/@featureInstance.3" source="//@componentInstance.9/@componentInstance.5/@featureInstance.1">
-      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.5/@featureInstance.1" destination="//@componentInstance.9/@componentInstance.6/@featureInstance.3">
+    <connectionInstance name="thread_controller.data_out -> control_modal.sensor_data" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.6/@featureInstance.3" source="//@componentInstance.9/@componentInstance.5/@featureInstance.0">
+      <connectionReference context="//@componentInstance.9" source="//@componentInstance.9/@componentInstance.5/@featureInstance.0" destination="//@componentInstance.9/@componentInstance.6/@featureInstance.3">
         <connection xsi:type="aadl2:PortConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedPortConnection.8"/>
       </connectionReference>
     </connectionInstance>
@@ -2207,57 +2942,243 @@
   </componentInstance>
   <componentInstance name="interface_controller" category="process">
     <featureInstance name="UI_ports" dstFlowSpec="//@componentInstance.10/@flowSpecification.0" category="featureGroup" direction="in out">
-      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.26" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+      <featureInstance name="turn_on_off" srcConnectionInstance="//@connectionInstance.26" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.27" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+      <featureInstance name="set_speed_up" srcConnectionInstance="//@connectionInstance.27" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.28" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
+      <featureInstance name="set_speed_down" srcConnectionInstance="//@connectionInstance.28" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.29" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
+      <featureInstance name="set_level_up" srcConnectionInstance="//@connectionInstance.29" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.30" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
+      <featureInstance name="set_level_down" srcConnectionInstance="//@connectionInstance.30" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" srcConnectionInstance="//@connectionInstance.31" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
+      <featureInstance name="set_pause" srcConnectionInstance="//@connectionInstance.31" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.32" category="eventPort" direction="out">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
+      <featureInstance name="set_gap" srcConnectionInstance="//@connectionInstance.32" category="eventDataPort" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.6"/>
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroup.0"/>
     </featureInstance>
     <featureInstance name="UI_inverse_ports" srcFlowSpec="//@componentInstance.10/@flowSpecification.0" category="featureGroup" direction="in out">
-      <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.11" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+      <featureInstance name="turn_on_off" dstConnectionInstance="//@connectionInstance.11" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.0"/>
       </featureInstance>
-      <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.12" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+      <featureInstance name="set_speed_up" dstConnectionInstance="//@connectionInstance.12" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.1"/>
       </featureInstance>
-      <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.13" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.2"/>
+      <featureInstance name="set_speed_down" dstConnectionInstance="//@connectionInstance.13" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.2"/>
       </featureInstance>
-      <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.14" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.3"/>
+      <featureInstance name="set_level_up" dstConnectionInstance="//@connectionInstance.14" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.3"/>
       </featureInstance>
-      <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.15" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.4"/>
+      <featureInstance name="set_level_down" dstConnectionInstance="//@connectionInstance.15" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.4"/>
       </featureInstance>
-      <featureInstance name="resume_pause" dstConnectionInstance="//@connectionInstance.16" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.5"/>
+      <featureInstance name="set_pause" dstConnectionInstance="//@connectionInstance.16" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.5"/>
       </featureInstance>
-      <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.17" category="eventPort">
-        <feature xsi:type="aadl2:EventPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.6"/>
+      <featureInstance name="set_gap" dstConnectionInstance="//@connectionInstance.17" category="eventDataPort">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../../../Plugin_Resources/Base_Types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.4/@ownedEventDataPort.6"/>
       </featureInstance>
       <feature xsi:type="aadl2:FeatureGroup" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroup.1"/>
     </featureInstance>
     <featureInstance name="cmd_con_in" dstConnectionInstance="//@connectionInstance.25" srcFlowSpec="//@componentInstance.10/@flowSpecification.1" category="eventDataPort">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedEventDataPort.0"/>
     </featureInstance>
     <featureInstance name="cmd_con_out" srcConnectionInstance="//@connectionInstance.33" dstFlowSpec="//@componentInstance.10/@flowSpecification.1" category="eventDataPort" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:EventDataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.5/@ownedEventDataPort.1"/>
     </featureInstance>
     <flowSpecification name="cmd_path0" source="//@componentInstance.10/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.0">
@@ -2299,9 +3220,48 @@
   </componentInstance>
   <componentInstance name="speed_controller" category="process">
     <featureInstance name="current_speed" dstConnectionInstance="//@connectionInstance.24" srcFlowSpec="//@componentInstance.11/@flowSpecification.0">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="cmd" srcConnectionInstance="//@connectionInstance.34 //@connectionInstance.35" dstFlowSpec="//@componentInstance.11/@flowSpecification.0" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Memory_Properties.aadl#Memory_Properties.Data_Size"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.11/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Enumerators"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="increase"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="decrease"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="off"/>
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="on"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../controller.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.1"/>
     </featureInstance>
     <flowSpecification name="speed_path" source="//@componentInstance.11/@featureInstance.0" destination="//@componentInstance.11/@featureInstance.1">
@@ -2311,6 +3271,17 @@
     <index>0</index>
   </componentInstance>
   <componentInstance name="this_processor" category="processor">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/Cheddar_Properties.aadl#Cheddar_Properties.Scheduling_Protocol"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:ListValue">
+          <ownedListElement xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.7/@ownedLiteral.5"/>
+          </ownedListElement>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedProcessorSubcomponent.0/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
     <featureInstance name="net" dstConnectionInstance="//@connectionInstance.5" category="busAccess" direction="in out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
         <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
@@ -2324,7 +3295,7 @@
             </maximum>
           </ownedValue>
         </ownedValue>
-        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+        <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.0/@ownedBusAccess.0"/>
     </featureInstance>
@@ -2352,6 +3323,15 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
     </featureInstance>
@@ -2403,6 +3383,15 @@
         </ownedValue>
         <propertyAssociation href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
     </featureInstance>
     <flowSpecification name="sensor_path" source="//@componentInstance.14/@featureInstance.0" destination="//@componentInstance.14/@featureInstance.1">
@@ -2452,6 +3441,15 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
     </featureInstance>
@@ -2503,6 +3501,15 @@
         </ownedValue>
         <propertyAssociation href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../sensor.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
     </featureInstance>
     <flowSpecification name="sensor_path" source="//@componentInstance.16/@featureInstance.0" destination="//@componentInstance.16/@featureInstance.1">
@@ -2533,6 +3540,15 @@
   </componentInstance>
   <componentInstance name="logger" category="system">
     <featureInstance name="file" dstConnectionInstance="//@connectionInstance.18 //@connectionInstance.37 //@connectionInstance.39 //@connectionInstance.41 //@connectionInstance.43" srcFlowSpec="//@componentInstance.17/@flowSpecification.0">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/Data_Model.aadl#//@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../data_types.aadl#//@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:DataPort" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.0"/>
     </featureInstance>
     <flowSpecification name="logger_sink" source="//@componentInstance.17/@featureInstance.0">
@@ -2830,6 +3846,42 @@
       <mode href="../states.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedMode.2"/>
     </modeInstance>
     <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedSystemSubcomponent.5"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance name="first_virtual_bus" category="virtual bus">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="6">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <subcomponent xsi:type="aadl2:VirtualBusSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedVirtualBusSubcomponent.0"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance name="second_virtual_bus" category="virtual bus">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../../Plugin_Resources/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="6">
+            <unit href="../../../Plugin_Resources/Predeclared_Property_Sets/AADL_Project.aadl#//@ownedPropertyType.12/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <subcomponent xsi:type="aadl2:VirtualBusSubcomponent" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedVirtualBusSubcomponent.1"/>
     <index>0</index>
   </componentInstance>
   <endToEndFlow name="etef0" flowElement="//@componentInstance.1/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.13/@flowSpecification.1 //@connectionInstance.37 //@componentInstance.17/@flowSpecification.0" inSystemOperationMode="//@systemOperationMode.0 //@systemOperationMode.1 //@systemOperationMode.2 //@systemOperationMode.3 //@systemOperationMode.4 //@systemOperationMode.5 //@systemOperationMode.6 //@systemOperationMode.7 //@systemOperationMode.8 //@systemOperationMode.9 //@systemOperationMode.10 //@systemOperationMode.11 //@systemOperationMode.12 //@systemOperationMode.13 //@systemOperationMode.14">
@@ -3201,7 +4253,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="user_interface.UI_ports.resume_pause -> interface_controller.UI_inverse_ports.resume_pause" complete="true" kind="portConnection" destination="//@componentInstance.10/@featureInstance.1/@featureInstance.5" source="//@componentInstance.5/@featureInstance.0/@featureInstance.5">
+  <connectionInstance name="user_interface.UI_ports.set_pause -> interface_controller.UI_inverse_ports.set_pause" complete="true" kind="portConnection" destination="//@componentInstance.10/@featureInstance.1/@featureInstance.5" source="//@componentInstance.5/@featureInstance.0/@featureInstance.5">
     <connectionReference context="/" source="//@componentInstance.5/@featureInstance.0/@featureInstance.5" destination="//@componentInstance.10/@featureInstance.1/@featureInstance.5">
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
@@ -3300,7 +4352,7 @@
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.21/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="interface_controller.UI_ports.resume_pause -> vehicle_controller.control_modal.UI_ports.resume_pause" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.6/@featureInstance.0/@featureInstance.5" source="//@componentInstance.10/@featureInstance.0/@featureInstance.5">
+  <connectionInstance name="interface_controller.UI_ports.set_pause -> vehicle_controller.control_modal.UI_ports.set_pause" complete="true" kind="portConnection" destination="//@componentInstance.9/@componentInstance.6/@featureInstance.0/@featureInstance.5" source="//@componentInstance.10/@featureInstance.0/@featureInstance.5">
     <connectionReference context="/" source="//@componentInstance.10/@featureInstance.0/@featureInstance.5" destination="//@componentInstance.9/@featureInstance.0/@featureInstance.5">
       <connection xsi:type="aadl2:FeatureGroupConnection" href="../abstracts.aadl#//@ownedPublicSection/@ownedClassifier.1/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
