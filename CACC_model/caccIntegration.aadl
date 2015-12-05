@@ -1,4 +1,4 @@
-package integration
+package caccIntegration
 
 public
 	with abstracts;
@@ -9,22 +9,16 @@ public
 	with EMV2;
 	with states;
 	with Cheddar_Properties;
-	with Resolute_Stdlib;
+	with caccResoluteLibrary;
 	with SEI;
+	with devices;
 	
-	annex Resolute{**
-			SystemWideReq1() <= ** "All threads have a period" ** 
- 				forall (t: thread). HasPeriod(t)
- 
- 			HasPeriod(t : thread) <= ** "Thread " t " has a period" ** 
- 				has_property(t,Timing_Properties::Period)
-	**};
 	
 	system cacc_rt extends abstracts::cacc
 		features
 			sensed_speed:in data port data_types::speed;
 			sensed_speed_limit:in data port data_types::speed; 
-			sensed_position:in data port data_types::gpsPosition;
+			sensed_position:in data port data_types::gps_Position;
 			gap:in data port;
 			gapLimit: in data port;
 			power: in data port;
@@ -36,23 +30,23 @@ public
 		subcomponents
 			vehicle_controller: 	refined to process control_rt.impl   	  {Classifier_Substitution_Rule => Type_Extension;};
 			interface_controller:	refined to process interface_controller_rt.impl;
-			radar_sensor:		 	refined to device  radarSensor_rt.impl    {Classifier_Substitution_Rule => Type_Extension;};
-			radar_handler:			refined to system  radar_handler.impl;
-			camera_sensor:			refined to device  cameraSensor_rt.impl   {Classifier_Substitution_Rule => Type_Extension;};
-			camera_handler:			refined to system  camera_handler.impl;
-			speedometer:		 	refined to device  speedometer_rt.impl 	  {Classifier_Substitution_Rule => Type_Extension;};
-			speedometer_handler:	refined to system  speedometer_handler.impl;
-			gps:		 		 	refined to device  gps_rt.impl 		   	  {Classifier_Substitution_Rule => Type_Extension;};
-			gps_handler:			refined to system  gps_handler.impl;
-			user_interface:	 		refined to device  user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
+			radar_sensor:		 	refined to device  devices::radarSensor_rt.impl    {Classifier_Substitution_Rule => Type_Extension;};
+			radar_handler:			refined to system  devices::radar_handler.impl;
+			camera_sensor:			refined to device  devices::cameraSensor_rt.impl   {Classifier_Substitution_Rule => Type_Extension;};
+			camera_handler:			refined to system  devices::camera_handler.impl;
+			speedometer:		 	refined to device  devices::speedometer_rt.impl 	  {Classifier_Substitution_Rule => Type_Extension;};
+			speedometer_handler:	refined to system  devices::speedometer_handler.impl;
+			gps:		 		 	refined to device  devices::gps_rt.impl 		   	  {Classifier_Substitution_Rule => Type_Extension;};
+			gps_handler:			refined to system  devices::gps_handler.impl;
+			user_interface:	 		refined to device  devices::user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
 			logger: 		 		refined to system  logger_rt.impl;
 			this_bus:				bus 	  			platform::generic_bus;
 			first_virtual_bus:		virtual bus 		platform::sensor_data_bus; 
 			second_virtual_bus:		virtual bus 		platform::sensor_data_bus;  
 			this_processor:			processor 			platform::generic_cpu{Cheddar_Properties::Scheduling_Protocol=>(RMS);};
 			this_memory: 			memory 	  			platform::Ram.impl;
-			throttle_actuator:		refined to device throttle_actuator_rt.impl {Classifier_Substitution_Rule => Type_Extension;};
-			brake_actuator:		    refined to device brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
+			throttle_actuator:		refined to device devices::throttle_actuator_rt.impl {Classifier_Substitution_Rule => Type_Extension;};
+			brake_actuator:		    refined to device devices::brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
 			speed_controller:		refined to process speed_controller_rt.impl;	
 			states:					system states::controller.impl;	
 		
@@ -81,11 +75,11 @@ public
 			
 		annex Resolute{**
 				
-		--	prove(print_aadl(this))
-		prove (SystemWideReq1())
+			prove(print_aadl(this))
+			prove (SystemWideReq1())
 			
 			
-			**};
+		**};
 		
 		annex EMV2 {**
 			use types error_library; 
@@ -102,150 +96,13 @@ public
 		
 	end cacc_rt.devices;
 	 
-	-- radar
-	device radarSensor_rt extends sensor::generic_sensor
-		features
-			sensor_data_out: refined to out data port data_types::radar_info;
-			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
-		
-		annex EMV2 {**
-			use types error_library;	
-				error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-		
-			properties	
-				emv2::hazards => 
-					([	failure => "InvalidValue";
-						description => "Invalid distance sent by the radar";
-					])
-					applies to sensor_data_out.invalidvalue;
-		**};
-	end radarSensor_rt;
-	
-	device implementation radarSensor_rt.impl extends sensor::generic_sensor.impl
-	end radarSensor_rt.impl;
-	
-	system radar_handler extends sensor::generic_sensor_handler
-	end radar_handler;
-	
-	system implementation radar_handler.impl extends sensor::generic_sensor_handler.impl
-	end radar_handler.impl;
-	
-	-- camera
-	device cameraSensor_rt extends sensor::generic_sensor
-		features
-			sensor_data_out: refined to out data port data_types::picture;
-			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
-			
-		annex EMV2 {**
-			use types Error_library; 
-		
-			error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-			properties
-				emv2::hazards => 
-					([	failure => "InvalidValue";	
-						description => "Invalid data from the camera";
-						comment => "Would impact the detection of obstacle if the camera is not working as well";
-					])
-			applies to sensor_data_out.novalue;
-
-		**};
-	end cameraSensor_rt;
-	
-	device implementation cameraSensor_rt.impl extends sensor::generic_sensor.impl
-	end cameraSensor_rt.impl;
-	
-	system camera_handler extends sensor::generic_sensor_handler
-	end camera_handler;
-	
-	system implementation camera_handler.impl extends sensor::generic_sensor_handler.impl
-	end camera_handler.impl;
-	
-	-- gps
-	device gps_rt extends sensor::generic_sensor
-		features
-			sensor_data_out: refined to out data port data_types::gpsPosition;
-			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
-		annex EMV2 {**
-			use types error_library;	
-				error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-		
-			properties	
-				emv2::hazards => 
-					([	failure => "InvalidValue";
-						description => "Invalid data sent by the gps";
-					])
-					applies to sensor_data_out.invalidvalue;
-		**};
-	end gps_rt;
-	
-	device implementation gps_rt.impl extends sensor::generic_sensor.impl
-	end gps_rt.impl;
-	
-	system gps_handler extends sensor::generic_sensor_handler
-	end gps_handler;
-	
-	system implementation gps_handler.impl extends sensor::generic_sensor_handler.impl
-	end gps_handler.impl;
-	
-	-- speedometer
-	device speedometer_rt extends sensor::generic_sensor
-		features
-			sensor_data_out: refined to out data port data_types::speed;
-			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
-		
-		annex EMV2 {**
-			use types error_library;	
-				error propagations
-				sensor_data_out : out propagation {InvalidValue};
-			flows
-				ef0 : error source sensor_data_out{InvalidValue};
-			end propagations;
-		
-			properties	
-				emv2::hazards => 
-					([	failure => "InvalidValue";
-						description => "Invalid data sent by the speedometer";
-					])
-					applies to sensor_data_out.invalidvalue;
-		**};
-	end speedometer_rt;
-	
-	device implementation speedometer_rt.impl extends sensor::generic_sensor.impl
-	end speedometer_rt.impl;
-	
-	system speedometer_handler extends sensor::generic_sensor_handler
-	end speedometer_handler;
-	
-	system implementation speedometer_handler.impl extends sensor::generic_sensor_handler.impl
-	end speedometer_handler.impl;
-	
-	-- user interface
-	device user_interface_rt extends abstracts::user_interface
-		features
-			BA: requires bus access platform::generic_bus;
-	end user_interface_rt;
-	
-	device implementation user_interface_rt.impl extends abstracts::user_interface.impl
-	end user_interface_rt.impl;
 	
 	-- process 
 	process control_rt extends controller::generic_controller
 		features
 			sensor1_data_in: refined to in data port data_types::radar_info;
 			sensor2_data_in: refined to in data port data_types::picture;
-			sensor3_data_in: refined to in data port data_types::gpsPosition;
+			sensor3_data_in: refined to in data port data_types::gps_Position;
 			sensor4_data_in: refined to in data port data_types::speed;
 			brake_failed:    refined to in event data port;
 		
@@ -381,7 +238,7 @@ public
 	
 	thread read_gps extends controller::read_sensor
 		features
-			sensor_in:   refined to in data port data_types::gpsPosition;
+			sensor_in:   refined to in data port data_types::gps_Position;
 	end read_gps;
 	
 	thread implementation read_gps.impl
@@ -417,27 +274,6 @@ public
 	system implementation logger_rt.impl extends abstracts::logger.impl
 	end logger_rt.impl;
 	
-	-- device throttle
-	device throttle_actuator_rt extends abstracts::throttle_actuator
-		features
-			cmdThrottle: 	   in data port data_types::cmd;
-			failed: refined to  out event port;
-	--	annex AGREE{**
-	--		assume "cmdThrottle must be positive":cmdThrottle::value > 0;
-	--		guarantee "":;
-			
-	--		**}
-	end throttle_actuator_rt;
-	
-	device implementation throttle_actuator_rt.impl extends abstracts::throttle_actuator.impl
-	end throttle_actuator_rt.impl;
-	
-	-- device brake
-	device brake_rt extends abstracts::brake
-		end brake_rt;
-	
-	device implementation brake_rt.impl extends abstracts::brake.impl
-	end brake_rt.impl;
 	
 	-- process interface controller
 	process interface_controller_rt extends abstracts::interface_controller
@@ -459,4 +295,4 @@ public
       		SEI::RAMBudget => 1350.0 MByte;
 	end speed_controller_rt.impl;
 	
-end integration;
+end caccIntegration;

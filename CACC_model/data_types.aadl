@@ -12,28 +12,28 @@ public
 	data distance extends base_types::unsigned_32
 	end distance;
 	
-	data longitude
+	data gps_longitude
 		--(-180 to 180 range of longitude values)
 		properties
 			data_model::Data_Representation=>float;
 			Data_Size=>16 bits;
-	end longitude;
+	end gps_longitude;
 	
-	data latitude
+	data gps_latitude
 		--(-90 to 90 range of longitude values)
 		properties
 			data_model::Data_Representation=>float;
 			Data_Size=>16 bits;
-	end latitude;
+	end gps_latitude;
 	
-	data gpsPosition 
-	end gpsPosition;
+	data gps_Position 
+	end gps_Position;
 	
-	data implementation gpsPosition.impl
+	data implementation gps_Position.impl
 		subcomponents
-			y:  data longitude;
-			x:  data latitude;
-	end gpsPosition.impl;
+			y:  data gps_longitude;
+			x:  data gps_latitude;
+	end gps_Position.impl;
 	
 	data autonomy_level_type
 		properties

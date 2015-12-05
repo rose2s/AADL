@@ -7,5 +7,14 @@ public
 				print_set(s:{aadl})<=
 				**s**
 				true
+		
+		SystemWideReq1() <= ** "All threads have a period" ** 
+ 				forall (t: thread). HasPeriod(t)
+ 
+ 		HasPeriod(t : thread) <= ** "Thread " t " has a period" ** 
+ 				has_property(t,Timing_Properties::Period)
+		
+		
+		
 			**};
 end caccResoluteLibrary;

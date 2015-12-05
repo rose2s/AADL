@@ -1,4 +1,4 @@
-assurance case caccAssuranceCase:"" for integration::cacc_rt[
+assurance case caccAssuranceCase:"" for caccIntegration::cacc_rt[
 
 assurance plan caccAssurance: "The assurance case for the CACC implementation" 
 for integration::cacc_rt.devices [
