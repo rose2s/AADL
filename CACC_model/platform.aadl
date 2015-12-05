@@ -2,6 +2,7 @@ package platform
 public
 		with Cheddar_Properties;
 		with SEI;
+		with Bus_Properties;
 		
 	processor generic_cpu
 		features
@@ -70,15 +71,22 @@ public
 	
 	bus generic_bus  
 		properties
-			Latency => 1 Ms .. 1 Ms;      
+			Latency => 1 ms .. 1 ms;      
 			SEI::PowerCapacity=> 100.0W;     
 	end generic_bus;
+	
 --jdm added virtual buses
 	virtual bus sensor_data_bus  
 		properties
 			Latency => 1 Ms .. 6 Ms;  
 			             
 	end sensor_data_bus;
+	
+	bus CAN extends generic_bus
+	  properties
+    	Bus_Properties::Available_Bandwidth =>
+    	(20 KBytesps, 100 KBytesps, 500 KBytesps, 1 MBytesps);
+	end CAN;
 
 	-- memory declaration
 	memory Ram
