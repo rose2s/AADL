@@ -10,62 +10,112 @@ use constants caccConstants
 	
 	
 	
-	requirement speed_R1 : "throttle cannot exceed the maximum setting" for cacc_rt
+	requirement speed_R1 : "throttle cannot exceed the maximum setting" 
 	[
 		description this " shall have a maximum reading that is less than or equal to maximum setting"
-		rationale "The system might exceed the maximum safe speed even if the throttle can not physically be moved any further"
+		rationale "fly by wire may introduce an electrical error beyond the physical throttle setting"
+		value predicate CurrentSpeed < MaximumSpeed
 		mitigates "Invalid data sent by the speedometer"
-		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
-		see goal caccGoalsDoc.g1
-		category cacc 
+		issues "need to recognize that physical subsystems can present issues for a digital system"
+		see goal caccGoals.g1
+		category cc acc cacc
+		quality safety 
+		uncertainty[
+			volatility 2
+			impact 3
+		]
 	] 
 	
 	requirement speed_R2
 	[
 		description this "The vehicle speed will be less than or equal to the last sensed speed limit"
+		rationale "Reasoning about differences between the real world and the state of a controller"
 		value predicate CurrentSpeed < SpeedLimit
 		mitigates "an inconsistency between the throttle setting and the last sensed speed limit"
 		see goal caccGoalsDoc.g1
+		category acc cacc
+		quality safety
+		uncertainty[
+			volatility 2
+			impact 4
+		]
 	]
 	
 	requirement gap_R1 
 	[
 		description this "the gap between cars will be greater than or equal to the gap limit in CACC mode"
+		rationale "maintains a gap based on the driver's risk tolerance"
 		value predicate  gap > gapLimit	
 		mitigates "getting too close to lead vehicle"
-		see document goal caccGoalsDoc.g1
+		see document caccGoalsDoc.g4
+		category acc cacc
+		quality safety
+		uncertainty[
+			volatility 3
+			impact 2
+		]
 	]
 	
 	
 	requirement gap_R2 
 	[
 		description this "the gap between cars will be greater than or equal to the gap limit in ACC mode"
-		rationale ""
-		mitigates "Invalid data sent by the speedometer"
+		rationale "maintains a gap based on the driver's risk tolerance"
+		mitigates "Invalid or no data sent by the speedometer"
 		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
 		value predicate gap => gapLimit
-		see document goal caccGoalsDoc.g1
+		see document caccGoalsDoc.g4
+		category acc
+		quality safety
+		uncertainty[
+			volatility 3
+			impact 2
+		]
 	]
 	
 	requirement gap_R3
 	[
 		description this "when the gap between cars is less than the gap limit in ACC mode the brake is activated"
-		see document goal caccGoalsDoc.g1
+		rationale "creates a gap based on the driver's risk tolerance"
+		mitigates "Invalid or no data sent by the speedometer"
+		issues "sudden braking could cause loss of control"
+		value predicate gap => gapLimit
+		see document caccGoalsDoc.g4
+		category cacc
+		uncertainty[
+			volatility 3
+			impact 4
+		]
 	]
 	
 	requirement gps_R1
 	[
-		description this ""
-		see document goal caccGoalsDoc.g2
+		description this "the location given by the gps is sufficiently close to actual"
+		rationale "used to advise driver or to make autonomous driving viable"
+		mitigates "Invalid data sent by the speedometer"
+		issues ""
+		value predicate gap => gapLimit
+		see document caccGoalsDoc.g2
+		category cc acc cacc
+		uncertainty[
+			volatility 3
+			impact 2
+		]
 	]
 	
 	requirement security_R1
 	[
 		description this "only users who have an account can login to the infotainment system of the vehicle"
-		rationale "this is one way to protect the vehicle from fradulent use"
-		mitigates "risk of fradulent control"
+		rationale "this is one way to protect the vehicle from fraudulent use"
+		mitigates "risk of fraudulent control"
 		issues "how to authenticate a driver who inserts a key"
-		see document goal caccGoalsDoc.g2
+		see document caccGoalsDoc.g5
+		category cc acc cacc
+		quality security
+		uncertainty[
+			volatility 3
+			impact 4
+		]
 	]
 	
 	requirement sense_R1
@@ -74,8 +124,42 @@ use constants caccConstants
 		rationale "various conditions such as fog affect the effectiveness of one type of sensor while leaving other types unaffected"
 		mitigates "Invalid data sent by one type of sensor"
 		issues "the power draw of the sensors; the weight of the sensors"
-		see document goal caccGoalsDoc.g7
+		see document caccGoalsDoc.g7
 		category cc acc cacc 
+		quality safety
+		uncertainty[
+			volatility 3
+			impact 2
+		]
+	]
+	
+	requirement power_R1
+	[
+		description this "the power source must meet or exceed the power requirements of the peripheral devices"
+		rationale ""
+		mitigates "Missing data due to lack of power"
+		issues "the power draw of the sensors, the power draw of actuators"
+		see document caccGoalsDoc.g1
+		category cc acc cacc 
+		quality safety
+		uncertainty[
+			volatility 2
+			impact 3
+		]
+	]
+	
+		requirement ETC_R1
+	[
+		description this "the ETC periodically updates several parameters to maintain stability"
+		rationale "the ETC uses data about vehicle speed, steering direction, and wheel rotation speed"
+		mitigates "the risk of loss of control"
+		compute SensingFrequency
+		see document caccGoalsDoc.g7
+		quality safety
+		uncertainty[
+			volatility 2
+			impact 4
+		]
 	]
 		
 	

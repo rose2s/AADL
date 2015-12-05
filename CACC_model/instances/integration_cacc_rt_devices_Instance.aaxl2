@@ -54,7 +54,7 @@
     <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
       <property href="../../../Plugin_Resources/SEI.aadl#SEI.PowerCapacity"/>
       <ownedValue>
-        <ownedValue xsi:type="aadl2:RealLiteral" value="10.0">
+        <ownedValue xsi:type="aadl2:RealLiteral" value="100.0">
           <unit href="../../../Plugin_Resources/SEI.aadl#//@ownedPropertyType.5/@ownedLiteral.1"/>
         </ownedValue>
       </ownedValue>
@@ -99,6 +99,15 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/SEI.aadl#SEI.PowerBudget"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RealLiteral" value="5.0">
+            <unit href="../../../Plugin_Resources/SEI.aadl#//@ownedPropertyType.5/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.2/@ownedBusAccess.0"/>
     </featureInstance>
@@ -177,6 +186,15 @@
         </ownedValue>
         <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/SEI.aadl#SEI.PowerBudget"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RealLiteral" value="5.0">
+            <unit href="../../../Plugin_Resources/SEI.aadl#//@ownedPropertyType.5/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedBusAccess.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedBusAccess.0"/>
     </featureInstance>
     <flowSpecification name="sensor_source" destination="//@componentInstance.2/@featureInstance.0">
@@ -245,6 +263,15 @@
         </ownedValue>
         <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/SEI.aadl#SEI.PowerBudget"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RealLiteral" value="5.0">
+            <unit href="../../../Plugin_Resources/SEI.aadl#//@ownedPropertyType.5/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedBusAccess.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.14/@ownedBusAccess.0"/>
     </featureInstance>
     <flowSpecification name="sensor_source" destination="//@componentInstance.3/@featureInstance.0">
@@ -303,6 +330,15 @@
           </ownedValue>
         </ownedValue>
         <propertyAssociation href="../platform.aadl#//@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../../Plugin_Resources/SEI.aadl#SEI.PowerBudget"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RealLiteral" value="5.0">
+            <unit href="../../../Plugin_Resources/SEI.aadl#//@ownedPropertyType.5/@ownedLiteral.1"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedBusAccess.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
       <feature xsi:type="aadl2:BusAccess" href="../integration.aadl#//@ownedPublicSection/@ownedClassifier.10/@ownedBusAccess.0"/>
     </featureInstance>

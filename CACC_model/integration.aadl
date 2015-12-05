@@ -12,7 +12,13 @@ public
 	with Resolute_Stdlib;
 	with SEI;
 	
-
+	annex Resolute{**
+			SystemWideReq1() <= ** "All threads have a period" ** 
+ 				forall (t: thread). HasPeriod(t)
+ 
+ 			HasPeriod(t : thread) <= ** "Thread " t " has a period" ** 
+ 				has_property(t,Timing_Properties::Period)
+	**};
 	
 	system cacc_rt extends abstracts::cacc
 		features
@@ -22,7 +28,8 @@ public
 			gap:in data port;
 			gapLimit: in data port;
 			power: in data port;
-				
+		
+			
 	end cacc_rt;
 	
 	system implementation cacc_rt.devices extends abstracts::cacc.devices
@@ -72,7 +79,13 @@ public
 			-- bound code/data within the controller to memory
 			Actual_Memory_Binding => (reference(this_memory)) applies to vehicle_controller;
 			
-		
+		annex Resolute{**
+				
+		--	prove(print_aadl(this))
+		prove (SystemWideReq1())
+			
+			
+			**};
 		
 		annex EMV2 {**
 			use types error_library; 
@@ -86,10 +99,7 @@ public
 					[radar_handler.Operational and camera_handler.Operational and gps_handler.Operational and speedometer_handler.Operational]-> Operational;
 			end composite;	
 			**};
-		annex Resolute{** 
-				--prove(true)
-				prove(print_aadl(this))
-			**};
+		
 	end cacc_rt.devices;
 	 
 	-- radar
@@ -238,6 +248,7 @@ public
 			sensor3_data_in: refined to in data port data_types::gpsPosition;
 			sensor4_data_in: refined to in data port data_types::speed;
 			brake_failed:    refined to in event data port;
+		
 			
 			annex EMV2 {**
 			use types     error_library;
@@ -335,7 +346,10 @@ public
 			cacc -[UI_inverse_ports.turn_on_off]-> manual;
 			cacc -[brake_failed]-> failure;
 			-- cacc -[NoRadioData]-> acc;
-										
+				
+		properties
+      		SEI::MIPSBudget => 1350.0 MIPS;
+      		SEI::RAMBudget => 1350.0 MByte;						
 	end control_rt.impl;
 	
 	-- process preferences
@@ -343,6 +357,9 @@ public
 	end preferences;
 	
 	process implementation preferences.impl
+		properties
+      		SEI::MIPSBudget => 1350.0 MIPS;
+      		SEI::RAMBudget => 1350.0 MByte;
 	end preferences.impl;
 	
 	-- threads 
@@ -427,6 +444,9 @@ public
 	end interface_controller_rt;
 	
 	process implementation interface_controller_rt.impl extends abstracts::interface_controller.impl
+		properties
+      		SEI::MIPSBudget => 1350.0 MIPS;
+      		SEI::RAMBudget => 1350.0 MByte;
 	end interface_controller_rt.impl;
 	
 	-- process speed controller
@@ -434,6 +454,9 @@ public
 	end speed_controller_rt;
 	
 	process implementation speed_controller_rt.impl extends controller::speed_controller.impl
+		properties
+      		SEI::MIPSBudget => 1350.0 MIPS;
+      		SEI::RAMBudget => 1350.0 MByte;
 	end speed_controller_rt.impl;
 	
 end integration;

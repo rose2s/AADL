@@ -1,14 +1,34 @@
 verification plan CACCPlan for caccreqs[
 	description"This is the verification plan for the requirements in caccReqs"
-		claim speed_R1 [
-			//assert all[]
-			activities
+		
+		claim speed_R1:"The vehicle does not exceed maximum speed" [
+			
 			
 			rationale "This plan achieves a certification level of verification"
-		//	description "This is the claim that the speed cannot exceed max setting"
-		//assert all [caccVActivities.r1VA1]
-		//argument "verified using Resolute"
-	]
+			
+			activities
+			speed_ActTest1:"Test of speed control":
+			caccVActivities.comp()
+			compute: caccVActivities.comp()
+			property values ()
+			[
+				category cc
+				weight 2
+				timeout 5
+			]
+			
+			
+			
+			speed_ActTest2:"" :
+			caccVActivities.comp()
+			property values()[
+				category cc
+				weight 3
+				timeout 5
+			]
+			
+			assert all[speed_ActTest1,speed_ActTest2]
+	]  
 	claim speed_R2 [
 			activities
 	]
@@ -30,4 +50,14 @@ verification plan CACCPlan for caccreqs[
 	claim sense_R1[
 		activities
 	]
+	claim power_R1[
+		activities
+		//powerbudget:Plugins.ElectricPower()
+	]
+	claim ETC_R1[
+		activities
+		//powerbudget:Plugins.ElectricPower()
+	]
+	rationale "This plan covers the top level system"
+	issues "Still have syntax problems"
 ]

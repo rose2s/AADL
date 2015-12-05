@@ -71,7 +71,7 @@ public
 	bus generic_bus  
 		properties
 			Latency => 1 Ms .. 1 Ms;      
-			SEI::PowerCapacity=> 10.0W;        
+			SEI::PowerCapacity=> 100.0W;     
 	end generic_bus;
 --jdm added virtual buses
 	virtual bus sensor_data_bus  
@@ -84,6 +84,9 @@ public
 	memory Ram
 		features
 			BA: requires bus access generic_bus;
+		properties
+      		SEI::RAMCapacity => 512.0 MByte;
+      		SEI::ROMCapacity => 1024.0 MByte;
 		
 		annex EMV2 {**
 			use types error_library; 
@@ -107,6 +110,9 @@ public
 				p2     : Failed      -[]-> bindings{SoftwareFailure};
 			end component;
 		**};  
+		
+		
+		
 	end Ram;
 	
 	memory implementation Ram.impl
