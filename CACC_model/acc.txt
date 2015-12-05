@@ -1,0 +1,23 @@
+• The system may not operate correctly under the conditions listed below.
+When these conditions occur, do not use Adaptive Cruise Control.
+- The tire pressure is not correct.*1
+- The temporary spare tire is installed on any wheel.*1
+- Tires that are worn or have large variations in wear conditions are
+installed.*1
+- Tires other than those of the designated size are installed.*1
+- Flat tires have been fixed temporarily with a tire repair kit.
+- The suspension has been modified (including a genuine SUBARU suspension
+that has been modified).
+- Any object that disturbs the stereo cameras’ view is installed on the vehicle.
+- The headlights are dirty or they have snow and ice or dirt on them.
+(Objects are not correctly illuminated and are difficult to detect.)
+- The optical axes are not aligned correctly. (Objects are not correctly illuminated
+and are difficult to detect.)
+- The lights including headlights and fog lamps have been modified.
+- Vehicle operation has become compromised due to an accident or malfunction.
+- The brake system warning light is illuminated in red.
+- A heavy cargo is loaded onto or inside the vehicle.
+- The maximum number of occupants is exceeded.
+- There is something wrong with the combination meter; such as when the
+lights do not illuminate, the beeps do not sound, the display is different
+from when it is normal, etc.

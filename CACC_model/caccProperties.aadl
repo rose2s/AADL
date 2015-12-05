@@ -1,0 +1,8 @@
+property set caccProperties is
+	Velocity_Type: TYPE AADLREAL UNITS caccProperties::Velocity_Units;
+  	Velocity_Units: TYPE UNITS (mph);
+  	Frequency_Type: TYPE AADLREAL UNITS caccProperties::Frequency_Units;
+  	Frequency_Units: TYPE UNITS (GHz);
+  	Angle_Type: TYPE AADLREAL UNITS caccProperties::Angle_Units;
+  	Angle_Units: TYPE UNITS (degrees);
+end caccProperties;

@@ -1,0 +1,11 @@
+package caccResoluteLibrary
+public
+		annex Resolute{** 
+				print_aadl(a:aadl)<=
+				**a** 
+				true	
+				print_set(s:{aadl})<=
+				**s**
+				true
+			**};
+end caccResoluteLibrary;
