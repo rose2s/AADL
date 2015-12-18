@@ -41,6 +41,22 @@ use constants caccConstants
 		]
 	]
 	
+	requirement speed_R3
+	[
+		description this "The cruise control only operates between 20 mph and 85 mph"
+		rationale "Avoids low speed and high speed loss of control"
+		compute cruiseStatus
+		value predicate cruiseStatus == true => CurrentSpeed > 20 && CurrentSpeed< 85
+		mitigates "accidental engagement of cruise control"
+		see goal caccGoalsDoc.g1
+		category cc acc cacc
+		quality safety
+		uncertainty[
+			volatility 1
+			impact 4
+		]
+	]
+	
 	requirement gap_R1 
 	[
 		description this "the gap between cars will be greater than or equal to the gap limit in CACC mode"
@@ -136,7 +152,7 @@ use constants caccConstants
 	requirement power_R1
 	[
 		description this "the power source must meet or exceed the power requirements of the peripheral devices"
-		rationale ""
+		rationale "the power supply must supply sufficient power but being over sized would add unnecessary weight"
 		mitigates "Missing data due to lack of power"
 		issues "the power draw of the sensors, the power draw of actuators"
 		see document caccGoalsDoc.g1
@@ -150,7 +166,7 @@ use constants caccConstants
 	
 		requirement ETC_R1
 	[
-		description this "the ETC periodically updates several parameters to maintain stability"
+		description this "the Electronic Traction Control (ETC) periodically updates several parameters to maintain stability"
 		rationale "the ETC uses data about vehicle speed, steering direction, and wheel rotation speed"
 		mitigates "the risk of loss of control"
 		compute SensingFrequency

@@ -5,4 +5,5 @@ property set caccProperties is
   	Frequency_Units: TYPE UNITS (GHz);
   	Angle_Type: TYPE AADLREAL UNITS caccProperties::Angle_Units;
   	Angle_Units: TYPE UNITS (degrees);
+  	ccCmds: enumeration (on,off,engage) applies to (data, port, system);
 end caccProperties;

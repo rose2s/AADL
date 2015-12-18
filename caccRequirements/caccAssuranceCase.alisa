@@ -1,12 +1,12 @@
 assurance case caccAssuranceCase:"" for caccIntegration::cacc_rt[
 
 assurance plan caccAssurance: "The assurance case for the CACC implementation" 
-for integration::cacc_rt.devices [
+for caccIntegration::cacc_rt.devices [
 	assure subsystem all	
-	issues ""
+	issues "this assurance plan is related to the assurance cases "
 ]
 
-assurance plan cameraHandlerAssurance: "" for integration::camera_handler.impl[
+assurance plan cameraHandlerAssurance: "" for devices::camera_handler.impl[
 	
 ]
 

@@ -1,8 +1,13 @@
 package data_types
 public 
-	with data_model, base_types;
+	with data_model, base_types,caccProperties;
+
+
+
+	
 	
 	data speed
+		
 		--0 to 200 mph
 		properties
 			data_model::Data_Representation=>float;

@@ -1,5 +1,4 @@
-package caccIntegration
-
+package accIntegration
 public
 	with abstracts;
 	with sensor;
@@ -14,7 +13,7 @@ public
 	with devices;
 	
 	
-	system cacc_rt extends abstracts::cacc
+	system acc_rt extends abstracts::cacc
 		features
 			sensed_speed:in data port data_types::speed;
 			sensed_speed_limit:in data port data_types::speed; 
@@ -24,9 +23,9 @@ public
 			power: in data port;
 		
 			
-	end cacc_rt;
+	end acc_rt;
 	
-	system implementation cacc_rt.devices extends abstracts::cacc.devices
+	system implementation acc_rt.devices extends abstracts::cacc.devices
 		subcomponents
 			vehicle_controller: 	refined to process control_rt.impl   	  {Classifier_Substitution_Rule => Type_Extension;};
 			interface_controller:	refined to process interface_controller_rt.impl;
@@ -77,7 +76,6 @@ public
 				
 			prove(print_aadl(this))
 			prove (SystemWideReq1())
-			--prove (AllHavePowerBudgets(this.camera_sensor.BA))
 			
 			
 		**};
@@ -95,7 +93,7 @@ public
 			end composite;	
 			**};
 		
-	end cacc_rt.devices;
+	end acc_rt.devices;
 	 
 	
 	-- process 
@@ -296,4 +294,5 @@ public
       		SEI::RAMBudget => 1350.0 MByte;
 	end speed_controller_rt.impl;
 	
-end caccIntegration;
+	
+end accIntegration;

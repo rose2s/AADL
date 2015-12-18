@@ -19,7 +19,7 @@ verification plan CACCPlan for caccreqs[
 			
 			
 			
-			speed_ActTest2:"" :
+			speed_ActTest2:"Second test of speed control" :
 			caccVActivities.comp()
 			property values()[
 				category cc
@@ -30,6 +30,9 @@ verification plan CACCPlan for caccreqs[
 			assert all[speed_ActTest1,speed_ActTest2]
 	]  
 	claim speed_R2 [
+			activities
+	]
+	claim speed_R3 [
 			activities
 	]
 	claim gps_R1 [

@@ -153,4 +153,6 @@ public
 	abstract implementation speed_controller.impl
 	end speed_controller.impl;
 	
+	
+	
 end controller;

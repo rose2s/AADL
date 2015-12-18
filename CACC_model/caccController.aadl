@@ -1,0 +1,54 @@
+package caccController
+public
+	with caccProperties,Base_Types;
+	
+	
+	system caccController
+		features
+			--commands
+			cc_status:in event data port Base_Types::Integer;
+			
+			--actual measured inputs
+			sensed_speed: in data port;
+			etc_input: in data port;
+			--values from model
+			model_speed: in data port;
+			
+			--values to actuators
+			brake_pads:out data port; 
+			accelerator_position:out data port;
+			driver_audio_alert: out event data port;
+			driver_physical_alert: out event data port;
+	end caccController;
+
+	
+	system implementation caccController.impl
+		annex behavior_annex {**
+			states	
+				off:initial state;
+				on:state;
+				on_not_engaged: state;
+				on_engaged: state;
+				on_engaged_steady: state;
+				on_engaged_slowing: state;
+				on_engaged_accelerating: state;
+			transitions
+				off->[]->on;
+				on-[]->off;
+				on-[]->on_not_engaged;
+				on_not_engaged-[]->on_engaged;
+				on_engaged-[]->on_not_engaged;
+				on_not_engaged-[]->on;
+				on_engaged-[]->on_engaged_steady;
+				on_engaged_steady-[]->on_engaged_slowing;
+				on_engaged_steady-[]->on_engaged_accelerating;
+				on_engaged_accelerating-[]->on_engaged_steady;
+				on_engaged_slowing-[]->on_engaged_steady;
+		**};
+		annex EMV2{**
+			
+		**};
+		
+	end caccController.impl;
+		
+end caccController;

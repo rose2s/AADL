@@ -60,6 +60,8 @@ public
 			subcomponents
 				vp1: virtual processor sensor_processor;
 				vp2: virtual processor sensor_processor;
+			--properties
+				
 		end ecu.impl;
 		
 		--jdm added virtual processor
@@ -73,7 +75,41 @@ public
 		properties
 			Latency => 1 ms .. 1 ms;      
 			SEI::PowerCapacity=> 100.0W;     
+			SEI::BandWidthCapacity=>500000.0 bitsps;
+			Transmission_Time=>[Fixed=> 10ms..30ms;PerByte=>1us..10us;];
 	end generic_bus;
+	
+	bus implementation generic_bus.impl
+	
+	end generic_bus.impl;
+	
+	bus Alternative_A extends generic_bus  
+		properties
+			Latency => 1 ms .. 1 ms;      
+			SEI::PowerCapacity=> 100.0W;     
+			SEI::BandWidthCapacity=>500000.0 bitsps;
+			Transmission_Time=>[Fixed=> 10ms..30ms;PerByte=>1us..10us;];
+	end Alternative_A;
+	
+	bus implementation Alternative_A.impl
+	
+	end Alternative_A.impl;
+	
+	bus Alternative_B extends generic_bus  
+		properties
+			Latency => 1 ms .. 1 ms;      
+			SEI::PowerCapacity=> 100.0W;     
+			SEI::BandWidthCapacity=>500000.0 bitsps;
+			Transmission_Time=>[Fixed=> 10ms..30ms;PerByte=>1us..10us;];
+	end  Alternative_B;
+	
+	bus implementation  Alternative_B.impl
+	
+	end  Alternative_B.impl;
+	
+	
+	
+	
 	
 --jdm added virtual buses
 	virtual bus sensor_data_bus  
