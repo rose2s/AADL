@@ -1,4 +1,25 @@
 case caccAssuranceCase
 [
 	tbdcount 0
+	model caccAssuranceCase.cameraHandlerAssurance
+	for caccIntegration::cacc_rt.devices
+		[
+		tbdcount 0
+		claim caccreqs.speed_R1
+		[
+			tbdcount 0
+			verification CACCPlan.speed_ActTest1
+			[
+				executionstate todo
+				resultstate tbd
+				tbdcount 0
+			]
+			verification CACCPlan.speed_ActTest2
+			[
+				executionstate todo
+				resultstate tbd
+				tbdcount 0
+			]
+		]
+		]
 ]

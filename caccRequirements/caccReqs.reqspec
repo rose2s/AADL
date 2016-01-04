@@ -1,5 +1,5 @@
 system requirements caccreqs:"CACC"
-for integration::cacc_rt.devices
+for caccIntegration::cacc_rt.devices
 use constants caccConstants  
 [
 	val MaximumSpeed = 120.0 mph
@@ -17,7 +17,7 @@ use constants caccConstants
 		value predicate CurrentSpeed < MaximumSpeed
 		mitigates "Invalid data sent by the speedometer"
 		issues "need to recognize that physical subsystems can present issues for a digital system"
-		see goal caccGoals.g1
+		see goal caccStakeholderGoals.g1
 		category cc acc cacc
 		quality safety 
 		uncertainty[
@@ -32,7 +32,7 @@ use constants caccConstants
 		rationale "Reasoning about differences between the real world and the state of a controller"
 		value predicate CurrentSpeed < SpeedLimit
 		mitigates "an inconsistency between the throttle setting and the last sensed speed limit"
-		see goal caccGoalsDoc.g1
+		see goal caccStakeholderGoals.g1
 		category acc cacc
 		quality safety
 		uncertainty[
@@ -48,7 +48,7 @@ use constants caccConstants
 		compute cruiseStatus
 		value predicate cruiseStatus == true => CurrentSpeed > 20 && CurrentSpeed< 85
 		mitigates "accidental engagement of cruise control"
-		see goal caccGoalsDoc.g1
+		see goal caccStakeholderGoals.g1
 		category cc acc cacc
 		quality safety
 		uncertainty[
@@ -63,7 +63,7 @@ use constants caccConstants
 		rationale "maintains a gap based on the driver's risk tolerance"
 		value predicate  gap > gapLimit	
 		mitigates "getting too close to lead vehicle"
-		see document caccGoalsDoc.g4
+		see document caccStakeholderGoals.g4
 		category acc cacc
 		quality safety
 		uncertainty[
@@ -80,7 +80,7 @@ use constants caccConstants
 		mitigates "Invalid or no data sent by the speedometer"
 		issues "fly by wire may introduce an electrical error beyond the physical throttle setting"
 		value predicate gap => gapLimit
-		see document caccGoalsDoc.g4
+		see document caccStakeholderGoals.g4
 		category acc
 		quality safety
 		uncertainty[
@@ -111,7 +111,7 @@ use constants caccConstants
 		mitigates "Invalid data sent by the speedometer"
 		issues ""
 		value predicate gap => gapLimit
-		see document caccGoalsDoc.g2
+		see document caccGoals.g2
 		category cc acc cacc
 		uncertainty[
 			volatility 3
@@ -125,7 +125,7 @@ use constants caccConstants
 		rationale "this is one way to protect the vehicle from fraudulent use"
 		mitigates "risk of fraudulent control"
 		issues "how to authenticate a driver who inserts a key"
-		see document caccGoalsDoc.g5
+		see document caccStakeholderGoals.g5
 		category cc acc cacc
 		quality security
 		uncertainty[
@@ -140,7 +140,7 @@ use constants caccConstants
 		rationale "various conditions such as fog affect the effectiveness of one type of sensor while leaving other types unaffected"
 		mitigates "Invalid data sent by one type of sensor"
 		issues "the power draw of the sensors; the weight of the sensors"
-		see document caccGoalsDoc.g7
+		see document caccStakeholderGoals.g7
 		category cc acc cacc 
 		quality safety
 		uncertainty[
@@ -155,7 +155,7 @@ use constants caccConstants
 		rationale "the power supply must supply sufficient power but being over sized would add unnecessary weight"
 		mitigates "Missing data due to lack of power"
 		issues "the power draw of the sensors, the power draw of actuators"
-		see document caccGoalsDoc.g1
+		see document caccStakeholderGoals.g1
 		category cc acc cacc 
 		quality safety
 		uncertainty[
@@ -170,7 +170,7 @@ use constants caccConstants
 		rationale "the ETC uses data about vehicle speed, steering direction, and wheel rotation speed"
 		mitigates "the risk of loss of control"
 		compute SensingFrequency
-		see document caccGoalsDoc.g7
+		see document caccStakeholderGoals.g7
 		quality safety
 		uncertainty[
 			volatility 2

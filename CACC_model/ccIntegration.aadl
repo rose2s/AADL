@@ -76,6 +76,8 @@ public
 				
 			prove(print_aadl(this))
 			prove (SystemWideReq1())
+			prove (SystemWideReq2())
+			prove (SystemWideReq3())
 			
 			
 		**};

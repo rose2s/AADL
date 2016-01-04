@@ -5,7 +5,9 @@
 	<projects>
 		<project>CACC_Error_Types</project>
 		<project>CACC_model</project>
-		<project>caccVerify</project>
+		<project>caccAssure</project>
+		<project>caccRequirements</project>
+		<project>caccVerify2</project>
 		<project>Plugin_Resources</project>
 	</projects>
 	<buildSpec>

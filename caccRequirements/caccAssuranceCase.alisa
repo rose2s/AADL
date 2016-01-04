@@ -1,17 +1,19 @@
-assurance case caccAssuranceCase:"" for caccIntegration::cacc_rt[
+assurance case caccAssuranceCase:"Assurance case for the family of cruise control systems-CACC" for caccIntegration::cacc_rt[
 
 assurance plan caccAssurance: "The assurance case for the CACC implementation" 
 for caccIntegration::cacc_rt.devices [
-	assure subsystem all	
-	issues "this assurance plan is related to the assurance cases "
+	assure CACCPlan
+	issues "this assurance plan is related to the assurance case for CACC "
 ]
 
-assurance plan cameraHandlerAssurance: "" for devices::camera_handler.impl[
-	
+assurance plan cameraHandlerAssurance: "Plan for the devices subcomponent" for devices::camera_handler.impl[
+	assure CameraHandlerPlan
+	issues "a very incomplete plan just as an example"
 ]
 
-assurance task cameraLight:""[
-	category cacc 
+assurance task cameraLight:"assurance task for one element" [
+	category cc acc cacc
 	quality security safety
+		
 ] 
 ]

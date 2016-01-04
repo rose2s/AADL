@@ -1,47 +1,49 @@
-document caccGoalsDoc: "System Requirements for the CACC Family" [
-	description "The goals and requirements for the CACC family of cruise controls"
-
-	section first:"Goals" [
-		description "The initial high level goals"
-		goal g1 : "Safety" [
-		description "The system shall only change drivetrain modes when it is safe to do so."
+stakeholder goals caccStakeholderGoals for caccIntegration::cacc_rt 
+use constants caccConstants
+[
+	
+	description "Stakeholder goals for the family of cruise controls" 
+	
+	goal g1 : "Safety" [
+		description "The system shall only change modes when it is safe to do so."
 		rationale "This is a control system, whose failure affects lives. "
 		stakeholder caccProject.rs
-		]
-		goal g2 : "Security" [
-		description "The system shall only change security modes on driver command."
+	]
+	
+	goal g2 : "Security" [
+		description "The system shall change modes only on driver command."
 		rationale "The driver might not anticipate mode changes outside their control. "
 		stakeholder caccProject.jdm
-		]
-		goal g3 : "Complete" [
+	]
+	
+	goal g3 : "Complete" [
 		description "The system shall allow cc, acc, and cacc modes"
 		rationale "This system is responsible for providing 3 modes of operation"
 		stakeholder caccProject.jdm
-		]
-		goal g4 : "Correct" [
+	]
+	
+	goal g4 : "Correct" [
 		description "The system shall enter a higher mode only if it has the data to do so"
 		rationale "This system cannot violate the state machine"
 		stakeholder caccProject.rs
-		]
-		
-		goal g5 : "Privacy" [
+	]
+	
+	goal g5 : "Privacy" [
 		description "The system shall prevent access to mode status by anyone other than the driver."
 		rationale "Passengers or bystanders should not be able to access safety-related information."
 		stakeholder caccProject.rs
-		]
-		
-		goal g6 : "Maintainability" [
+	]
+	
+	goal g6 : "Maintainability" [
 		description "The system shall enter a higher mode only if it has the data to do so"
 		rationale "This system cannot violate the state machine"
 		stakeholder caccProject.rs
-		]
-		
-		goal g7 : "Sense" [
+	]
+	
+	goal g7 : "Sense" [
 		description "The system shall sense speed and distance of external objects"
 		rationale "This system must know about potential obstacles"
 		stakeholder caccProject.rs
 		]
-		
-	]
-	issues "Is it possible to be consistent?"
+
 ]

@@ -1,6 +1,8 @@
 constants caccConstants[
 	
 	val MaximumSpeed = 120.0 mph
+	val MinimumCCSpeed = 20.0 mph
+	val MaximumCCSpeed = 85.0 mph
 	val SensingFrequency = 10 ms
 	val BroadcastingFrequency = 5.9GHz
 ]

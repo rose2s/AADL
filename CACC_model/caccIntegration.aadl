@@ -77,8 +77,8 @@ public
 				
 			prove(print_aadl(this))
 			prove (SystemWideReq1())
-			--prove (AllHavePowerBudgets(this.camera_sensor.BA))
-			
+			prove (SystemWideReq2())
+			prove (SystemWideReq3())
 			
 		**};
 		

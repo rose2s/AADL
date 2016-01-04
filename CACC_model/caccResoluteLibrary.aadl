@@ -21,12 +21,19 @@ public
  		HasWeightBudget(t : component) : bool =  
  				not(has_property(t,SEI::GrossWeight)) => fail ** t " has no weight" ** 
 		
-		AllHavePowerBudgets(self : component) <= ** "Component " self " shall have a power budget" ** 
- 				HasPowerBudget(self) and forall (c: subcomponents(self)). AllHavePowerBudgets(c) 
 		
+		SystemWideReq2() <= ** "All buses have a power capacity" ** 
+ 				forall (t: bus).HasPowerCapacity(t)
  
- 		HasPowerBudget(t : component) : bool =  
- 				not(has_property(t,SEI::PowerBudget)) => fail ** t " has no power budget" ** 
+ 		HasPowerCapacity(t : bus) <= ** "Bus " t " has a power capacity" ** 
+ 				has_property(t,SEI::PowerCapacity)
+		
+		SystemWideReq3() <= ** "All sensors have a power budget" ** 
+ 				forall (t: component).HasPowerBudget(t)
+ 
+ 		HasPowerBudget(t : component) <= ** "Sensor " t " has a power budget" ** 
+ 				--is_of_type(t, sensor::generic_sensor) and has_property(t,SEI::PowerBudget)
+		has_property(t,SEI::PowerBudget)
 		
 		
 			**};
