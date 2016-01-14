@@ -6,7 +6,8 @@ stakeholder rs [
 ]
 stakeholder jdm [
 	full name "John D. McGregor"
-	title "Visiting Scientist"
-	email "johnmc@cs.clemson.edu"
+	title "Software Architecture Researcher"
+	email "johnmc@sei.cmu.edu"
 	role "System modeler"
+	supervisor rs
 ]

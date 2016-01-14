@@ -5,7 +5,7 @@ public
 	with data_types;
 	with error_library;
 	with Base_Types;
-	with Timing_Properties;
+	--with Timing_Properties;
 	
 	abstract cacc 
 	end cacc;

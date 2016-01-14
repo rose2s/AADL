@@ -1,6 +1,6 @@
 package data_types
 public 
-	with data_model, base_types,caccProperties;
+	with data_model, base_types;
 
 
 

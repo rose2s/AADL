@@ -8,12 +8,14 @@ use constants caccConstants
 		description "The system shall only change modes when it is safe to do so."
 		rationale "This is a control system, whose failure affects lives. "
 		stakeholder caccProject.rs
+		quality safety
 	]
 	
 	goal g2 : "Security" [
 		description "The system shall change modes only on driver command."
 		rationale "The driver might not anticipate mode changes outside their control. "
 		stakeholder caccProject.jdm
+		quality security
 	]
 	
 	goal g3 : "Complete" [

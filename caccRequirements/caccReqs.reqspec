@@ -3,6 +3,8 @@ for caccIntegration::cacc_rt.devices
 use constants caccConstants  
 [
 	val MaximumSpeed = 120.0 mph
+	val a=56
+	val b=78
 	compute CurrentSpeed
 	compute SpeedLimit
 	compute gapLimit

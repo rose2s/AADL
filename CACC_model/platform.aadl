@@ -2,7 +2,7 @@ package platform
 public
 		with Cheddar_Properties;
 		with SEI;
-		with Bus_Properties;
+		with Bus_Properties;with AADL_Project;
 		
 	processor generic_cpu
 		features
