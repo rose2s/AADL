@@ -3,9 +3,9 @@ for caccIntegration::cacc_rt.devices
 use constants caccConstants  
 [
 	val MaximumSpeed = 120.0 mph
-	val a=56
-	val b=78
-	compute CurrentSpeed
+	val a=96.0
+	val b=78.0
+	val CurrentSpeed = 75.0 //compute CurrentSpeed
 	compute SpeedLimit
 	compute gapLimit
 	compute gap
@@ -51,6 +51,23 @@ use constants caccConstants
 		value predicate cruiseStatus == true => CurrentSpeed > 20 && CurrentSpeed< 85
 		mitigates "accidental engagement of cruise control"
 		see goal caccStakeholderGoals.g1
+		category cc acc cacc
+		quality safety
+		uncertainty[
+			volatility 1
+			impact 4
+		]
+	]
+	
+	requirement safety_R1
+	[
+		description this "The system responds to an excessive speed"
+		rationale "Handles a high speed situation"
+		compute cruiseStatus
+		value predicate cruiseStatus == false
+		mitigates "inadvertent too high throttle setting"
+		see goal caccStakeholderGoals.g1
+		see requirement speed_R1
 		category cc acc cacc
 		quality safety
 		uncertainty[
@@ -173,6 +190,18 @@ use constants caccConstants
 		mitigates "the risk of loss of control"
 		compute SensingFrequency
 		see document caccStakeholderGoals.g7
+		quality safety
+		uncertainty[
+			volatility 2
+			impact 4
+		]
+	]
+	
+	requirement Systemwide_R1
+	[
+		description this "every thread shall be periodic"
+		rationale "In a set of products reuse of architecture elements can lead to violations of design constraints"
+		mitigates "the risk of thread contention for the processor"
 		quality safety
 		uncertainty[
 			volatility 2

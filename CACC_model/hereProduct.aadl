@@ -1,5 +1,6 @@
 --adds the HERE sensor interface to a sensor in a product
 --HERE is a new map standard that expands the information provided in the map 
+--design issue - how do we add a new sensor interface
 package hereProduct
 public
 --	with HereDataModel;

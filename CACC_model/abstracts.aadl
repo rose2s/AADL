@@ -1,3 +1,7 @@
+--This package defines a set of abstract components
+--It includes an abstract integrated product
+--abstract sensors are defined in the sensor package
+--defines a user interface
 package abstracts
 public
 	with sensor;
@@ -5,7 +9,8 @@ public
 	with data_types;
 	with error_library;
 	with Base_Types;
-	--with Timing_Properties;
+	with AADL_Project;with Communication_Properties;with Timing_Properties;
+
 	
 	abstract cacc 
 	end cacc;
@@ -146,7 +151,7 @@ public
 	abstract implementation user_interface.impl
 	end user_interface.impl;
 	
-	-- FEATURE GROUP
+	-- FEATURE GROUP for user inputs
 	feature group UI_ports
 		features
 			turn_on_off: 	out event data port Base_Types::boolean;

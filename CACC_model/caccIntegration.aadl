@@ -12,16 +12,24 @@ public
 	with caccResoluteLibrary;
 	with SEI;
 	with devices;
+	with securityProperties;
+	
+	data simple
+		properties
+			securityProperties::dataItemType=>7.0;
+			securityProperties::dataItemAccessRights=>5.0;
+	end simple;
 	
 	
 	system cacc_rt extends abstracts::cacc
 		features
-			sensed_speed:in data port data_types::speed;
-			sensed_speed_limit:in data port data_types::speed; 
-			sensed_position:in data port data_types::gps_Position;
-			gap:in data port;
-			gapLimit: in data port;
-			power: in data port;
+			sensed_speed:in data port data_types::speed{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			sensed_speed_limit:in data port data_types::speed{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;}; 
+			sensed_position:in data port data_types::gps_Position{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			gap:in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			gapLimit: in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			power: in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			throttle_position: in data port data_types::cmd{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
 		
 			
 	end cacc_rt;
@@ -49,22 +57,25 @@ public
 			brake_actuator:		    refined to device devices::brake_rt.impl 			{Classifier_Substitution_Rule => Type_Extension;};
 			speed_controller:		refined to process speed_controller_rt.impl;	
 			states:					system states::controller.impl;	
+			item:					data simple;--{securityProperties::dataItemType=>5.0;
+								--	securityProperties::dataItemAccessRights=>5.0;};
 		
 		connections
-			bus_radar: 					bus access this_bus<->radar_sensor.BA;
-			bus_camera: 				bus access this_bus<->camera_sensor.BA;
-			bus_gps: 					bus access this_bus<->gps.BA;
-			bus_speedometer: 			bus access this_bus<->speedometer.BA;
-			bus_UI: 					bus access this_bus<->user_interface.BA;
-			bus_processor:				bus access this_bus<->this_processor.net;
-			bus_memory:					bus access this_bus<->this_memory.BA;	
-			brake_cont_conn:			port brake_actuator.brake_failed->vehicle_controller.brake_failed;
+			bus_radar: 					bus access this_bus<->radar_sensor.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			bus_camera: 				bus access this_bus<->camera_sensor.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			bus_gps: 					bus access this_bus<->gps.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			bus_speedometer: 			bus access this_bus<->speedometer.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			bus_UI: 					bus access this_bus<->user_interface.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			bus_processor:				bus access this_bus<->this_processor.net{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			bus_memory:					bus access this_bus<->this_memory.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};	
+			brake_cont_conn:			port brake_actuator.brake_failed->vehicle_controller.brake_failed{securityProperties::Channel_Protocol=>4.0;securityProperties::Channel_AccessRights=>9.0;};
 			
-			controller_driverSelection: port vehicle_controller.driverSelection -> states.driverSelection;
-			controller_targetSpeed:     port vehicle_controller.targetSpeed -> states.targetSpeed;
-			controller_actualSpeed:     port vehicle_controller.actualSpeed -> states.actualSpeed;
+			controller_driverSelection: port vehicle_controller.driverSelection -> states.driverSelection{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			controller_targetSpeed:     port vehicle_controller.targetSpeed -> states.targetSpeed{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			controller_actualSpeed:     port vehicle_controller.actualSpeed -> states.actualSpeed{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
 			controller_gap:     		port vehicle_controller.gap -> states.gap;
-			
+		
+			accelerate:					port throttle_position->throttle_actuator.cmdThrottle{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
 		properties
 			-- bound thread to the processor
 			Allowed_Processor_Binding => (reference(this_processor)) applies to vehicle_controller.thread_radar;
@@ -73,13 +84,17 @@ public
 			-- bound code/data within the controller to memory
 			Actual_Memory_Binding => (reference(this_memory)) applies to vehicle_controller;
 			
+			
+			
 		annex Resolute{**
 				
 			prove(print_aadl(this))
 			prove (SystemWideReq1())
 			prove (SystemWideReq2())
 			prove (SystemWideReq3())
-			
+			prove (Security_Features(this))
+			prove (Security_Connections(this))
+			prove (Security_Data(this))
 		**};
 		
 		annex EMV2 {**

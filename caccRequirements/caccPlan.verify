@@ -1,4 +1,5 @@
 verification plan CACCPlan for caccreqs[
+
 	description"This is the verification plan for the requirements in caccReqs"
 	
 		claim speed_R1:"The vehicle does not exceed maximum speed" [
@@ -8,11 +9,9 @@ verification plan CACCPlan for caccreqs[
 			
 			activities
 			speed_ActTest1:"Test of speed control":
-			caccVerificationMethods.comp(a,b)
+			caccVerificationMethods.comp(MaximumSpeed,CurrentSpeed)
 			property values ()
 			[
-				category cc
-				phase product_specific_requirements_elicitation product_specific_safety_analysis
 				weight 2
 				timeout 5
 			]
@@ -20,20 +19,23 @@ verification plan CACCPlan for caccreqs[
 			
 			
 			speed_ActTest2:"Second test of speed control" :
-			caccVerificationMethods.comp(a, b)
+			Plugins.ElectricalPower()
 			property values()[
-				category cc
+			//	category cc
 				weight 3
 				timeout 5
-			]
+		   ]
 			
-			assert all[speed_ActTest1,speed_ActTest2]
+			assert all[speed_ActTest1, speed_ActTest2]
 	]  
 	claim speed_R2 [
 			activities
 	]
 	claim speed_R3 [
 			activities
+	]
+	claim safety_R1[
+		activities
 	]
 	claim gps_R1 [
 			activities
@@ -55,12 +57,19 @@ verification plan CACCPlan for caccreqs[
 	]
 	claim power_R1[
 		activities
-		//powerbudget:Plugins.ElectricPower()
+		powerbudget:Plugins.ElectricalPower()
+		assert all[powerbudget]
 	]
 	claim ETC_R1[
 		activities
-		//powerbudget:Plugins.ElectricPower()
+		
+	]
+	claim Systemwide_R1[
+		activities
+		enforcePeriod:"resolute constraint":
+		resoluteMethods.enforcePeriod()
+		assert all[enforcePeriod]
 	]
 	rationale "This plan covers the top level system"
-	issues "Still have syntax problems"
+	
 ]

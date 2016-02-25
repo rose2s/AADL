@@ -1,26 +1,44 @@
 case caccAssuranceCase
 [
-	tbdcount 2
+	tbdcount 0
 	model caccAssuranceCase.caccAssurancePlan
 	for caccIntegration::cacc_rt.devices
 		[
-		tbdcount 2
-		claim caccreqs.speed_R1
+		tbdcount 0
+		claim CACCPlan#speed_R1
 		[
-			tbdcount 2
-			verification CACCPlan.speed_ActTest1
+			tbdcount 0
+			verification CACCPlan#speed_R1#speed_ActTest1
 			[
 				executionstate todo
 				resultstate tbd
-				tbdcount 1
-			time 3853
+				tbdcount 0
 			]
-			verification CACCPlan.speed_ActTest2
+			verification CACCPlan#speed_R1#speed_ActTest2
 			[
 				executionstate todo
 				resultstate tbd
-				tbdcount 1
-			time 1
+				tbdcount 0
+			]
+		]
+		claim CACCPlan#power_R1
+		[
+			tbdcount 0
+			verification CACCPlan#power_R1#powerbudget
+			[
+				executionstate todo
+				resultstate tbd
+				tbdcount 0
+			]
+		]
+		claim CACCPlan#Systemwide_R1
+		[
+			tbdcount 0
+			verification CACCPlan#Systemwide_R1#enforcePeriod
+			[
+				executionstate todo
+				resultstate tbd
+				tbdcount 0
 			]
 		]
 		]

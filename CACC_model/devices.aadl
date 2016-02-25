@@ -1,3 +1,4 @@
+--This package defines a set of devices that are the actuators for the control loop and the vehicle user inputs
 package devices
 public
 	with abstracts;

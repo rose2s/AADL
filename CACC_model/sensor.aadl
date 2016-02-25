@@ -1,3 +1,5 @@
+--aspects of the domain that can be sensed
+--may eventually define sensors for each
 --distance range
 --repetition rate
 --speed range
@@ -22,6 +24,7 @@ public
 	with EMV2;
 	with data_types;
 	with SEI;
+	with AADL_Project;
 	
 	abstract generic_sensor
 		features

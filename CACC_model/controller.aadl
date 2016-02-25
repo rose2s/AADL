@@ -3,7 +3,7 @@ public
 	with data_types;
 	with abstracts;
 	with Base_Types;
-	--with Time_Units;
+	with Communication_Properties;
 	
 	
 	
@@ -36,8 +36,8 @@ public
 			controller_path3b : flow path sensor4_data_in -> feedback;
 		
 		properties
-			latency => 5 ms .. 7 ms applies to controller_path0a, controller_path1a, controller_path2a, controller_path3a ;
-			latency => 3 ms .. 4 ms applies to controller_path0b, controller_path1b, controller_path2b, controller_path3b ;
+			Latency => 5 ms .. 7 ms applies to controller_path0a, controller_path1a, controller_path2a, controller_path3a ;
+			Latency => 3 ms .. 4 ms applies to controller_path0b, controller_path1b, controller_path2b, controller_path3b ;
 				
 	end generic_controller;		
 	

@@ -1,3 +1,7 @@
+--This package defines some basic state machines for the three levels of controller.
+--it is used as the basis for doing further work.
+--After building these the "real" ones are built more compactly
+
 package states
 public
    with Base_Types;
@@ -17,8 +21,10 @@ public
             annex agree  {**
        			guarantee "targetSpeed>=0" : targetSpeed >= 0 ;
 				guarantee "actualSpeed>=0" : actualSpeed >= 0 ;
+				guarantee "actualSpeed<=targetSpeed" : actualSpeed <= targetSpeed ;
 				guarantee "gapLimit>0" : gapLimit > 0 ;
 				guarantee "gap>0" : gap > 0 ;
+				guarantee "gap<=gapLimit" : gap<=gapLimit;
 		**};
    end controller;
   
@@ -38,6 +44,7 @@ public
    	annex agree  {**
        			guarantee "targetSpeed>=0" : targetSpeed>=0 ;
 				guarantee "actualSpeed>=0" : actualSpeed>=0 ;
+				guarantee "actualSpeed<=targetSpeed" : actualSpeed<=targetSpeed ;
 				guarantee "gapLimit>0" : gapLimit>0 ;
 				guarantee "gap>0" : gap>0 ;
 		**};              
@@ -62,6 +69,7 @@ public
 				guarantee "actualSpeed>=0" : actualSpeed>=0 ;
 				guarantee "gapLimit>0" : gapLimit>0 ;
 				guarantee "gap>0" : gap>0 ;
+				guarantee "gap<=gapLimit" : gap<=gapLimit;
 		**};        
    end acc;
   
@@ -88,6 +96,7 @@ public
 				guarantee "actualSpeed>=0" : actualSpeed>=0 ;
 				guarantee "gapLimit>0" : gapLimit>0 ;
 				guarantee "gap>0" : gap>0 ;
+				guarantee "gap<=gapLimit" : gap<=gapLimit ;
 		**};             
    end cacc;
   
