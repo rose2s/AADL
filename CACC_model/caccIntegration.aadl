@@ -12,6 +12,7 @@ public
 	with caccResoluteLibrary;
 	with SEI;
 	with devices;
+	with Base_Types;
 	with securityProperties;
 	
 	data simple
@@ -31,7 +32,6 @@ public
 			power: in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
 			throttle_position: in data port data_types::cmd{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
 		
-			
 	end cacc_rt;
 	
 	system implementation cacc_rt.devices extends abstracts::cacc.devices
@@ -58,7 +58,7 @@ public
 			speed_controller:		refined to process speed_controller_rt.impl;	
 			states:					system states::controller.impl;	
 			item:					data simple;--{securityProperties::dataItemType=>5.0;
-								--	securityProperties::dataItemAccessRights=>5.0;};
+								--    securityProperties::dataItemAccessRights=>5.0;};
 		
 		connections
 			bus_radar: 					bus access this_bus<->radar_sensor.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
@@ -74,8 +74,14 @@ public
 			controller_targetSpeed:     port vehicle_controller.targetSpeed -> states.targetSpeed{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
 			controller_actualSpeed:     port vehicle_controller.actualSpeed -> states.actualSpeed{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
 			controller_gap:     		port vehicle_controller.gap -> states.gap;
+			
+			controller_gapLimited:     	port vehicle_controller.gapLimit -> states.gapLimit;
 		
 			accelerate:					port throttle_position->throttle_actuator.cmdThrottle{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
+			break: 						port sensed_speed->brake_actuator.cmdSpeed;
+			send_location: 				port sensed_position->gps.gps_position;
+			-- power ??
+			
 		properties
 			-- bound thread to the processor
 			Allowed_Processor_Binding => (reference(this_processor)) applies to vehicle_controller.thread_radar;
@@ -123,7 +129,7 @@ public
 			brake_failed:    refined to in event data port;
 		
 			
-			annex EMV2 {**
+			annex EMV2 {**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 			use types     error_library;
 			use behavior  error_library::stateMachine;
 			

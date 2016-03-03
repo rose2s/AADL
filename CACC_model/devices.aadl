@@ -22,7 +22,8 @@ public
 	-- device brake
 	device brake_rt extends abstracts::brake
 		features
-			cmdThrottle: 	   in data port data_types::cmd;
+		  --cmdThrottle:        in data port data_types::cmd;
+			cmdSpeed: 	   in data port data_types::speed;
 			failed: out event port;
 	end brake_rt;
 	
@@ -102,6 +103,7 @@ public
 	-- gps
 	device gps_rt extends sensor::generic_sensor
 		features
+			gps_position: in data port data_types::gps_Position;
 			sensor_data_out: refined to out data port data_types::gps_Position;
 			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
 			
