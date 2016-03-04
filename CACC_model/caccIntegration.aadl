@@ -24,13 +24,13 @@ public
 	
 	system cacc_rt extends abstracts::cacc
 		features
-			sensed_speed:in data port data_types::speed{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
-			sensed_speed_limit:in data port data_types::speed{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;}; 
-			sensed_position:in data port data_types::gps_Position{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
-			gap:in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
-			gapLimit: in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
-			power: in data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
-			throttle_position: in data port data_types::cmd{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			sensed_speed: out data port data_types::speed{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			sensed_speed_limit: out data port data_types::speed{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;}; 
+			sensed_position: out data port data_types::gps_Position{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			gap: out data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			gapLimit: out data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			power: out data port{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
+			throttle_position: out data port data_types::cmd{securityProperties::entryExitPointPrivileges=>5.0;securityProperties::entryExitPointAccessRights=>3.0;};
 		
 	end cacc_rt;
 	
@@ -77,10 +77,14 @@ public
 			
 			controller_gapLimited:     	port vehicle_controller.gapLimit -> states.gapLimit;
 		
-			accelerate:					port throttle_position->throttle_actuator.cmdThrottle{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
-			break: 						port sensed_speed->brake_actuator.cmdSpeed;
-			send_location: 				port sensed_position->gps.gps_position;
+			--accelerate:					port throttle_position->throttle_actuator.cmdThrottle;
+			--break: 						port sensed_speed->brake_actuator.cmdSpeed;
+			--send_location: 				port sensed_position->gps.gps_position;
+			--brakecontroler - fail
+			--brakecontrole - didnt fail
 			-- power ??
+			gps_handler_con:  port gps.sensor_data_out -> gps_handler.sensor_data_in;
+			--- sensed_spped  -> speed_handler
 			
 		properties
 			-- bound thread to the processor

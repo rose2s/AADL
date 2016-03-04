@@ -74,7 +74,7 @@ public
 		
 			error propagations
 				logger_out		: out propagation {BadValue, LateValue};
-				sensor_data_in  : in propagation  {NoValue, BadValue};
+				sensor_data_in  : in propagation  {NoValue, BadValue, InvalidValue};
 				sensor_data_out : out propagation {NoValue, BadValue,LateValue};
 			flows
 				ef0 : error source logger_out{BadValue, LateValue};

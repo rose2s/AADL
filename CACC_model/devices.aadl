@@ -131,6 +131,8 @@ public
 	end gps_rt.impl;
 	
 	system gps_handler extends sensor::generic_sensor_handler
+		features
+			sensor_data_out: refined to out data port data_types::gps_Position;
 	end gps_handler;
 	
 	system implementation gps_handler.impl extends sensor::generic_sensor_handler.impl
