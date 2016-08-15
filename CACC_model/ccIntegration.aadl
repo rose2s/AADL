@@ -8,20 +8,15 @@ public
 	with EMV2;
 	with states;
 	with Cheddar_Properties;
-	--with caccResoluteLibrary;
 	with SEI;
 	with devices;
 	
 	
 	system cc_rt extends abstracts::cacc
 		features
-			sensed_speed:in data port data_types::speed;
-			sensed_speed_limit:in data port data_types::speed; 
-			sensed_position:in data port data_types::gps_Position;
-			gap:in data port;
-			gapLimit: in data port;
-			power: in data port;
-		
+			sensed_speed:       in data port data_types::speed;
+			sensed_speed_limit: in data port data_types::speed; 
+			power:              in data port;
 			
 	end cc_rt;
 	
@@ -29,14 +24,8 @@ public
 		subcomponents
 			vehicle_controller: 	refined to process control_rt.impl   	  {Classifier_Substitution_Rule => Type_Extension;};
 			interface_controller:	refined to process interface_controller_rt.impl;
-			radar_sensor:		 	refined to device  devices::radarSensor_rt.impl    {Classifier_Substitution_Rule => Type_Extension;};
-			radar_handler:			refined to system  devices::radar_handler.impl;
-			camera_sensor:			refined to device  devices::cameraSensor_rt.impl   {Classifier_Substitution_Rule => Type_Extension;};
-			camera_handler:			refined to system  devices::camera_handler.impl;
 			speedometer:		 	refined to device  devices::speedometer_rt.impl 	  {Classifier_Substitution_Rule => Type_Extension;};
 			speedometer_handler:	refined to system  devices::speedometer_handler.impl;
-			gps:		 		 	refined to device  devices::gps_rt.impl 		   	  {Classifier_Substitution_Rule => Type_Extension;};
-			gps_handler:			refined to system  devices::gps_handler.impl;
 			user_interface:	 		refined to device  devices::user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
 			logger: 		 		refined to system  logger_rt.impl;
 			this_bus:				bus 	  			platform::generic_bus;
@@ -50,9 +39,6 @@ public
 			states:					system states::controller.impl;	
 		
 		connections
-			bus_radar: 					bus access this_bus<->radar_sensor.BA;
-			bus_camera: 				bus access this_bus<->camera_sensor.BA;
-			bus_gps: 					bus access this_bus<->gps.BA;
 			bus_speedometer: 			bus access this_bus<->speedometer.BA;
 			bus_UI: 					bus access this_bus<->user_interface.BA;
 			bus_processor:				bus access this_bus<->this_processor.net;
@@ -62,13 +48,8 @@ public
 			controller_driverSelection: port vehicle_controller.driverSelection -> states.driverSelection;
 			controller_targetSpeed:     port vehicle_controller.targetSpeed -> states.targetSpeed;
 			controller_actualSpeed:     port vehicle_controller.actualSpeed -> states.actualSpeed;
-			controller_gap:     		port vehicle_controller.gap -> states.gap;
 			
 		properties
-			-- bound thread to the processor
-			Allowed_Processor_Binding => (reference(this_processor)) applies to vehicle_controller.thread_radar;
-			Allowed_Processor_Binding => (reference(this_processor)) applies to vehicle_controller.thread_camera;
-			Allowed_Processor_Binding => (reference(this_processor)) applies to vehicle_controller.thread_gps;
 			-- bound code/data within the controller to memory
 			Actual_Memory_Binding => (reference(this_memory)) applies to vehicle_controller;
 			
@@ -88,10 +69,8 @@ public
 			
 			composite error behavior
 				states
-					[radar_handler.Failed and camera_handler.Failed and gps_handler.Failed and speedometer_handler.Failed]-> Failed;
-					[radar_handler.Failed and camera_handler.Failed]-> Failed;
-					[radar_handler.Failed or camera_handler.Failed]->  Operational;
-					[radar_handler.Operational and camera_handler.Operational and gps_handler.Operational and speedometer_handler.Operational]-> Operational;
+					[speedometer_handler.Failed]-> Failed;
+					[speedometer_handler.Operational]->  Operational;
 			end composite;	
 			**};
 		
@@ -102,48 +81,34 @@ public
 	-- process 
 	process control_rt extends controller::generic_controller
 		features
-			sensor1_data_in: refined to in data port data_types::radar_info;
-			sensor2_data_in: refined to in data port data_types::picture;
-			sensor3_data_in: refined to in data port data_types::gps_Position;
 			sensor4_data_in: refined to in data port data_types::speed;
 			brake_failed:    refined to in event data port;
 		
 			
 			annex EMV2 {**
-			use types     error_library;
-			use behavior  error_library::stateMachine;
-			
-		**};
+				use types     error_library;
+				use behavior  error_library::stateMachine;	
+		    **};
 			
 	end control_rt;
 	
 	process implementation control_rt.impl extends controller::generic_controller.threads
 		subcomponents
-			thread_radar:      refined to thread read_radar.impl {Classifier_Substitution_Rule => Type_Extension;}; -- in modes (acc,cacc, cc, failure);
-			thread_camera:     refined to thread read_camera.impl {Classifier_Substitution_Rule => Type_Extension;};
-			thread_gps:    	   refined to thread read_gps.impl    {Classifier_Substitution_Rule => Type_Extension;};
 			thread_speedometer: refined to thread read_speedometer.impl  {Classifier_Substitution_Rule => Type_Extension;};
-			thread_controller: refined to thread thread_controller.impl  {Classifier_Substitution_Rule => Type_Extension;};
-			control_modal: 	   refined to thread control_modal.impl  	 {Classifier_Substitution_Rule => Type_Extension;};
+			thread_controller:  refined to thread thread_controller.impl {Classifier_Substitution_Rule => Type_Extension;};
+			control_modal: 	    refined to thread control_modal.impl  	 {Classifier_Substitution_Rule => Type_Extension;};
 		connections
-			-- connect process w/ threads A,B,C
-			radar_thread_conn: 			port sensor1_data_in->thread_radar.sensor_in;
-			camera_thread_conn: 		port sensor2_data_in->thread_camera.sensor_in;
-			gps_thread_conn: 			port sensor3_data_in->thread_gps.sensor_in;
+			-- connect process w/ threads A
 			speedometer_thread_conn: 	port sensor4_data_in->thread_speedometer.sensor_in;
 			
-			-- connect threads A,B,C w/ thread D
-			radar_controller_conn:		port thread_radar.sensor_out->thread_controller.data_in;
-			camera_controller_conn:		port thread_camera.sensor_out->thread_controller.data_in;
-			gps_controller_conn:		port thread_gps.sensor_out->thread_controller.data_in;
-			speedometer_controller_conn:port thread_speedometer.sensor_out->thread_controller.data_in;
+			-- connect threads A w/ thread D
+		   speedometer_controller_conn: port thread_speedometer.sensor_out->thread_controller.data_in;
 			
 			-- connect thread C w/ thread D	
 			threads_conn: 				port thread_controller.data_out->control_modal.sensor_data;
 			-- connect UI w/ thread E (control_modal)
 			UI_conn:					feature group UI_inverse_ports -> control_modal.UI_ports;
 			-- connect E w/ process
-			
 			modal_proc_conn:			port control_modal.feedback->feedback;
 			preferences_conn:			port preferences.speed_limit->control_modal.speed_limit;
 			-- connect modal w/ process
@@ -153,33 +118,15 @@ public
 		flows	
 			UI_sink    		 : flow sink UI_inverse_ports -> UI_conn -> control_modal.UI_sink;
 			
-			controller_path0a : flow path sensor1_data_in -> radar_thread_conn -> thread_radar.thread_path0 -> radar_controller_conn
-				-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed; 
-	
-			controller_path1a : flow path sensor2_data_in -> camera_thread_conn -> thread_camera.thread_path0 -> camera_controller_conn
-							-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed; 
-			controller_path2a : flow path sensor3_data_in -> gps_thread_conn -> thread_gps.thread_path0 -> gps_controller_conn
-								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed;  
-			controller_path3a : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
+			controller_path1a : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
 								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed;  
 			
-			controller_path0b : flow path sensor1_data_in -> radar_thread_conn -> thread_radar.thread_path0 -> radar_controller_conn
-				-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback; 
-	
-			controller_path1b : flow path sensor2_data_in -> camera_thread_conn -> thread_camera.thread_path0 -> camera_controller_conn
-			    -> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;
-	
-			controller_path2b : flow path sensor3_data_in -> gps_thread_conn -> thread_gps.thread_path0 -> gps_controller_conn
-					-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;  
-			
-			controller_path3b : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
+			controller_path1b : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
 								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;  
 		
 		modes
 			manual: initial mode;
-			cc: mode;
-			acc: mode;
-			cacc: mode;	
+			cc: mode;	
 			failure: mode;
 			
 			-- turn on/off	
@@ -191,24 +138,10 @@ public
 			cc -[UI_inverse_ports.set_speed_up]-> cc;
 			cc -[UI_inverse_ports.set_speed_down]-> manual;
 			cc -[brake_failed]-> failure;
-			
-			-- acc
-			acc -[UI_inverse_ports.set_level_up]->  cacc;
-			acc -[UI_inverse_ports.set_level_down]-> cc;
-			acc -[UI_inverse_ports.turn_on_off]->  manual;
-			acc -[UI_inverse_ports.set_gap]->  acc;
-			acc  -[brake_failed]-> failure;
-			-- acc -[RadioData]-> cacc;
-			
-			-- cacc
-			cacc-[UI_inverse_ports.set_level_down]-> acc;
-			cacc -[UI_inverse_ports.turn_on_off]-> manual;
-			cacc -[brake_failed]-> failure;
-			-- cacc -[NoRadioData]-> acc;
 				
 		properties
       		SEI::MIPSBudget => 1350.0 MIPS;
-      		SEI::RAMBudget => 1350.0 MByte;						
+      		SEI::RAMBudget  => 1350.0 MByte;						
 	end control_rt.impl;
 	
 	-- process preferences
@@ -218,34 +151,10 @@ public
 	process implementation preferences.impl
 		properties
       		SEI::MIPSBudget => 1350.0 MIPS;
-      		SEI::RAMBudget => 1350.0 MByte;
+      		SEI::RAMBudget  => 1350.0 MByte;
 	end preferences.impl;
 	
 	-- threads 
-	thread read_radar extends controller::read_sensor
-		features
-			sensor_in:   refined to in data port data_types::radar_info;
-	end read_radar;
-	
-	thread implementation read_radar.impl
-	end read_radar.impl;
-	
-	thread read_camera extends controller::read_sensor
-		features
-			sensor_in:   refined to in data port data_types::picture;
-	end read_camera;
-	
-	thread implementation read_camera.impl
-	end read_camera.impl;
-	
-	thread read_gps extends controller::read_sensor
-		features
-			sensor_in:   refined to in data port data_types::gps_Position;
-	end read_gps;
-	
-	thread implementation read_gps.impl
-	end read_gps.impl;
-	
 	thread read_speedometer extends controller::read_sensor
 		features
 			sensor_in:   refined to in data port data_types::speed;
