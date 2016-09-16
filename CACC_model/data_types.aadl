@@ -2,12 +2,7 @@ package data_types
 public 
 	with data_model, base_types;
 
-
-
-	
-	
-	data speed
-		
+	data speed	
 		--0 to 200 mph
 		properties
 			data_model::Data_Representation=>float;
@@ -48,6 +43,9 @@ public
 	end autonomy_level_type;
 
 	data radar_info
+		properties
+			data_model::data_representation => array;
+			data_size => 600 KByte;
 	end radar_info;
 	
 	data alert
@@ -76,8 +74,5 @@ public
 		properties
 			data_size => 1 bits;
 	end boolean;
-	
-	
-	
 	
 end data_types;

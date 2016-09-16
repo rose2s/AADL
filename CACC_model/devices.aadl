@@ -59,6 +59,24 @@ public
 	
 	
 	system radar_handler extends sensor::generic_sensor_handler
+		features
+			sensor_data_in:  refined to in data port data_types::radar_info;
+			sensor_data_out: refined to out data port data_types::radar_info;
+		
+		annex EMV2 {**
+			use types error_library; 
+			use behavior error_library::stateMachine;
+		
+			error propagations
+				sensor_data_in  : in propagation  {InvalidValue};
+				sensor_data_out : out propagation {InvalidValue};
+			flows
+				ef0 : error source sensor_data_out{InvalidValue};
+				ef1 : error path sensor_data_in{InvalidValue}
+						->sensor_data_out{InvalidValue};				
+			end propagations;
+		**};
+	
 	end radar_handler;
 	
 	system implementation radar_handler.impl extends sensor::generic_sensor_handler.impl
@@ -106,9 +124,7 @@ public
 			gps_position: in data port data_types::gps_Position;
 			sensor_data_out: refined to out data port data_types::gps_Position;
 			BA: requires bus access platform::generic_bus{SEI::PowerBudget=>5.0W;};
-			
-		
-			
+					
 		annex EMV2 {**
 			use types error_library;	
 				error propagations
@@ -132,7 +148,22 @@ public
 	
 	system gps_handler extends sensor::generic_sensor_handler
 		features
+			sensor_data_in:  refined to in data port data_types::gps_Position;
 			sensor_data_out: refined to out data port data_types::gps_Position;
+		
+		annex EMV2 {**
+			use types error_library; 
+			use behavior error_library::stateMachine;
+		
+			error propagations
+				sensor_data_in  : in propagation  {InvalidValue};
+				sensor_data_out : out propagation {InvalidValue};
+			flows
+				ef0 : error source sensor_data_out{InvalidValue};
+				ef1 : error path sensor_data_in{InvalidValue}
+						->sensor_data_out{InvalidValue};				
+			end propagations;
+		**};
 	end gps_handler;
 	
 	system implementation gps_handler.impl extends sensor::generic_sensor_handler.impl

@@ -1,11 +1,9 @@
 package ccIntegration
 public
 	with abstracts;
-	with sensor;
 	with controller;
 	with data_types;
 	with platform;
-	with EMV2;
 	with states;
 	with Cheddar_Properties;
 	with SEI;
@@ -118,12 +116,12 @@ public
 		flows	
 			UI_sink    		 : flow sink UI_inverse_ports -> UI_conn -> control_modal.UI_sink;
 			
-			controller_path1a : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
-								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed;  
-			
-			controller_path1b : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
-								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;  
-		
+--			controller_path1a : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
+--								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path0 ->modal_coon -> current_speed;  
+--			
+--			controller_path1b : flow path sensor4_data_in -> speedometer_thread_conn -> thread_speedometer.thread_path0 -> speedometer_controller_conn
+--								-> thread_controller.controller_thread_path0 -> threads_conn -> control_modal.control_modal_path1 ->modal_proc_conn -> feedback;  
+--		
 		modes
 			manual: initial mode;
 			cc: mode;	

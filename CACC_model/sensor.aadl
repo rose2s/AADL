@@ -24,13 +24,12 @@ public
 	with EMV2;
 	with data_types;
 	with SEI;
-	with AADL_Project;
-	
+		
 	abstract generic_sensor
 		features
-			sensor_data_out: 	out data port;
+			sensor_data_out:     out data port;
 		flows
-			sensor_source : flow source sensor_data_out;  
+			sensor_source      : flow source sensor_data_out;  
 		properties
 			latency => 1 ms .. 3 ms applies to sensor_source;
 			SEI::PowerBudget=> 5.0W;		
@@ -45,8 +44,8 @@ public
 			end propagations;
 			properties
 				emv2::hazards => 
-					([	failure => "Novalue";	
-						description => "No data from the sensor";
+					([failure => "Novalue";	
+				  	description => "No data from the sensor";
 					])
 			applies to sensor_data_out.novalue;
 		**};	
@@ -74,12 +73,16 @@ public
 		
 			error propagations
 				logger_out		: out propagation {BadValue, LateValue};
-				sensor_data_in  : in propagation  {NoValue, BadValue, InvalidValue};
+				sensor_data_in  : in propagation  {NoValue, BadValue, LateValue};
 				sensor_data_out : out propagation {NoValue, BadValue,LateValue};
 			flows
 				ef0 : error source logger_out{BadValue, LateValue};
 				ef1 : error source sensor_data_out{LateValue};
-				ef2 : error path sensor_data_in{NoValue, BadValue}->sensor_data_out{LateValue};
+				ef2 : error path sensor_data_in{NoValue}
+						->sensor_data_out{NoValue};
+				ef3 : error path sensor_data_in{BadValue, LateValue}
+						->sensor_data_out{BadValue};
+				
 			end propagations;
 			
 			component error behavior

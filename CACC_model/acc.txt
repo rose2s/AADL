@@ -1,4 +1,4 @@
-• The system may not operate correctly under the conditions listed below.
+ The system may not operate correctly under the conditions listed below.
 When these conditions occur, do not use Adaptive Cruise Control.
 - The tire pressure is not correct.*1
 - The temporary spare tire is installed on any wheel.*1
@@ -8,7 +8,7 @@ installed.*1
 - Flat tires have been fixed temporarily with a tire repair kit.
 - The suspension has been modified (including a genuine SUBARU suspension
 that has been modified).
-- Any object that disturbs the stereo cameras’ view is installed on the vehicle.
+- Any object that disturbs the stereo cameras view is installed on the vehicle.
 - The headlights are dirty or they have snow and ice or dirt on them.
 (Objects are not correctly illuminated and are difficult to detect.)
 - The optical axes are not aligned correctly. (Objects are not correctly illuminated

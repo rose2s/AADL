@@ -39,13 +39,13 @@ public
 			vehicle_controller: 	refined to process control_rt.impl   	  {Classifier_Substitution_Rule => Type_Extension;};
 			interface_controller:	refined to process interface_controller_rt.impl;
 			radar_sensor:		 	refined to device  devices::radarSensor_rt.impl    {Classifier_Substitution_Rule => Type_Extension;};
-			radar_handler:			refined to system  devices::radar_handler.impl;
+			radar_handler:			refined to system  devices::radar_handler.impl {Classifier_Substitution_Rule => Type_Extension;};
 			camera_sensor:			refined to device  devices::cameraSensor_rt.impl   {Classifier_Substitution_Rule => Type_Extension;};
 			camera_handler:			refined to system  devices::camera_handler.impl;
 			speedometer:		 	refined to device  devices::speedometer_rt.impl 	  {Classifier_Substitution_Rule => Type_Extension;};
 			speedometer_handler:	refined to system  devices::speedometer_handler.impl;
 			gps:		 		 	refined to device  devices::gps_rt.impl 		   	  {Classifier_Substitution_Rule => Type_Extension;};
-			gps_handler:			refined to system  devices::gps_handler.impl;
+			gps_handler:			refined to system  devices::gps_handler.impl {Classifier_Substitution_Rule => Type_Extension;};
 			user_interface:	 		refined to device  devices::user_interface_rt.impL {Classifier_Substitution_Rule => Type_Extension;};
 			logger: 		 		refined to system  logger_rt.impl;
 			this_bus:				bus 	  			platform::generic_bus;
