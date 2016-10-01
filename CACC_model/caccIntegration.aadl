@@ -58,7 +58,6 @@ public
 			speed_controller:		refined to process speed_controller_rt.impl;	
 			states:					system states::controller.impl;	
 			item:					data simple;--{securityProperties::dataItemType=>5.0;
-								--    securityProperties::dataItemAccessRights=>5.0;};
 		
 		connections
 			bus_radar: 					bus access this_bus<->radar_sensor.BA{securityProperties::Channel_Protocol=>9.0;securityProperties::Channel_AccessRights=>9.0;};
@@ -83,8 +82,6 @@ public
 			--brakecontroler - fail
 			--brakecontrole - didnt fail
 			-- power ??
-			gps_handler_con:  port gps.sensor_data_out -> gps_handler.sensor_data_in;
-			--- sensed_spped  -> speed_handler
 			
 		properties
 			-- bound thread to the processor

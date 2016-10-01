@@ -70,6 +70,7 @@ public
 			etef5 : end to end flow radar_sensor.sensor_source -> radar_handler_conn -> radar_handler.sensor_path -> radar_conn ->
 			                         vehicle_controller.controller_path0a -> speed_controller_conn -> 
 			                        speed_controller.speed_path -> brake_conn -> brake_actuator.brake_sink;
+			                        
 			etef6 : end to end flow camera_sensor.sensor_source -> camera_handler_conn -> camera_handler.sensor_path -> camera_conn ->
 			                         vehicle_controller.controller_path1a -> speed_controller_conn -> 
 			                        speed_controller.speed_path -> brake_conn -> brake_actuator.brake_sink;

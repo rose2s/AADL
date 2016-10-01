@@ -58,7 +58,7 @@ public
 			bus_processor:				bus access this_bus<->this_processor.net;
 			bus_memory:					bus access this_bus<->this_memory.BA;	
 			
-			--radar_handler_con:          port radar_sensor.sensor_data_out -> radar_handler.sensor_data_in;
+			radar_handler_con:          port radar_sensor.sensor_data_out -> radar_handler.sensor_data_in;
 			brake_cont_conn:			port brake_actuator.brake_failed->vehicle_controller.brake_failed;
 			
 			controller_driverSelection: port vehicle_controller.driverSelection -> states.driverSelection;

@@ -1,0 +1,128 @@
+package DesignPattern
+public
+	
+	system Pattern
+	end Pattern;
+	
+	system implementation Pattern.impl
+		subcomponents
+			radarSensor: system inputSensor;
+			cameraSensor: system inputSensor;
+			primaryChannel: system ActuationChannel.impl;
+			secondaryChannel: system ActuationChannel.impl;
+			primaryActuator: system actuator;
+			secondaryActuator: system actuator;
+		connections
+			c1:port radarSensor.output->primaryChannel.sensorInput;
+			c2:port cameraSensor.output->secondaryChannel.sensorInput;
+			c3:port primaryChannel.output->primaryActuator.input;
+			c4:port primaryActuator.output -> primaryChannel.actuatorInput;
+			c5:port secondaryChannel.output->secondaryActuator.input;
+			c6:port secondaryActuator.output -> secondaryChannel.actuatorInput;
+			c7:port primaryChannel.outputDataValidation -> secondaryChannel.inputDataValidation;
+			c8:port primaryChannel.outputActuatorValidation -> secondaryChannel.inputActuatorValidation;
+			c9:port secondaryChannel.outputDataValidation -> primaryChannel.inputDataValidation;
+			c10:port secondaryChannel.outputActuatorValidation -> primaryChannel.inputActuatorValidation;
+	end Pattern.impl;
+	
+	system ActuationChannel
+		features
+			sensorInput: in data port;
+			actuatorInput: in data port;
+			output: out data port;
+			outputDataValidation: out data port;
+			outputActuatorValidation: out data port;
+			inputDataValidation: in data port;
+			inputActuatorValidation: in data port;
+	end ActuationChannel;
+	
+	system implementation ActuationChannel.impl
+		subcomponents
+			ip: system InputProcessing.impl;
+			dt: system DataTransformation.impl;
+			dv: system DataValidation.impl;
+			op: system OutputProcessing.impl;
+			av: system ActuationValidation.impl;
+			
+		connections
+			c1: port ip.outTransform->dt.inDataTransform;
+			c2: port ip.outValidation->dv.inProcessing;
+			c3: port dt.outPredecessor->dt.inSuccessor;
+			c4: port dv.outDataValidation->outputDataValidation;
+			c5: port dt.outProcessing -> op.inDataTransform;
+			c6: port op.outActuationValidation -> av.inOutputProcessing;
+			c7: port av.outActuationProcessing -> outputActuatorValidation;
+			c8: port inputDataValidation -> dv.inDVOtherChannel;
+			c9: port inputActuatorValidation -> av.inAVOtherChannel;
+			c10: port dt.outReturn -> dv.inReturn;
+	end ActuationChannel.impl;
+	
+	
+	system InputProcessing
+		features
+			sensorInput:in data port;
+			outTransform: out data port;
+			outValidation:out data port;
+	end InputProcessing;
+	
+	system implementation InputProcessing.impl	
+	end InputProcessing.impl;
+	
+	system DataTransformation
+		features
+			inDataTransform:in data port;
+			inSuccessor:in data port;
+			outPredecessor:out data port;
+			outProcessing:out data port;
+			outReturn: out data port;
+	end DataTransformation;
+	
+	system  implementation DataTransformation.impl	
+	end DataTransformation.impl;
+	
+	system DataValidation
+		features
+			inProcessing:in data port;
+			outDataValidation:out data port;
+			outDataActuation:out data port;
+			inDVOtherChannel:in data port;
+			inReturn:in data port;
+	end DataValidation;
+	
+	system  implementation DataValidation.impl	
+	end DataValidation.impl;
+	
+	system OutputProcessing
+		features
+			inDataTransform:in data port;
+			outActuator:out data port;
+			outActuationValidation:out data port;
+	end OutputProcessing;
+	
+	system  implementation OutputProcessing.impl
+		
+	end OutputProcessing.impl;
+	
+	system ActuationValidation 
+		features
+			inActuator:in data port;
+			inOutputProcessing:in data port;
+			outActuationProcessing:out data port;
+			inAVOtherChannel:in data port;
+	end ActuationValidation;
+	
+	system  implementation ActuationValidation.impl
+	end ActuationValidation.impl;
+	
+	system inputSensor
+		features
+			output: out data port;
+	end inputSensor;
+	
+	system actuator
+		features
+			input: in data port;
+			output: out data port;
+	end actuator;
+	
+end DesignPattern;
